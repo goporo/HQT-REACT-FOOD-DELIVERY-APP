@@ -26,8 +26,8 @@ const nav__links = [
         Icon: RiHeart2Line,
     },
     {
-        display: "Contact",
-        to: "/contact",
+        display: "Order",
+        to: "/order",
         Icon: RiFileList3Line,
         badge: 3,
     },

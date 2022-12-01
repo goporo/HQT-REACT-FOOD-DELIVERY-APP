@@ -25,12 +25,14 @@ const ProductCard = (props) => {
   return (
     <div className="flex flex-col bg-white p-5 mb-5 rounded-md">
       <div className="flex justify-center">
-        <img src={image01} alt="product-img" className="w-32" />
+        <Link to={`/supplier/the-alley`}>
+          <img src={image01} alt="product-img" className="w-32" />
+        </Link>
       </div>
 
       <div className="product__content">
         <h5 className="text-center font-semibold mt-2">
-          <Link to={`/foods/${id}`}>{title}</Link>
+          <Link to={`/supplier/the-alley`}>{title}</Link>
         </h5>
         <div className="flex items-center justify-between">
           <span className="product__price">${price}</span>

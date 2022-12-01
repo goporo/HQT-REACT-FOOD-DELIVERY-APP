@@ -10,6 +10,7 @@ const foods = [
         price: 80.0,
         rating: 4.3,
         image: "/images/chicken_burger.jpg",
+        supplier: "the-alley",
     },
     {
         id: "food_2",
@@ -17,6 +18,7 @@ const foods = [
         price: 150.0,
         rating: 4.3,
         image: "/images/chicken_deluxe_fry.jpg",
+        supplier: "the-alley",
     },
     {
         id: "food_3",
@@ -24,6 +26,7 @@ const foods = [
         price: 200.0,
         rating: 4.3,
         image: "/images/chicken_malai_gravy.jpg",
+        supplier: "the-alley",
     },
     {
         id: "food_4",
@@ -31,6 +34,7 @@ const foods = [
         price: 400.0,
         rating: 4.3,
         image: "/images/chicken_pizza.jpg",
+        supplier: "the-alley",
     },
     {
         id: "food_5",
@@ -38,6 +42,7 @@ const foods = [
         price: 100.0,
         rating: 4.3,
         image: "/images/chicken_sate.jpg",
+        supplier: "the-alley",
     },
     {
         id: "food_6",
@@ -45,6 +50,7 @@ const foods = [
         price: 150.0,
         rating: 4.3,
         image: "/images/fried_rice.jpg",
+        supplier: "the-alley",
     },
     {
         id: "food_7",
@@ -52,6 +58,7 @@ const foods = [
         price: 120.0,
         rating: 4.3,
         image: "/images/nachos_galore.jpg",
+        supplier: "the-alley",
     },
     {
         id: "food_8",
@@ -59,6 +66,7 @@ const foods = [
         price: 120.0,
         rating: 4.3,
         image: "/images/pasta.jpg",
+        supplier: "the-alley",
     },
     {
         id: "food_9",
@@ -66,6 +74,7 @@ const foods = [
         price: 80.0,
         rating: 4.3,
         image: "/images/ramen.jpg",
+        supplier: "the-alley",
     },
     {
         id: "food_10",
@@ -73,6 +82,7 @@ const foods = [
         price: 70.0,
         rating: 4.3,
         image: "/images/noodles.jpg",
+        supplier: "the-alley",
     },
 ]
 
