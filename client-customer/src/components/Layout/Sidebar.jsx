@@ -70,6 +70,7 @@ const Sidebar = () => {
                         <ul className="ml-1">
                             {nav__links.map((item, index) => (
                                 <SidebarRow
+                                    key={index}
                                     display={item.display}
                                     to={item.to}
                                     Icon={item.Icon}
