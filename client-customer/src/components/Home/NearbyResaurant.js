@@ -1,4 +1,5 @@
 import { AiFillStar, AiOutlineAim } from "react-icons/ai";
+import { Link } from "react-router-dom";
 
 const NearbyResaurant = ({ restaurants }) => {
     return (
@@ -15,17 +16,25 @@ const NearbyResaurant = ({ restaurants }) => {
                         <div className="flex space-x-3" key={r.id}>
                             <div className="h-20 w-20 p-3 bg-gray-100 rounded-xl overflow-hidden">
                                 <span>
-                                    <img
-                                        src={r.logo}
-                                        alt={r.title}
-                                        className="object-cover h-full w-full"
-                                    />
+                                    <Link to={`/supplier/the-alley`}>
+
+                                        <img
+                                            src={r.logo}
+                                            alt={r.title}
+                                            className="object-cover h-full w-full"
+                                        />
+                                    </Link>
+
                                 </span>
                             </div>
                             <div>
                                 <div className="flex space-x-3">
                                     <h4 className="font-semibold text-md mt-2 tracking-wide">
-                                        {r.name}
+                                        <Link to={`/supplier/the-alley`}>
+
+                                            {r.name}
+                                        </Link>
+
                                     </h4>
 
                                     <div className="flex items-center space-x-0.5">
@@ -48,11 +57,10 @@ const NearbyResaurant = ({ restaurants }) => {
                                         </span>
                                     </div>
                                     <span
-                                        className={`text-xs px-2 py-1 rounded ${
-                                            r.deliveryFree
-                                                ? "bg-purple-100 text-purple-700"
-                                                : "bg-[#ffe7e0] text-[#f25e35]"
-                                        }`}
+                                        className={`text-xs px-2 py-1 rounded ${r.deliveryFree
+                                            ? "bg-purple-100 text-purple-700"
+                                            : "bg-[#ffe7e0] text-[#f25e35]"
+                                            }`}
                                     >
                                         {r.offer}
                                     </span>
