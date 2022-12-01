@@ -9,12 +9,13 @@ import Checkout from "../pages/Checkout";
 import Contact from "../pages/Contact";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
+import HomePage from "../components/Home/HomePage";
 
 const Routers = () => {
   return (
     <Routes>
       <Route path="/" element={<Navigate to="/home" />} />
-      <Route path="/home" element={<Home />} />
+      <Route path="/home" element={<HomePage />} />
       <Route path="/foods" element={<AllFoods />} />
       <Route path="/foods/:id" element={<FoodDetails />} />
       <Route path="/cart" element={<Cart />} />
