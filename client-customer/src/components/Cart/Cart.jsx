@@ -108,7 +108,7 @@ const Tr = (props) => {
       </td>
       <td >
         <div className="flex flex-row justify-center">
-          <button className='cursor-pointer hover:opacity-80 rounded-lg bg-red-600 text-white text-md font-semibold py-1 px-3'>+</button>
+          <button className='cursor-pointer hover:opacity-80 rounded-lg bg-red-600 text-white text-md font-semibold py-1 px-3'>-</button>
           <p className="px-4 mt-1">{quantity}</p>
           <button className='cursor-pointer hover:opacity-80 rounded-lg bg-red-600 text-white text-md font-semibold py-1 px-3'>+</button>
 
