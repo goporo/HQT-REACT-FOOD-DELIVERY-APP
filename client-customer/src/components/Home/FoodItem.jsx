@@ -1,14 +1,23 @@
 import { Link } from "react-router-dom";
 
+import LazyLoad from 'react-lazy-load';
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
+import { useState } from "react";
+
+
 const id = "the-alley"
 
 const FoodItem = ({ f }) => {
+    const [loading, setLoading] = useState(true)
     return (
         <div className="">
-            <div className="cursor-pointer relative h-48 w-full overflow-hidden rounded-xl">
+            <div className="cursor-pointer relative h-48 overflow-hidden rounded-xl">
+                {/* {loading && <Skeleton height={192} />} */}
                 <Link to={`/supplier/${id}`}>
                     <img src={f.image} alt={f.title}
-                        className="object-cover bg-gray-100 hover:scale-110 transition duration-200"
+                        className="h-full w-full object-cover hover:scale-110 transition duration-200"
+                        onLoad={() => setLoading(false)}
                     />
                 </Link>
             </div>

@@ -2,15 +2,15 @@ import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 
 
-import AllFoods from "../pages/AllFoods";
+import AllFoods from "../components/Foods/AllFoods";
 import FoodDetails from "../pages/FoodDetails";
-import Cart from "../pages/Cart";
 import Checkout from "../pages/Checkout";
 import Order from "../pages/Order";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 import HomePage from "../components/Home/HomePage";
 import SupplierPage from "../components/Supplier/SupplierPage";
+import Cart from "../components/Cart/Cart";
 
 const Routers = () => {
   return (

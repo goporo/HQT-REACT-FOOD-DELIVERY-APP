@@ -160,7 +160,7 @@ export default function HomePage({ }) {
                     </div>
 
                     <div className="w-11/12 mx-auto">
-                        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-x-5 gap-y-16">
+                        <div className="grid grid-cols-2 md:grid-cols-3 gap-x-5 gap-y-16">
                             {foods.map((food) => (
                                 <FoodItem key={food.id} f={food} />
                             ))}

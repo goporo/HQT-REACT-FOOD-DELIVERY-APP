@@ -46,10 +46,10 @@ const cartSlice = createSlice({
         state.cartItems.push({
           id: newItem.id,
           title: newItem.title,
-          image01: newItem.image01,
           price: newItem.price,
-          quantity: 1,
+          image: newItem.image,
           totalPrice: newItem.price,
+          quantity: 1,
         });
       } else {
         existingItem.quantity++;

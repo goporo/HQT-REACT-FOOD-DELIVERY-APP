@@ -2,6 +2,8 @@ import { Rating } from '@mui/material'
 import { AiOutlineClockCircle } from 'react-icons/ai';
 import { FiSearch } from 'react-icons/fi';
 import { FaRegHandPointRight } from 'react-icons/fa';
+import { useDispatch } from 'react-redux';
+import { cartActions } from '../../store/shopping-cart/cartSlice';
 
 
 const supplier = {
@@ -109,6 +111,20 @@ const foods = [
 ]
 
 export default function SupplierPage({ }) {
+    const dispatch = useDispatch();
+    const addToCart = () => {
+        dispatch(
+            cartActions.addItem({
+                // id,
+                // title,
+                // price,
+                // rating,
+                // image,
+                // supplier,
+            })
+        );
+    };
+
     return (
         <>
             <div className="flex flex-row w-11/12 mx-auto space-x-5 my-10 bg-white p-5 rounded-lg shadow-sm">
@@ -132,7 +148,7 @@ export default function SupplierPage({ }) {
                     <p className='text-orange-500 font-bold text-lg ml-4'>MENU</p>
                     {
                         supplier.category.map((item, index) =>
-                            <div className='flex flex-row m-5 cursor-pointer hover:opacity-80'>
+                            <div key={index} className='flex flex-row m-5 cursor-pointer hover:opacity-80'>
                                 <FaRegHandPointRight className='mr-5' />
                                 <div className=''>{item}</div>
                             </div>
@@ -164,7 +180,9 @@ export default function SupplierPage({ }) {
                                 </div>
                                 <div className='flex flex-row items-center'>
                                     <p className="text-blue-500 text-sm mr-3">${item.price}</p>
-                                    <button className='cursor-pointer hover:opacity-80 rounded-lg bg-red-600 text-white text-md font-semibold py-1 px-3'>+</button>
+                                    <button
+                                        onClick={addToCart}
+                                        className='cursor-pointer hover:opacity-80 rounded-lg bg-red-600 text-white text-md font-semibold py-1 px-3'>+</button>
                                 </div>
                             </div>
 
