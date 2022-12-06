@@ -1,11 +1,18 @@
 import { BiBell, BiShoppingBag } from "react-icons/bi";
 import { BsFilter } from "react-icons/bs";
 import { FiSearch } from "react-icons/fi";
+import { useNavigate } from "react-router-dom";
+
+
 
 const Header = () => {
+    const navigate = useNavigate();
     const onSearchHandler = (e) => {
         e.preventDefault();
-        console.log("search");
+        navigate(`/foods`);
+        ///`/foodskeyword=${e.target[0].value}`
+        e.target[0].value = "";
+
     };
 
     return (

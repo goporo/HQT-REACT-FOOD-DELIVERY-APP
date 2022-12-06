@@ -8,7 +8,14 @@ import { useDispatch } from "react-redux";
 import { cartActions } from "../../../store/shopping-cart/cartSlice";
 
 const ProductCard = (props) => {
-  const { id, title, image01, price } = props.item;
+  const {
+    id,
+    title,
+    price,
+    rating,
+    image,
+    supplier,
+  } = props.item;
   const dispatch = useDispatch();
 
   const addToCart = () => {
@@ -16,27 +23,29 @@ const ProductCard = (props) => {
       cartActions.addItem({
         id,
         title,
-        image01,
         price,
+        rating,
+        image,
+        supplier,
       })
     );
   };
 
   return (
-    <div className="flex flex-col bg-white p-5 mb-5 rounded-md">
+    <div className="flex flex-col bg-white p-2 mb-5 rounded-md">
       <div className="flex justify-center">
         <Link to={`/supplier/the-alley`}>
-          <img src={image01} alt="product-img" className="w-32" />
+          <img src={image} alt="product-img" className="w-48 h-48 object-cover" />
         </Link>
       </div>
 
       <div className="product__content">
-        <h5 className="text-center font-semibold mt-2">
-          <Link to={`/supplier/the-alley`}>{title}</Link>
-        </h5>
-        <div className="flex items-center justify-between">
-          <span className="product__price">${price}</span>
-          <button className="addTOCart__btn" onClick={addToCart}>
+        <div className="text-center font-semibold my-2">
+          <Link to={`/supplier/the-alley`}>{title.toUpperCase()}</Link>
+        </div>
+        <div className="flex flex-col items-center justify-between">
+          <span className="text-red-500 text-lg mb-2">{price}₫</span>
+          <button className="bg-red-500 text-white py-2 px-5 text-sm rounded-lg" onClick={addToCart}>
             Add to Cart
           </button>
         </div>

@@ -1,10 +1,6 @@
 import React, { useState } from "react";
-import Helmet from "../components/Helmet/Helmet";
-import CommonSection from "../components/UI/common-section/CommonSection";
 
-import { Container, Row, Col } from "reactstrap";
-
-import products from "../assets/fake-data/products";
+import foods from "../assets/fake-data/foods";
 import ProductCard from "../components/UI/product-card/ProductCard";
 import ReactPaginate from "react-paginate";
 
@@ -16,7 +12,7 @@ const AllFoods = () => {
 
   const [pageNumber, setPageNumber] = useState(0);
 
-  const searchedProduct = products.filter((item) => {
+  const searchedFood = foods.filter((item) => {
     if (searchTerm.value === "") {
       return item;
     }
@@ -29,12 +25,12 @@ const AllFoods = () => {
 
   const productPerPage = 12;
   const visitedPage = pageNumber * productPerPage;
-  const displayPage = searchedProduct.slice(
+  const displayPage = searchedFood.slice(
     visitedPage,
     visitedPage + productPerPage
   );
 
-  const pageCount = Math.ceil(searchedProduct.length / productPerPage);
+  const pageCount = Math.ceil(searchedFood.length / productPerPage);
 
   const changePage = ({ selected }) => {
     setPageNumber(selected);
@@ -56,7 +52,7 @@ const AllFoods = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-4 md:gap-8">
           {displayPage.map((item) => (
             <div key={item.id} className="">
               <ProductCard item={item} />
