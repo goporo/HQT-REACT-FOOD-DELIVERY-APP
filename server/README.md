@@ -1,4 +1,5 @@
 # HQT-REACT-FOOD-DELIVERY-APP
+Food DB là file tổng hợp
 Thứ tự chạy
 Lược đồ
 Tài Khoản
