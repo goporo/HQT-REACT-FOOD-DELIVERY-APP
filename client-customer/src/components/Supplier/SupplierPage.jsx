@@ -119,6 +119,7 @@ export default function SupplierPage({ }) {
                 item
             )
         );
+        alert("Add successful!")
     };
 
     return (
