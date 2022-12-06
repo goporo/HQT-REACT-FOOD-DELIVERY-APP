@@ -1,10 +1,6 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import { Container, Row, Col } from "reactstrap";
-import CommonSection from "../components/UI/common-section/CommonSection";
-import Helmet from "../components/Helmet/Helmet";
 
-import "../styles/checkout.css";
 
 const Checkout = () => {
   const [enterName, setEnterName] = useState("");
@@ -36,70 +32,56 @@ const Checkout = () => {
   };
 
   return (
-    <Helmet title="Checkout">
-      <CommonSection title="Checkout" />
-      <section>
-        <Container>
-          <Row>
-            <Col lg="8" md="6">
-              <h6 className="mb-4">Shipping Address</h6>
-              <form className="checkout__form" onSubmit={submitHandler}>
-                <div className="form__group">
-                  <input
-                    type="text"
-                    placeholder="Enter your name"
-                    required
-                    onChange={(e) => setEnterName(e.target.value)}
-                  />
-                </div>
+    <div>
+      <div>
+        <div >
+          <h6 className="mb-4">Shipping Address</h6>
+          <form className="checkout__form" onSubmit={submitHandler}>
+            <div className="form__group">
+              <input
+                type="text"
+                placeholder="Enter your name"
+                required
+                onChange={(e) => setEnterName(e.target.value)}
+              />
+            </div>
 
-                <div className="form__group">
-                  <input
-                    type="email"
-                    placeholder="Enter your email"
-                    required
-                    onChange={(e) => setEnterEmail(e.target.value)}
-                  />
-                </div>
-                <div className="form__group">
-                  <input
-                    type="number"
-                    placeholder="Phone number"
-                    required
-                    onChange={(e) => setEnterNumber(e.target.value)}
-                  />
-                </div>
-                <div className="form__group">
-                  <input
-                    type="text"
-                    placeholder="Country"
-                    required
-                    onChange={(e) => setEnterCountry(e.target.value)}
-                  />
-                </div>
-                <div className="form__group">
-                  <input
-                    type="text"
-                    placeholder="City"
-                    required
-                    onChange={(e) => setEnterCity(e.target.value)}
-                  />
-                </div>
-                <div className="form__group">
-                  <input
-                    type="number"
-                    placeholder="Postal code"
-                    required
-                    onChange={(e) => setPostalCode(e.target.value)}
-                  />
-                </div>
-                <button type="submit" className="addTOCart__btn">
-                  Payment
-                </button>
-              </form>
-            </Col>
+            <div className="form__group">
+              <input
+                type="email"
+                placeholder="Enter your email"
+                required
+                onChange={(e) => setEnterEmail(e.target.value)}
+              />
+            </div>
+            <div className="form__group">
+              <input
+                type="number"
+                placeholder="Phone number"
+                required
+                onChange={(e) => setEnterNumber(e.target.value)}
+              />
+            </div>
+            <div className="form__group">
+              <input
+                type="text"
+                placeholder="Country"
+                required
+                onChange={(e) => setEnterCountry(e.target.value)}
+              />
+            </div>
+            <div className="form__group">
+              <input
+                type="text"
+                placeholder="City"
+                required
+                onChange={(e) => setEnterCity(e.target.value)}
+              />
+            </div>
 
-            <Col lg="4" md="6">
+            <hr />
+
+            <div >
               <div className="checkout__bill">
                 <h6 className="d-flex align-items-center justify-content-between mb-3">
                   Subtotal: <span>${cartTotalAmount}</span>
@@ -113,11 +95,18 @@ const Checkout = () => {
                   </h5>
                 </div>
               </div>
-            </Col>
-          </Row>
-        </Container>
-      </section>
-    </Helmet>
+            </div>
+
+
+            <button type="submit" className="py-3 px-14 text-white bg-red-500 rounded-lg hover:opacity-80">
+              Buy
+            </button>
+          </form>
+        </div>
+
+
+      </div>
+    </div >
   );
 };
 

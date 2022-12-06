@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 
-import foods from "../assets/fake-data/foods";
-import ProductCard from "../components/UI/product-card/ProductCard";
+import foods from "../../assets/fake-data/foods";
+import ProductCard from "./ProductCard";
 import ReactPaginate from "react-paginate";
 
-import "../styles/all-foods.css";
-import "../styles/pagination.css";
+import "../../styles/all-foods.css";
+import "../../styles/pagination.css";
 
 const AllFoods = () => {
   const [searchTerm, setSearchTerm] = useState("");
