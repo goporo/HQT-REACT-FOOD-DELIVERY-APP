@@ -38,7 +38,9 @@ const ProductCard = (props) => {
     <div className="flex flex-col bg-white py-4 mb-4 rounded-md">
       <div className="flex justify-center">
         <Link to={`/supplier/the-alley`}>
-          <img src={image} alt="product-img" className="w-52 h-52 object-cover rounded-md" />
+          <LazyLoad height={208}>
+            <img src={image} alt="product-img" className="w-52 h-52 object-cover rounded-md" />
+          </LazyLoad>
         </Link>
       </div>
 
@@ -47,7 +49,7 @@ const ProductCard = (props) => {
           <Link to={`/supplier/the-alley`}>{title}</Link>
         </div>
         <div className="flex flex-col items-center justify-between">
-          <span className="text-red-500 text-lg mb-2">{price}₫</span>
+          <span className="text-red-500 text-lg mb-2">${price}</span>
           <button className="bg-red-500 text-white py-2 px-5 text-sm rounded-lg" onClick={addToCart}>
             Add to Cart
           </button>

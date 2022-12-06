@@ -7,6 +7,7 @@ import { BsFillTrashFill } from 'react-icons/bs';
 import Select from 'react-select'
 import Modal from 'react-modal';
 import { FormControl, FormControlLabel, FormLabel, Radio, RadioGroup, TextField } from "@mui/material";
+import LazyLoad from "react-lazy-load";
 
 
 const Cart = () => {
@@ -95,10 +96,12 @@ const Tr = (props) => {
   return (
     <tr className="text-center">
       <td className="flex justify-center my-6">
-        <img className='w-[64px] h-[64px] rounded-lg' src={image} alt="" />
+        <LazyLoad height={64}>
+          <img className='w-[64px] h-[64px] rounded-lg' src={image} alt="" />
+        </LazyLoad>
       </td>
       <td >
-        <h1 class="font-semibold text-lg capitalize">{title}</h1>
+        <h1 className="font-semibold text-lg capitalize">{title}</h1>
       </td>
       <td >
         <p className="text-orange-500 text-lg">${price}</p>

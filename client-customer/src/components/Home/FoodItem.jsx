@@ -15,10 +15,11 @@ const FoodItem = ({ f }) => {
             <div className="cursor-pointer relative h-48 overflow-hidden rounded-xl">
                 {/* {loading && <Skeleton height={192} />} */}
                 <Link to={`/supplier/${id}`}>
-                    <img src={f.image} alt={f.title}
-                        className="h-full w-full object-cover hover:scale-110 transition duration-200"
-                        onLoad={() => setLoading(false)}
-                    />
+                    <LazyLoad className="h-full w-full">
+                        <img src={f.image} alt={f.title}
+                            className="h-full w-full object-cover hover:scale-110 transition duration-200"
+                        />
+                    </LazyLoad>
                 </Link>
             </div>
             <div className="flex justify-between items-center px-2 mt-4 capitalize">
@@ -28,7 +29,7 @@ const FoodItem = ({ f }) => {
 
 
                 <div className="bg-[#ffede6] text-[#ff4f00] text-xs font-semibold px-4 py-1 rounded-md whitespace-nowrap">
-                    ₹ {f.price}
+                    ${f.price}
                 </div>
             </div>
         </div>
