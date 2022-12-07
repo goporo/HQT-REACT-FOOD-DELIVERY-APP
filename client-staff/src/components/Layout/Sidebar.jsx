@@ -11,7 +11,7 @@ import { NavLink } from "react-router-dom";
 
 const nav__links = [
     {
-        display: "Home",
+        display: "Explore",
         to: "/home",
         Icon: FiHome,
     },
