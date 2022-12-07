@@ -1,5 +1,6 @@
 
-import NewContractItem from "./NewContractItem";
+import ContractItem from "../ContractItem";
+import NewContractItem from "../ContractItem";
 
 const newContracts = [
     {
@@ -30,7 +31,7 @@ export default function HomePage({ }) {
                         ) :
                             <div>
                                 <div className="font-semibold flex flex-row text-center items-center bg-white rounded-lg shadow-sm p-3">
-                                    <div className="w-1/12 flex justify-center my-6">
+                                    <div className="w-2/12 flex justify-center my-6">
 
                                     </div>
                                     <div className="w-2/12 ">
@@ -48,13 +49,11 @@ export default function HomePage({ }) {
                                     <div className="w-2/12">
                                         User ID
                                     </div>
-                                    <div className="w-2/12">
-                                    </div>
 
                                 </div >
                                 <hr />
-                                {newContracts.map((item) => (
-                                    <NewContractItem item={item} key={item.id} />
+                                {newContracts.map((item, index) => (
+                                    <ContractItem item={item} key={index} />
                                 ))}
                             </div>
                         }

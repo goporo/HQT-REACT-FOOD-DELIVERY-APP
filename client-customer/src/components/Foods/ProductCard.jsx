@@ -37,7 +37,7 @@ const ProductCard = (props) => {
   return (
     <div className="flex flex-col bg-white py-4 mb-4 rounded-md">
       <div className="flex justify-center">
-        <Link to={`/supplier/the-alley`}>
+        <Link to={`/supplier/${id}`}>
           <LazyLoad height={208}>
             <img src={image} alt="product-img" className="w-52 h-52 object-cover rounded-md" />
           </LazyLoad>

@@ -1,7 +1,17 @@
+import { Link } from "react-router-dom";
+
+import LazyLoad from 'react-lazy-load';
+import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
+import { useState } from "react";
 import { AiOutlineUser } from "react-icons/ai";
 
+import { BsFillTrashFill } from "react-icons/bs";
+import { TiTick, TiTimes } from "react-icons/ti";
 
+
+
+const id = "the-alley"
 
 const ContractItem = (props) => {
     const deleteItem = () => {
@@ -17,8 +27,9 @@ const ContractItem = (props) => {
     } = props.item;
     return (
         <>
-            <div className="text-lg flex flex-row text-center items-center bg-white rounded-lg shadow-sm p-3">
-                <div className="w-1/12 flex justify-center my-6">
+            <Link to={`/business/${iddoitac}`}
+                className="text-lg flex flex-row text-center items-center bg-white rounded-lg shadow-sm p-3 hover:opacity-80">
+                <div className="w-2/12 flex justify-center my-6">
                     <AiOutlineUser size={48} />
                 </div>
                 <div className="w-2/12">
@@ -36,14 +47,8 @@ const ContractItem = (props) => {
                 <div className="w-2/12">
                     <h1 className=" capitalize">{iddoitac}</h1>
                 </div>
-                <div className="w-2/12">
-                    <button
-                        className="py-3 px-4 rounded-md bg-red-500 text-white text-sm hover:opacity-80"
-                        onClick={() => deleteItem()}>
-                        Extend 1 Year
-                    </button>
-                </div>
-            </div >
+
+            </Link >
             <hr />
         </>
 
