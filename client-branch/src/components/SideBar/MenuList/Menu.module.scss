@@ -1,0 +1,57 @@
+.menu {
+  list-style: none;
+}
+
+.menuItem {
+  margin: 1rem 0;
+}
+
+.menuLink {
+  &:link,
+  &:visited {
+    color: var(--color-secondary);
+    font-size: 1.5rem;
+    display: block;
+    padding: 1rem 0;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  &:hover,
+  &:active {
+    color: var(--color-primary);
+  }
+
+  &:global.active {
+    font-weight: 500;
+    color: var(--color-primary);
+  }
+}
+
+.menuItemIcon {
+  font-size: 2rem;
+}
+
+.menuItemText {
+  font-size: 1.6rem;
+  margin-right: auto;
+}
+
+.menuBadge {
+  color: #fff;
+  background-color: var(--color-primary);
+  font-size: 1.4rem;
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 2.5rem;
+  height: 2.5rem;
+}
