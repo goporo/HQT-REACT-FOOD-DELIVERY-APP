@@ -1,0 +1,92 @@
+.homePage {
+  min-height: 100vh - var(--header-height);
+}
+
+.overview {
+  height: 100%;
+
+  display: grid;
+
+  grid-template-rows: auto auto 1fr;
+  grid-template-columns: 1fr 1fr;
+
+  gap: 2rem;
+}
+
+.foodTrendsCard {
+  grid-column: 1;
+  grid-row: 1 / span 2;
+}
+
+.reviewsCard {
+  grid-column: 1 / span 2;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.totalOrders,
+.totalRevenue {
+  font-size: 3.2rem;
+  font-weight: 500;
+}
+
+.totalOrdersImg,
+.totalRevenueImg {
+  width: 8rem;
+  height: 8rem;
+  object-fit: cover;
+  overflow: hidden;
+  border-radius: 2rem;
+}
+
+.foodTrendsList {
+  list-style: none;
+
+  .foodTrendItem {
+    display: flex;
+    align-items: center;
+
+    &:not(:last-child) {
+      margin-bottom: 2rem;
+    }
+
+    .foodTrendInfo {
+      flex: 1;
+
+      .foodTrendName {
+        font-size: 3rem;
+        font-weight: 600;
+
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .foodTrendIcon {
+        font-size: 3rem;
+      }
+
+      .foodTrendQuantity {
+      }
+
+      .foodTrendPrice {
+      }
+    }
+
+    .foodTrendImgWrapper {
+      width: 15rem;
+      height: 15rem;
+      border-radius: 2rem;
+      object-fit: contain;
+      overflow: hidden;
+
+      .foodTrendImg {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+}
