@@ -1,8 +1,10 @@
 import { BsGrid } from 'react-icons/bs';
-import { FaBell } from 'react-icons/fa';
 import { FiHome } from 'react-icons/fi';
-import { IoSettingsOutline } from 'react-icons/io5';
 import { RiHeart2Line } from 'react-icons/ri';
+import { BsReverseLayoutTextWindowReverse } from 'react-icons/bs';
+import { AiOutlineUser } from 'react-icons/ai';
+
+
 import routes from 'routes/routes';
 import styles from './Menu.module.scss';
 import MenuItem from './MenuItem';
@@ -25,15 +27,15 @@ const menuList = [
     badge: 3
   },
   {
-    text: 'Notifications',
-    href: routes.notifications.path,
-    Icon: FaBell,
+    text: 'Contract',
+    href: routes.contract.path,
+    Icon: BsReverseLayoutTextWindowReverse,
     badge: 8
   },
   {
-    text: 'Settings',
-    href: routes.settings.path,
-    Icon: IoSettingsOutline
+    text: 'Profile',
+    href: routes.profile.path,
+    Icon: AiOutlineUser
   }
 ];
 

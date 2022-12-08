@@ -8,11 +8,11 @@ const routes = {
   orders: {
     path: '/orders'
   },
-  settings: {
-    path: '/settings'
+  contract: {
+    path: '/contract'
   },
-  notifications: {
-    path: '/notifications'
+  profile: {
+    path: '/profile'
   }
 };
 

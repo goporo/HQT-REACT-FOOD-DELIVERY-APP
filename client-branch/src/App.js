@@ -1,11 +1,11 @@
 import Layout from 'components/Layout/Layout';
 import HomePage from 'pages/Home/HomePage';
 import MenuPage from 'pages/Menu/MenuPage';
-import NotificationsPage from 'pages/Notifications/NotificationsPage';
 import OrdersPage from 'pages/Orders/OrdersPage';
-import SettingsPage from 'pages/Settings/SettingPages';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import routes from 'routes/routes';
+import ContractPage from 'pages/Contract/ContractPage';
+import ProfilePage from 'pages/Profile/ProfilePage';
 
 function App() {
   return (
@@ -17,10 +17,10 @@ function App() {
         <Route path={routes.menu.path} element={<MenuPage />} />
         <Route path={routes.orders.path} element={<OrdersPage />} />
         <Route
-          path={routes.notifications.path}
-          element={<NotificationsPage />}
+          path={routes.contract.path}
+          element={<ContractPage />}
         />
-        <Route path={routes.settings.path} element={<SettingsPage />} />
+        <Route path={routes.profile.path} element={<ProfilePage />} />
       </Route>
     </Routes>
   );
