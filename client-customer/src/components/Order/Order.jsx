@@ -3,30 +3,53 @@ import LazyLoad from "react-lazy-load";
 
 const orders = [
   {
-    id: "food_1",
-    title: "chicken burger",
-    price: 80.0,
-    rating: 4.3,
-    image: "/images/chicken_burger.jpg",
-    supplier: "the-alley",
-    status: "Validating"
+    orderID: "O001",
+    items: [
+      {
+        id: "food_1",
+        title: "chicken deluxe fry",
+        price: 150.0,
+        rating: 4.3,
+        image: "/images/chicken_deluxe_fry.jpg",
+        supplier: "the-alley",
+
+      },
+      {
+        id: "food_2",
+        title: "Pasta",
+        price: 70.0,
+        rating: 4.3,
+        image: "/images/pasta.jpg",
+        supplier: "the-alley",
+        status: "Delivered",
+      }
+    ],
+    shipper: "Nguyen Hoai An",
+    status: "Validating",
   },
   {
-    id: "food_2",
-    title: "chicken deluxe fry",
-    price: 150.0,
-    rating: 4.3,
-    image: "/images/chicken_deluxe_fry.jpg",
-    supplier: "the-alley",
-    status: "Delivering",
-  },
-  {
-    id: "food_3",
-    title: "Pasta",
-    price: 70.0,
-    rating: 4.3,
-    image: "/images/pasta.jpg",
-    supplier: "the-alley",
+    orderID: "O002",
+    items: [
+      {
+        id: "food_1",
+        title: "chicken deluxe fry",
+        price: 150.0,
+        rating: 4.3,
+        image: "/images/chicken_deluxe_fry.jpg",
+        supplier: "the-alley",
+
+      },
+      {
+        id: "food_2",
+        title: "Pasta",
+        price: 70.0,
+        rating: 4.3,
+        image: "/images/pasta.jpg",
+        supplier: "the-alley",
+        status: "Delivered",
+      }
+    ],
+    shipper: "Nguyen Hoai An",
     status: "Delivered",
   },
 ]
@@ -40,28 +63,12 @@ const Order = () => {
             {orders.length === 0 ? (
               <h5 className="text-center">Your cart is empty</h5>
             ) : (
-              <table className="table-fixed w-full">
-                <thead >
-                  <tr className="text-lg">
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {orders.map((item, index) => (
-                    <Tr key={index} item={item} />
-                  ))}
-                </tbody>
-              </table>
+              <div className="">
+                {orders.map((item, index) => (
+                  <Tr key={index} item={item} />
+                ))}
+              </div>
             )}
-            <hr />
-            <div className="mt-5 flex flex-col right-14 absolute text-center">
-
-
-            </div>
           </div>
         </div>
       </div>
@@ -70,33 +77,37 @@ const Order = () => {
 };
 
 const Tr = (props) => {
-  const { id,
-    title,
-    price,
-    rating,
-    image,
-    supplier,
+
+  const {
+    orderID,
+    items,
+    // { id,
+    //   title,
+    //   price,
+    //   rating,
+    //   image,
+    //   supplier },
+    shipper,
     status
   } = props.item;
   return (
-    <tr className="text-center">
-      <td className="flex justify-center my-6">
-        <LazyLoad height={64}>
-          <img className='w-[64px] h-[64px] rounded-lg' src={image} alt="" />
-        </LazyLoad>
-      </td>
-      <td >
-        <h1 className="font-semibold text-lg capitalize">{title}</h1>
-      </td>
-      <td >
-        <p className="text-orange-500 text-lg">${price}</p>
-      </td>
-      <td >
-        <div className={`flex flex-row justify-center ${status === "Delivered" ? "text-green-500" : "text-yellow-400"}`}>
+    <div className="mb-10 bg-white p-5 shadow-sm rounded-lg">
+      <div className="flex items-center justify-between mb-2">
+        <div className="font-semibold bg-orange-400 text-white text-sm w-fit rounded-md py-2 px-3">ORDER: {orderID}</div>
+        <div className={`flex flex-row justify-center text-white text-sm py-1 px-2 rounded-md ${status === "Delivered" ? "bg-green-500" : "bg-orange-400"}`}>
           {status}
         </div>
-      </td>
-      <td>
+      </div>
+      {items.map((item, index) => (
+        <div key={index} className="flex flex-row space-y-2">
+          <div className="w-3/12 text-lg capitalize">{item.id}</div>
+          <div className="w-4/12 text-lg capitalize">{item.title}</div>
+          <p className="w-2/12 text-orange-500 text-lg">${item.price}</p>
+        </div >
+      ))}
+      <hr className="my-2" />
+      <div className="flex items-end flex-col space-y-2">
+        <div className="text-lg">Người giao hàng: <span className="text-orange-400">{shipper}</span></div>
         {
           status === "Validating" ?
             <button
@@ -109,9 +120,8 @@ const Tr = (props) => {
               Received
             </button>
         }
-      </td>
-
-    </tr >
+      </div>
+    </div>
   );
 };
 

@@ -4,6 +4,7 @@ import { FiSearch } from 'react-icons/fi';
 import { FaRegHandPointRight } from 'react-icons/fa';
 import { useDispatch } from 'react-redux';
 import { cartActions } from '../../store/shopping-cart/cartSlice';
+import { useParams } from 'react-router-dom';
 
 
 const supplier = {
@@ -110,7 +111,9 @@ const foods = [
     },
 ]
 
-export default function SupplierPage({ }) {
+export default function SupplierPage() {
+    const { businessId } = useParams()
+
     const dispatch = useDispatch();
     const addToCart = (item) => {
         console.log(item);

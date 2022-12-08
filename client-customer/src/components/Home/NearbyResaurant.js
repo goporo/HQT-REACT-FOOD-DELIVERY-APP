@@ -16,7 +16,7 @@ const NearbyResaurant = ({ restaurants }) => {
                         <div className="flex space-x-3" key={r.id}>
                             <div className="h-20 w-20 p-3 bg-gray-100 rounded-xl overflow-hidden">
                                 <span>
-                                    <Link to={`/supplier/the-alley`}>
+                                    <Link to={`/supplier/${r.id}`}>
 
                                         <img
                                             src={r.logo}
