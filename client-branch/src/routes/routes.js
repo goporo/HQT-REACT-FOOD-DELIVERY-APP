@@ -3,7 +3,10 @@ const routes = {
     path: '/home'
   },
   menu: {
-    path: '/menu'
+    path: '/menu',
+    detail: {
+      path: '/menu/:id'
+    }
   },
   orders: {
     path: '/orders'
