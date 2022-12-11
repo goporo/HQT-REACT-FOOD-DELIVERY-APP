@@ -81,7 +81,7 @@ const data = {
       rating: 5,
       date: '2022-01-02'
     }
-  ]
+  ],
 };
 
 function HomePage() {
