@@ -2,7 +2,7 @@
   "name": "server",
   "version": "1.0.0",
   "description": "Food DB là file tổng hợp\r Thứ tự chạy\r Lược đồ\r Tài Khoản\r Ngân hàng\r QUẢN TRỊ VIÊN\r NHÂN VIÊN\r ĐỐI TÁC\r CHI NHÁNH\r TÀI XẾ \r KHÁCH HÀNG\r CỬA HÀNG\r HỢP ĐỒNG\r HỢP ĐỒNG CHI TIẾT\r HỢP ĐỒNG CHI NHÁNH\r LOẠI ẨM THỰC\r THỰC ĐƠN\r ĐƠN HÀNG",
-  "main": "index.js",
+  "main": "api.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon api.js"

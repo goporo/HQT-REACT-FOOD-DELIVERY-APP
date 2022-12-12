@@ -19,5 +19,5 @@ async function test(){
     
     
 }
-test();
+
 module.exports=config;
