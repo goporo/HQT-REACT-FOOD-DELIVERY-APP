@@ -24,7 +24,7 @@ app.get('/test', async (req, res, next) => {
   //const US_NEWPASS=""
   try {
     let pool = await sql.connect(config)
-    let result = await pool.request().query('SELECT TO P 10 * FROM TAIKHOAN')
+    let result = await pool.request().query('SELECT TOP 10 * FROM TAIKHOAN')
     //console.log(result)
     sql.close()
     res.json(result)

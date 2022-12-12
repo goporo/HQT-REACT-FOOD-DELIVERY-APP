@@ -7,9 +7,45 @@ import NearbyResaurant from "./NearbyResaurant";
 
 
 
+import { useEffect, useState } from 'react';
+
+import axios from 'axios';
+
 
 
 export default function HomePage({ }) {
+    const [users, setUsers] = useState([]);
+    const getData = () => {
+        axios.get(`{pro}`, {
+            params: {
+                ID: 12345
+            }
+        })
+            .then(function (response) {
+                console.log(response);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+        // axios.get('http://localhost:5000')
+        //   .then((response) => {
+        //     let responseUsers = response.data.map((responseUser) => {
+        //       return {
+        //         id: responseUser.id,
+        //         name: responseUser.name,
+        //       }
+        //     })
+        //     setUsers(responseUsers);
+        //   })
+        //   .catch((error) => {
+        //     console.log(error);
+        //   })
+    }
+
+    useEffect(() => {
+        getData()
+    }, [])
+
     return (
         <div className="flex w-11/12 mx-auto space-x-5 my-10">
             <div className="bg-white w-full rounded-xl shadow-sm my-10 pb-10">
