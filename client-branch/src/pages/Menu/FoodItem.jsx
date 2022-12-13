@@ -3,14 +3,10 @@ import { Link } from "react-router-dom";
 import LazyLoad from 'react-lazy-load';
 import 'react-loading-skeleton/dist/skeleton.css'
 import { useState } from "react";
+import { formatVND } from "../../utils/currencyFormatter";
 
 const FoodItem = ({ f }) => {
     const [loading, setLoading] = useState(true)
-    const vnCurrencyFormatter = new Intl.NumberFormat('vi-VN', {
-        style: 'currency',
-        currency: 'VND'
-    });
-
     return (
         <div className="h-120">
             <div className="cursor-pointer relative h-80 overflow-hidden rounded-xl">
@@ -28,9 +24,8 @@ const FoodItem = ({ f }) => {
                     <Link to={`/menu/${f.id}`}>{f.title}</Link>
                 </h1>
 
-
                 <div className="bg-[#ffede6] text-[#ff4f00] text-2xs font-semibold px-4 py-1 rounded-md whitespace-nowrap">
-                    {vnCurrencyFormatter.format(f.price)}
+                    {formatVND(f.price)}
                 </div>
             </div>
         </div>

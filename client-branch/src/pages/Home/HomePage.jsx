@@ -2,6 +2,9 @@ import { FcDislike, FcLike } from 'react-icons/fc';
 import Card from './Card/Card';
 import styles from './HomePage.module.scss';
 import ReviewTable from './ReviewTable/ReviewTable';
+import OrderChart from './CustomChart/OrderChart';
+import RevenueChart from './CustomChart/RevenueChart';
+import { formatVND } from '../../utils/currencyFormatter';
 
 const data = {
   foodTrends: {
@@ -82,16 +85,10 @@ const data = {
       date: '2022-01-02'
     }
   ],
+  statistics: require('../../assets/fake-data/statistics.json')
 };
 
 function HomePage() {
-  const vnCurrencyFormatter = new Intl.NumberFormat('vi-VN', {
-    style: 'currency',
-    currency: 'VND'
-  });
-
-
-
   return (
     <main className={styles.homePage}>
       <section className={styles.overview}>
@@ -161,7 +158,7 @@ function HomePage() {
         <Card title='Total revenue' className={styles.totalRevenueCard}>
           <div className={styles.wrapper}>
             <p className={styles.totalRevenue}>
-              {vnCurrencyFormatter.format(data.totalRevenue)}
+              {formatVND(data.totalRevenue)}
             </p>
 
             <img
@@ -170,6 +167,14 @@ function HomePage() {
               className={styles.totalRevenueImg}
             />
           </div>
+        </Card>
+
+        <Card title='Orders chart' className={styles.chart}>
+          <OrderChart data={data.statistics} />
+        </Card>
+
+        <Card title='Revenues chart' className={styles.chart}>
+          <RevenueChart data={data.statistics} />
         </Card>
 
         <Card title='Reviews' className={styles.reviewsCard}>

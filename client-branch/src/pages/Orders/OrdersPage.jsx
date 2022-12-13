@@ -1,5 +1,4 @@
 import React from "react";
-import LazyLoad from "react-lazy-load";
 
 const orders = [
   {
@@ -9,111 +8,97 @@ const orders = [
         id: "food_1",
         title: "Nạm Gân",
         price: 40000,
-        image: "/images/NamGan.jpg",
-
       },
       {
         id: "food_2",
         title: "Tái ",
         price: 35000,
-        image: "/images/TaiCha.jpg",
       }
     ],
-    shipper: "Nguyen Hoai An",
+    status: "waiting",
   },
   {
-    orderID: "O002",
+    orderID: "002",
     items: [
       {
         id: "food_3",
-        title: "chicken deluxe fry",
-        price: 150.0,
-        image: "/images/chicken_deluxe_fry.jpg",
+        title: "Tái Nạm",
+        price: 40000,
       },
       {
         id: "food_4",
-        title: "Pasta",
-        price: 70.0,
-        image: "/images/pasta.jpg",
+        title: "Thập Cẩm",
+        price: 45000,
       }
     ],
-    shipper: "Nguyen Hoai An",
+    status: "success",
+    shipper: "Ngin Phan",
   },
   {
-    orderID: "O003",
+    orderID: "003",
+    items: [
+      {
+        id: "food_5",
+        title: "Đặc biệt",
+        price: 50000,
+      },
+      {
+        id: "food_6",
+        title: "Nạm",
+        price: 35000,
+      }
+    ],
+    status: "doing",
+  },
+  {
+    orderID: "004",
+    items: [
+      {
+        id: "food_7",
+        title: "Trà gừng",
+        price: 20000,
+      },
+      {
+        id: "food_8",
+        title: "Thập cẩm",
+        price: 45000,
+      }
+    ],
+    status: "shipping",
+    shipper: "Nguyen Phan",
+  },
+  {
+    orderID: "005",
+    items: [
+      {
+        id: "food_9",
+        title: "Đặc biệt",
+        price: 50000,
+      },
+      {
+        id: "food_10",
+        title: "Nạm",
+        price: 35000,
+      }
+    ],
+    status: "cancel",
+  },
+  {
+    orderID: "006",
     items: [
       {
         id: "food_11",
-        title: "chicken deluxe fry",
-        price: 150.0,
-        image: "/images/chicken_deluxe_fry.jpg",
-
+        title: "Nạm Gân",
+        price: 40000,
       },
       {
-        id: "food_9",
-        title: "Pasta",
-        price: 70.0,
-        image: "/images/pasta.jpg",
+        id: "food_12",
+        title: "Nạm",
+        price: 35000,
       }
     ],
-    shipper: "Nguyen Hoai An",
-  },
-  {
-    orderID: "O004",
-    items: [
-      {
-        id: "food",
-        title: "chicken deluxe fry",
-        price: 150.0,
-        image: "/images/chicken_deluxe_fry.jpg",
-
-      },
-      {
-        id: "food_2",
-        title: "Pasta",
-        price: 70.0,
-        image: "/images/pasta.jpg",
-      }
-    ],
-    shipper: "Nguyen Hoai An",
-  },
-  {
-    orderID: "O005",
-    items: [
-      {
-        id: "food_11",
-        title: "chicken deluxe fry",
-        price: 150.0,
-        image: "/images/chicken_deluxe_fry.jpg",
-      },
-      {
-        id: "food_9",
-        title: "Pasta",
-        price: 70.0,
-        image: "/images/pasta.jpg",
-      }
-    ],
-    shipper: "Nguyen Hoai An",
-  },
-  {
-    orderID: "O006",
-    items: [
-      {
-        id: "food",
-        title: "chicken deluxe fry",
-        price: 150.0,
-        image: "/images/chicken_deluxe_fry.jpg",
-
-      },
-      {
-        id: "food_2",
-        title: "Pasta",
-        price: 70.0,
-        rating: 4.3,
-        image: "/images/pasta.jpg",
-      }
-    ],
-    shipper: "Nguyen Hoai An",
+    status: "shipping",
+    shipper: "Minh Tei",
   },
 ]
 
@@ -174,21 +159,34 @@ const Tr = (props) => {
       ))}
       <hr className="my-2" />
       <div className="flex items-end flex-col space-y-2">
-        <div className="text-lg">Tình trạng đơn: <span className="text-orange-400">{shipper}</span></div>
+        {
+          status !== 'cancel' && (
+            <div className="text-lg">
+              Tài xế: <span className="text-orange-400">{shipper || 'Đang tìm...'}</span>
+            </div>
+          )
+        }
+
         <div className="flex items-end flex-col-2 space-x-3 space-y-2">
-          <button
-            className="w-[150px] py-3 bg-red-500 text-white cursor-pointer hover:opacity-80 rounded-md">
-            {'Cancel'}
-          </button>
-          <button
-            className="w-[150px] py-3 bg-red-500 text-white cursor-pointer hover:opacity-80 rounded-md">
-            {'Receive'}
-          </button>
+          {
+            status === 'waiting' && (
+              <>
+                <button
+                  className="w-[150px] py-3 bg-red-500 text-white cursor-pointer hover:opacity-80 rounded-md">
+                  {'Cancel'}
+                </button>
+                <button
+                  className="w-[150px] py-3 bg-red-500 text-white cursor-pointer hover:opacity-80 rounded-md">
+                  {'Receive'}
+                </button>
+              </>
+            )
+          }
         </div>
       </div>
     </div>
   );
 };
 
-  
+
 export default OrdersPage;
