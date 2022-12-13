@@ -6,6 +6,7 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import routes from 'routes/routes';
 import ContractPage from 'pages/Contract/ContractPage';
 import ProfilePage from 'pages/Profile/ProfilePage';
+import MenuDetailPage from 'pages/MenuDetail/MenuDetailPage';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <Route element={<Layout />}>
         <Route path={routes.home.path} element={<HomePage />} />
         <Route path={routes.menu.path} element={<MenuPage />} />
+        <Route path={routes.menu.detail.path} element={<MenuDetailPage />} />
         <Route path={routes.orders.path} element={<OrdersPage />} />
         <Route
           path={routes.contract.path}
