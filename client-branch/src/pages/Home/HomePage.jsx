@@ -90,6 +90,8 @@ function HomePage() {
     currency: 'VND'
   });
 
+
+
   return (
     <main className={styles.homePage}>
       <section className={styles.overview}>
