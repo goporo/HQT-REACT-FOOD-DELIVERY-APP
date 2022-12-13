@@ -1,4 +1,4 @@
-import Layout from "./pages/Login";
+import Layout from "./components/Layout/Layout";
 
 
 
