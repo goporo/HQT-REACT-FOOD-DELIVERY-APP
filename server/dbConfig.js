@@ -1,6 +1,6 @@
 const sql=require("mssql")
 const config={
-    server:"localhost\\TAI",
+    server:"localhost",
     database:"QL_BANHANG",
     user:"DBFood",
     password:"123456",
