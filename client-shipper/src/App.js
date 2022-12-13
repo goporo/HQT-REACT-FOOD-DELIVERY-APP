@@ -1,4 +1,4 @@
-import Layout from "./pages/Register";
+import Layout from "./pages/Login";
 
 
 
