@@ -1,5 +1,4 @@
 import React from "react";
-import LazyLoad from "react-lazy-load";
 
 const orders = [
   {
@@ -9,23 +8,17 @@ const orders = [
         id: "food_1",
         title: "Nạm Gân",
         price: 40000,
-        rating: 4.3,
         image: "/images/NamGan.jpg",
-        supplier: "the-alley",
 
       },
       {
         id: "food_2",
-        title: "Pasta",
-        price: 70.0,
-        rating: 4.3,
-        image: "/images/pasta.jpg",
-        supplier: "the-alley",
-        status: "Delivered",
+        title: "Tái ",
+        price: 35000,
+        image: "/images/TaiCha.jpg",
       }
     ],
     shipper: "Nguyen Hoai An",
-    status: "Validating",
   },
   {
     orderID: "O002",
@@ -34,23 +27,16 @@ const orders = [
         id: "food_3",
         title: "chicken deluxe fry",
         price: 150.0,
-        rating: 4.3,
         image: "/images/chicken_deluxe_fry.jpg",
-        supplier: "the-alley",
-
       },
       {
         id: "food_4",
         title: "Pasta",
         price: 70.0,
-        rating: 3.3,
         image: "/images/pasta.jpg",
-        supplier: "the-alley",
-        status: "Delivered",
       }
     ],
     shipper: "Nguyen Hoai An",
-    status: "Delivered",
   },
   {
     orderID: "O003",
@@ -59,23 +45,17 @@ const orders = [
         id: "food_11",
         title: "chicken deluxe fry",
         price: 150.0,
-        rating: 4.3,
         image: "/images/chicken_deluxe_fry.jpg",
-        supplier: "the-alley",
 
       },
       {
         id: "food_9",
         title: "Pasta",
         price: 70.0,
-        rating: 4.3,
         image: "/images/pasta.jpg",
-        supplier: "the-alley",
-        status: "Delivered",
       }
     ],
     shipper: "Nguyen Hoai An",
-    status: "Validating",
   },
   {
     orderID: "O004",
@@ -84,23 +64,17 @@ const orders = [
         id: "food",
         title: "chicken deluxe fry",
         price: 150.0,
-        rating: 4.3,
         image: "/images/chicken_deluxe_fry.jpg",
-        supplier: "the-alley",
 
       },
       {
         id: "food_2",
         title: "Pasta",
         price: 70.0,
-        rating: 4.3,
         image: "/images/pasta.jpg",
-        supplier: "the-alley",
-        status: "Delivered",
       }
     ],
     shipper: "Nguyen Hoai An",
-    status: "Delivered",
   },
   {
     orderID: "O005",
@@ -109,23 +83,16 @@ const orders = [
         id: "food_11",
         title: "chicken deluxe fry",
         price: 150.0,
-        rating: 4.3,
         image: "/images/chicken_deluxe_fry.jpg",
-        supplier: "the-alley",
-
       },
       {
         id: "food_9",
         title: "Pasta",
         price: 70.0,
-        rating: 4.3,
         image: "/images/pasta.jpg",
-        supplier: "the-alley",
-        status: "Delivered",
       }
     ],
     shipper: "Nguyen Hoai An",
-    status: "Validating",
   },
   {
     orderID: "O006",
@@ -134,9 +101,7 @@ const orders = [
         id: "food",
         title: "chicken deluxe fry",
         price: 150.0,
-        rating: 4.3,
         image: "/images/chicken_deluxe_fry.jpg",
-        supplier: "the-alley",
 
       },
       {
@@ -145,16 +110,13 @@ const orders = [
         price: 70.0,
         rating: 4.3,
         image: "/images/pasta.jpg",
-        supplier: "the-alley",
-        status: "Delivered",
       }
     ],
     shipper: "Nguyen Hoai An",
-    status: "Delivered",
   },
 ]
 
-const OrdersPage = () =>  {
+const OrdersPage = () => {
   return (
     <section>
       <div>
@@ -173,12 +135,15 @@ const OrdersPage = () =>  {
         </div>
       </div>
     </section>
-   ) 
+  )
 }
 
 
 const Tr = (props) => {
-
+  const vnCurrencyFormatter = new Intl.NumberFormat('vi-VN', {
+    style: 'currency',
+    currency: 'VND'
+  });
   const {
     orderID,
     items,
@@ -203,28 +168,26 @@ const Tr = (props) => {
         <div key={index} className="flex flex-row mx-5 space-y-2 space-x-2">
           <div className="w-3/12 text-2lg capitalize">{item.id}</div>
           <div className="w-4/12 text-2lg capitalize">{item.title}</div>
-          <p className="w-2/12 text-orange-500 text-lg">${item.price}</p>
+          <p className="w-2/12 text-orange-500 text-lg">{vnCurrencyFormatter.format(item.price)}</p>
         </div >
       ))}
       <hr className="my-2" />
       <div className="flex items-end flex-col space-y-2">
         <div className="text-lg">Tình trạng đơn: <span className="text-orange-400">{shipper}</span></div>
-        {
-          status === "Validating" ?
-            <button
-              className="w-[150px] py-3 bg-red-500 text-white cursor-pointer hover:opacity-80 rounded-md">
-              Cancel
-            </button>
-            :
-            <button
-              className="w-[150px] py-3 bg-red-500 text-white cursor-pointer hover:opacity-80 rounded-md">
-              Received
-            </button>
-        }
+        <div className="flex items-end flex-col-2 space-x-3 space-y-2">
+          <button
+            className="w-[150px] py-3 bg-red-500 text-white cursor-pointer hover:opacity-80 rounded-md">
+            {'Cancel'}
+          </button>
+          <button
+            className="w-[150px] py-3 bg-red-500 text-white cursor-pointer hover:opacity-80 rounded-md">
+            {'Receive'}
+          </button>
+        </div>
       </div>
     </div>
   );
 };
 
-  
+
 export default OrdersPage;
