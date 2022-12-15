@@ -17,7 +17,7 @@ export default function HomePage({ }) {
     const [users, setUsers] = useState([]);
     const getData = () => {
         // proxy 5000 pkg.json
-        axios.get(`http://localhost:5000/test`, {
+        axios.get('/test', {
             params: {
                 ID: 12345
             }
