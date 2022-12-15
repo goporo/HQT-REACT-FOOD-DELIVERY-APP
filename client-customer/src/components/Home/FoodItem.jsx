@@ -15,7 +15,7 @@ const FoodItem = ({ f }) => {
                 {/* {loading && <Skeleton height={192} />} */}
                 <Link to={`/supplier/${f.supplier}`}>
                     <LazyLoad className="h-full w-full">
-                        <img src={f.image} alt={f.title}
+                        <img src={f.image} alt={f.title} referrerPolicy="no-referrer"
                             className="h-full w-full object-cover hover:scale-110 transition duration-200"
                         />
                     </LazyLoad>

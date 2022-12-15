@@ -13,7 +13,7 @@ const foods = [
     price: 150.0,
     rating: 4.3,
     image: "/images/chicken_deluxe_fry.jpg",
-    supplier: "the-alley",
+    supplier: "tbasa-da",
   },
   {
     id: "food_3",
@@ -21,7 +21,7 @@ const foods = [
     price: 200.0,
     rating: 4.3,
     image: "/images/chicken_malai_gravy.jpg",
-    supplier: "the-alley",
+    supplier: "te-wall",
   },
   {
     id: "food_4",
@@ -29,7 +29,7 @@ const foods = [
     price: 400.0,
     rating: 4.3,
     image: "/images/chicken_pizza.jpg",
-    supplier: "the-alley",
+    supplier: "dxe-salley",
   },
   {
     id: "food_5",
@@ -37,7 +37,7 @@ const foods = [
     price: 100.0,
     rating: 4.3,
     image: "/images/chicken_sate.jpg",
-    supplier: "the-alley",
+    supplier: "sthe-alley",
   },
   {
     id: "food_6",
@@ -45,7 +45,7 @@ const foods = [
     price: 150.0,
     rating: 4.3,
     image: "/images/fried_rice.jpg",
-    supplier: "the-alley",
+    supplier: "new-stay",
   },
   {
     id: "food_7",

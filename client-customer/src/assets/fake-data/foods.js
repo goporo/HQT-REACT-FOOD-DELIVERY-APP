@@ -4,7 +4,7 @@ const foods = [
     title: "chicken burger",
     price: 80.0,
     rating: 4.3,
-    image: "/images/chicken_burger.jpg",
+    image: "https://i.postimg.cc/8z4jH0mR/chicken-burger.jpg",
     supplier: "the-alley",
   },
   {
@@ -12,7 +12,7 @@ const foods = [
     title: "chicken deluxe fry",
     price: 150.0,
     rating: 4.3,
-    image: "/images/chicken_deluxe_fry.jpg",
+    image: "https://i.postimg.cc/DzhPWHy1/chicken-deluxe-fry.jpg",
     supplier: "tbasa-da",
   },
   {
@@ -20,7 +20,7 @@ const foods = [
     title: "chicken malai gravy",
     price: 200.0,
     rating: 4.3,
-    image: "/images/chicken_malai_gravy.jpg",
+    image: "https://i.postimg.cc/qRSL7Rtv/chicken-malai-gravy.jpg",
     supplier: "te-wall",
   },
   {
@@ -46,6 +46,38 @@ const foods = [
     rating: 4.3,
     image: "/images/fried_rice.jpg",
     supplier: "new-stay",
+  },
+  {
+    id: "food_7",
+    title: "nachos galore",
+    price: 120.0,
+    rating: 4.3,
+    image: "/images/nachos_galore.jpg",
+    supplier: "the-alley",
+  },
+  {
+    id: "food_8",
+    title: "pasta",
+    price: 120.0,
+    rating: 4.3,
+    image: "/images/pasta.jpg",
+    supplier: "the-alley",
+  },
+  {
+    id: "food_9",
+    title: "ramen",
+    price: 80.0,
+    rating: 4.3,
+    image: "/images/ramen.jpg",
+    supplier: "the-alley",
+  },
+  {
+    id: "food_10",
+    title: "noodles",
+    price: 70.0,
+    rating: 4.3,
+    image: "/images/noodles.jpg",
+    supplier: "the-alley",
   },
 ]
 

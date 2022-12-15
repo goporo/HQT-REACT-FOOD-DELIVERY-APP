@@ -27,7 +27,7 @@ app.get('/test', async (req, res, next) => {
     let result = await pool.request().query('SELECT TOP 10 * FROM THUCDON')
     //console.log(result)
     sql.close()
-    res.json(result)
+    res.json(result.recordset)
   }
   catch (error) {
     res.send(error.message)

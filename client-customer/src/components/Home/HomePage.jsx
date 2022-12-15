@@ -14,7 +14,7 @@ import axios from 'axios';
 
 
 export default function HomePage({ }) {
-    const [users, setUsers] = useState([]);
+    const [foods, setFoods] = useState([]);
     const getData = () => {
         // proxy 5000 pkg.json
         axios.get('/test', {
@@ -23,8 +23,15 @@ export default function HomePage({ }) {
             }
         })
             .then(function (res) {
-                const data = res.data.recordset;
-                setUsers(data)
+                let items = res.data.map((item) => {
+                    return {
+                        title: item.TENMONAN,
+                        supplier: item.MACN,
+                        price: item.GIA,
+                        image: item.DIACHIHINHANHTD,
+                    }
+                });
+                setFoods(items);
             })
             .catch(function (e) {
                 console.log(e);
@@ -39,11 +46,12 @@ export default function HomePage({ }) {
         <div className="flex w-11/12 mx-auto space-x-5 my-10">
             <div className="bg-white w-full rounded-xl shadow-sm my-10 pb-10">
                 {/* test */}
-                {users.map((item, index) => (
+                {/* 
+                {foods.map((item, index) => (
                     <div key={index}>
                         {item.TENTK}
                     </div>
-                ))}
+                ))} */}
 
                 <div className="flex justify-between items-center w-11/12 mt-10 mb-8 mx-auto">
                     <h2 className="text-xl font-semibold">Popular Food</h2>

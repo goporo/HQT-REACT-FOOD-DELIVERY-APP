@@ -1,11 +1,16 @@
 
 const sql = require("mssql")
 const config = {
-    server: "mssql-100484-0.cloudclusters.net",
+    server: "34.124.231.192",
     database: "QL_BANHANG",
-    user: "Admin123",
-    password: "Admin123",
-    port: 10120,
+    user: "admin",
+    password: "admin",
+    port: null,
+
+    "options": {
+        "encrypt": true,
+        "enableArithAbort": true
+    }
 };
 
 async function test() {
