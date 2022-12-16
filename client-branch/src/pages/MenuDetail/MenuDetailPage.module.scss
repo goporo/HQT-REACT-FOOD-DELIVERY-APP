@@ -1,0 +1,129 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #f5f5f5;
+}
+
+.header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+
+  h2 {
+    margin-right: auto;
+    font-size: 2.4rem;
+    font-weight: 500;
+    margin-left: 1rem;
+    padding-right: 25%;
+    border-bottom: 1px solid #000;
+  }
+
+  img {
+    width: 8rem;
+    height: 8rem;
+  }
+}
+
+.content {
+  position: relative;
+  margin-top: 2rem;
+  background-color: #fff;
+  width: 100%;
+  border-radius: 1rem;
+  padding: 4rem;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.foodDetail {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10rem;
+  gap: 2rem;
+
+  .foodImageWrapper {
+    position: relative;
+
+    .foodImage {
+      border-radius: 1rem;
+      width: 35rem;
+      height: 35rem;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      border-radius: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out;
+      cursor: pointer;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+
+    .overlayBtnIcon {
+      font-size: 3.2rem;
+      color: #fff;
+    }
+  }
+
+  &Wrapper {
+    margin-left: 2rem;
+
+    .inputGroup {
+      label {
+        font-size: 1.8rem;
+        font-weight: 500;
+        margin-bottom: 0.5rem;
+      }
+
+      input {
+        width: 100%;
+        height: 4rem;
+        border: 1px solid #000;
+        border-radius: 0.5rem;
+        padding: 0 1rem;
+        font-size: 1.6rem;
+        margin-bottom: 1rem;
+      }
+
+      textarea {
+        width: 100%;
+        height: 10rem;
+        border: 1px solid #000;
+        border-radius: 0.5rem;
+        padding: 1rem;
+        font-size: 1.6rem;
+        margin-bottom: 1rem;
+        resize: none;
+      }
+    }
+  }
+}
+
+.btns {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 3rem;
+
+  & > button:first-child {
+    margin-right: 1.5rem;
+  }
+
+  .btnIcon {
+    font-size: 3.2rem;
+    cursor: pointer;
+  }
+}
