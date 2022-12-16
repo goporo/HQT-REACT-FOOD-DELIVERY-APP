@@ -1,7 +1,7 @@
 
 const sql = require("mssql")
 const config = {
-    server: "34.124.231.192",
+    server: "localhost",
     database: "QL_BANHANG",
     user: "admin",
     password: "admin",
