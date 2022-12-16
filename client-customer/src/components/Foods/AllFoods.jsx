@@ -4,8 +4,7 @@ import foods from "../../assets/fake-data/foods";
 import ProductCard from "./ProductCard";
 import ReactPaginate from "react-paginate";
 
-import "../../styles/all-foods.css";
-import "../../styles/pagination.css";
+import "./AllFoods.css";
 
 const AllFoods = () => {
   const [searchTerm, setSearchTerm] = useState("");

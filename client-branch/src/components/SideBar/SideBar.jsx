@@ -8,7 +8,7 @@ function SideBar() {
       <Logo />
       <MenuList />
 
-      <img src='assets/imgs/order.jpg' alt='Order' className={styles.img} />
+      <img src='/assets/imgs/order.jpg' alt='Order' className={styles.img} />
     </aside>
   );
 }

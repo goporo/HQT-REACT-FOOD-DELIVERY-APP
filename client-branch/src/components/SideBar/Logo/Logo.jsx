@@ -12,7 +12,7 @@ function Logo() {
   return (
     <div className={styles.logo} onClick={handleOnClick}>
       <div className={styles.logoImgWrapper}>
-        <img src='assets/imgs/logo.png' alt='Logo' className={styles.logoImg} />
+        <img src='/assets/imgs/logo.png' alt='Logo' className={styles.logoImg} />
       </div>
 
       <p className={styles.logoText}>Foody.ABC</p>

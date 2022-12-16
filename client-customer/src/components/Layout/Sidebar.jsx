@@ -3,16 +3,14 @@
 import { FiHome } from "react-icons/fi";
 import { BsGrid } from "react-icons/bs";
 import { RiHeart2Line, RiFileList3Line } from "react-icons/ri";
-import { HiOutlineMail } from "react-icons/hi";
-import { BiBell } from "react-icons/bi";
-import { IoSettingsOutline } from "react-icons/io5";
+import { AiOutlineUser } from "react-icons/ai";
 import SidebarRow from "./SidebarRow";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const nav__links = [
     {
         display: "Home",
-        to: "/home",
+        to: "/",
         Icon: FiHome,
     },
     {
@@ -30,6 +28,11 @@ const nav__links = [
         to: "/order",
         Icon: RiFileList3Line,
         badge: 3,
+    },
+    {
+        display: "Profile",
+        to: "/profile",
+        Icon: AiOutlineUser,
     },
 ];
 
@@ -57,7 +60,6 @@ const Sidebar = () => {
                         </h1>
                     </a>
                 </div>
-
                 <div className="mx-10 mt-4">
 
 
@@ -81,29 +83,8 @@ const Sidebar = () => {
                         </ul>
                     </div>
 
-                    <hr />
 
-                    <div className="mt-8">
-                        <div className="font-normal text-gray-600 text-sm mb-4">
-                            Others
-                        </div>
-                        <ul className="ml-1">
-                            <SidebarRow
-                                display={"Notification"}
-                                to="/notification"
-                                Icon={BiBell}
-                                badge={8}
-                                isActive={false}
-                            />
-                            <SidebarRow
-                                display={"Settings"}
-                                to="/setting"
-                                Icon={IoSettingsOutline}
-                                isActive={false}
-                            />
 
-                        </ul>
-                    </div>
 
                     <div className="mt-12">
                         <div className="px-4">
@@ -120,9 +101,9 @@ const Sidebar = () => {
                                 Free delivery service in first order & every
                                 purchase of ₹1500.
                             </div>
-                            <button className="mt-4 mb-2 text-sm font-semibold bg-purple-600 text-white px-3 py-2 rounded-lg">
+                            <Link to="/login" className="mt-4 mb-2 text-sm font-semibold bg-purple-600 text-white px-3 py-2 rounded-lg">
                                 Order Now
-                            </button>
+                            </Link>
                         </div>
                     </div>
                 </div>
