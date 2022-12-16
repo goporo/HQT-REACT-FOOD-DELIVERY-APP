@@ -1,39 +1,42 @@
 import React from "react";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
 
 import AllFoods from "../components/Foods/AllFoods";
-import FoodDetails from "../pages/FoodDetails";
-import Checkout from "../pages/Checkout";
 
-import Login from "../pages/Login";
-import Register from "../pages/Register";
 import HomePage from "../components/Home/HomePage";
 import SupplierPage from "../components/Supplier/SupplierPage";
 import Cart from "../components/Cart/Cart";
 import Order from "../components/Order/Order";
 import NotFound from "../components/NotFound/NotFound";
+import Login from "../components/Auth/Login";
+import Register from "../components/Auth/Register";
+import Layout from "../components/Layout/Layout";
+import Profile from "../components/Auth/Profile";
+import Protected from "../components/Auth/Protected";
+
 
 const Routers = () => {
   return (
     <Routes>
-      <Route path="/" element={<Navigate to="/home" />} />
-      <Route path="/home" element={<HomePage />} />
-      <Route path="/foods" element={<AllFoods />} />
-      {/* <Route path="/foods/:id" element={<FoodDetails />} /> */}
-      <Route path="/supplier/:supplierId" element={<SupplierPage />} />
+      <Route element={<Layout></Layout>}>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/foods" element={<AllFoods />} />
+        <Route path="/supplier/:supplierId" element={<SupplierPage />} />
 
-      {/* <Route path="/cart" element={
-        <ProtectedRoute>
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
 
-          <Cart />
-        </ProtectedRoute>
-      } /> */}
-      <Route path="/checkout" element={<Checkout />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/register" element={<Register />} />
-      <Route path="/order" element={<Order />} />
-      <Route path="*" element={<NotFound />} />
+        <Route path="*" element={<NotFound />} />
+
+        <Route element={<Protected />}>
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/order" element={<Order />} />
+          <Route path="/profile" element={<Profile />} />
+        </Route>
+
+      </Route>
+
     </Routes>
   );
 };

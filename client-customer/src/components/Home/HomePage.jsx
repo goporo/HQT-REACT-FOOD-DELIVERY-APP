@@ -1,6 +1,4 @@
-
 import { BiChevronDown } from "react-icons/bi";
-import foods from "../../assets/fake-data/foods";
 import restaurants from "../../assets/fake-data/restaurants";
 import FoodItem from "./FoodItem";
 import NearbyResaurant from "./NearbyResaurant";
@@ -13,13 +11,12 @@ import axios from 'axios';
 
 
 
-export default function HomePage({ }) {
+export default function HomePage() {
     const [foods, setFoods] = useState([]);
     const getData = () => {
-        // proxy 5000 pkg.json
-        axios.get('/test', {
+        axios.get('/food', {
             params: {
-                ID: 12345
+                // ID: 12345
             }
         })
             .then(function (res) {
