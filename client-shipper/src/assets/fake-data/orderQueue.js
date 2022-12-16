@@ -1,0 +1,60 @@
+const listOrders = [
+    {
+      id: "order_1",
+      image: "https://pic2.zhimg.com/v2-b671c92b5ba8f6a8d68d1e75fa0e85a9_r.jpg",
+      nameCustomer: "Ally",
+      nameRestaurant: "The burger king",
+      addressCustomer: "Distric 10",
+      addressRestaurant: "Ho Chi Minh City",
+    },
+    {
+      id: "order_2",
+      image: "https://i.pinimg.com/originals/d9/5e/c0/d95ec006d228481505b26032b24f4922.jpg",
+      nameCustomer: "John",
+      nameRestaurant: "Jolibee",
+      addressCustomer: "Distric 12",
+      addressRestaurant: "Ho Chi Minh City",
+    },
+    {
+      id: "order_3",
+      image: "https://i.pinimg.com/236x/2e/12/ab/2e12ab2079594ae6078c8a6a8bc4df27.jpg",
+      nameCustomer: "Jack",
+      nameRestaurant: "MCDonalds",
+      addressCustomer: "Distric 1",
+      addressRestaurant: "Ho Chi Minh City",
+    },
+    {
+      id: "order_4",
+      image: "https://i.pinimg.com/736x/20/55/9e/20559e95d040570c0eb5d60b0973f657.jpg",
+      nameCustomer: "Kid",
+      nameRestaurant: "Katinat",
+      addressCustomer: "Distric 3",
+      addressRestaurant: "Ho Chi Minh City",
+    },
+    {
+      id: "order_5",
+      image: "https://i.pinimg.com/236x/71/99/78/719978ffc64b4748c29e34889d0bb5f3.jpg",
+      nameCustomer: "Halley",
+      nameRestaurant: "The Coffee House",
+      addressCustomer: "Distric 7",
+      addressRestaurant: "Ho Chi Minh City",
+    },
+    {
+      id: "order_6",
+      image: "https://i.pinimg.com/236x/31/51/db/3151db8b1c267e9f954a496f52195a3c.jpg?nii=t",
+      nameCustomer: "Holy",
+      nameRestaurant: "KFC",
+      addressCustomer: "Distric Go Vap",
+      addressRestaurant: "Ho Chi Minh City",
+    },
+    {
+      id: "order_7",
+      image: "https://pic2.zhimg.com/v2-b671c92b5ba8f6a8d68d1e75fa0e85a9_r.jpg",
+      nameCustomer: "Burt",
+      nameRestaurant: "Starbucks",
+      addressCustomer: "Ho Chi Minh City",
+      addressRestaurant: "Ho Chi Minh City",
+    },
+  ]
+
+export default listOrders;
