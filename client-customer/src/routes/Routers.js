@@ -12,6 +12,7 @@ import HomePage from "../components/Home/HomePage";
 import SupplierPage from "../components/Supplier/SupplierPage";
 import Cart from "../components/Cart/Cart";
 import Order from "../components/Order/Order";
+import NotFound from "../components/NotFound/NotFound";
 
 const Routers = () => {
   return (
@@ -22,11 +23,17 @@ const Routers = () => {
       {/* <Route path="/foods/:id" element={<FoodDetails />} /> */}
       <Route path="/supplier/:supplierId" element={<SupplierPage />} />
 
-      <Route path="/cart" element={<Cart />} />
+      {/* <Route path="/cart" element={
+        <ProtectedRoute>
+
+          <Cart />
+        </ProtectedRoute>
+      } /> */}
       <Route path="/checkout" element={<Checkout />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route path="/order" element={<Order />} />
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 };
