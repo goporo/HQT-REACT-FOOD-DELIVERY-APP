@@ -50,9 +50,9 @@ POST   http://localhost:5000/auth/register/supplier
 Content-Type: application/json
 
 {
-    "TENTK":"NV1",
+    "TENTK":"DT1",
     "MATKHAUTK":"123",
-    "LOAITK":1,
+    "LOAITK":2,
     "EMAIL":"ABC@GMAIL",
     "TEN":"TAI",
     "SDT":"01234567",
@@ -60,4 +60,20 @@ Content-Type: application/json
     "MAIL_NDD":"123@gmail",
     "SLDUKIENMIN":0,
     "SLDUKIENMAX":100
+}
+### Lấy SP theo GIá
+GET   http://localhost:5000/food/price
+Content-Type: application/json
+
+{
+    "SL":10,
+    "THUTU":"INCREASE"
+}
+### Lấy Món theo chi nhánh
+GET   http://localhost:5000/food/price
+Content-Type: application/json
+
+{
+    "SL":10,
+    "MACN":"1"
 }

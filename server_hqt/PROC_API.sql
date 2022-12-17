@@ -368,7 +368,32 @@ BEGIN
 	RETURN
 END
 GO	
--- insert các bảng địa chỉ
+--Lấy sản phẩm theo giá
+CREATE PROC sp_MonAn_TheoGia
+@SL int,
+@THUTU CHAR(10)
+AS
+	if @THUTU='INCREASE'
+	BEGIN
+	SELECT TOP (@SL) * FROM THUCDON ORDER BY GIA ASC
+	RETURN
+	END
+	IF @THUTU='DECREASE'
+	BEGIN
+	SELECT TOP (@SL) * FROM THUCDON ORDER BY GIA DESC
+	RETURN
+	END
+GO
+--Lấy món theo chi nhánh
+CREATE PROC sp_MonAn_ChiNhanh
+@SL int,
+@MACN CHAR(10)
+AS
+	IF EXISTS(SELECT MACN FROM CHINHANH WHERE MACN=@MACN)
+	SELECT TOP (@SL) * FROM THUCDON WHERE MACN=@MACN
+	ELSE
+	RAISERROR ('KHONG TON TAI CHI NHANH',16,1)
+GO
 -- //////////////////////TEST//////////////////////////////
 EXEC sp_ThemPhamVi
 EXEC sp_CapNhatPhamVi
@@ -380,6 +405,10 @@ EXEC sp_DANGKYNV 'NHANVIEN1','123','HELLO',N'Phạm Minh Tài','0123456'
 EXEC sp_DANGKYNGANHANG '1',1,N'DĨ AN',N'TPBANK','01234456'
 EXEC sp_DANGKYNGANHANG '1',2,N'DĨ AN',N'TPBANK','01234456'
 
+EXEC sp_ThemThucDon '1','Milk',NULL,20000,'Available',0,null,null,null
+EXEC sp_ThemThucDon '2','Milk tea',NULL,30000,'Available',0,null,null,null	
+EXEC sp_ThemThucDon '3','Milk boba',NULL,400000,'Available',0,null,null,null
+EXEC sp_MonAn_TheoGia 1,'INCREASE'
 SELECT * from PHAMVIBANG 
 SELECT * FROM KHACHHANG 
 SELECT * FROM TAIKHOAN
