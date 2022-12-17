@@ -15,6 +15,9 @@ exports.mostSelled = async (req, res) => {
     }
 };
 exports.foodType= async (req, res) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Methods", " GET");
+    res.header("Access-Control-Allow-Headers", "Content-Type")
     if (req.body &&req.body["SL"]>=0)
     {
         var SL=req.body["SL"]
@@ -48,7 +51,7 @@ else{
 };
 exports.supplier= async (req, res) => {
     res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Methods", " POST");
+    res.header("Access-Control-Allow-Methods", " GET");
     res.header("Access-Control-Allow-Headers", "Content-Type")
     if (req.body &&req.body["SL"]>=0)
     {
@@ -83,7 +86,7 @@ else{
 };
 exports.price = async (req, res) => {
     res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Methods", " POST");
+    res.header("Access-Control-Allow-Methods", " GET");
     res.header("Access-Control-Allow-Headers", "Content-Type")
     if (req.body &&req.body["SL"])
     {
