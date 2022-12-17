@@ -9,13 +9,23 @@ const orderRouter = require('./api/order/orderRouter');
 const authRouter = require('./api/auth/authRouter');
 
 
+async function test() {
+
+  let pool = await sql.connect(config)
+  let result = await pool.request().query('SELECT * FROM TAIKHOAN')
+  console.log(result)
+  sql.close()
+  return result
+
+}
 
 
 require('dotenv').config()
 
 // respond with "hello world" when a GET request is made to the homepage
 app.get('/', (req, res) => {
-  res.send('hello world')
+ 
+  res.send("Hello World")
 })
 //const express= require('express');
 
@@ -24,10 +34,12 @@ var cors = require('cors')
 //app.use(express.urlencoded({ extended: false }));
 app.use(cors())
 app.options('*', cors())
-// app.get('/test', async (req, res, next) => {
-//   res.header("Access-Control-Allow-Origin", "*")
-//   res.header("Access-Control-Allow-Methods", " POST");
-//   res.header("Access-Control-Allow-Headers", "Content-Type")
+app.get('/test', async (req, res, next) => {
+ res.header("Access-Control-Allow-Origin", "*")
+ res.header("Access-Control-Allow-Methods", " POST");
+   res.header("Access-Control-Allow-Headers", "Content-Type")
+  res.json(await test())
+})
 //   //const us_service=new UserService.UserManager(req.body["US_ACCOUNT"],req.body["US_PASSWORD"])
 //   //const US_NEWPASS=""
 //   try {
