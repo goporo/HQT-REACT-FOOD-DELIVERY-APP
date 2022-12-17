@@ -70,10 +70,18 @@ Content-Type: application/json
     "THUTU":"INCREASE"
 }
 ### Lấy Món theo chi nhánh
-GET   http://localhost:5000/food/price
+GET   http://localhost:5000/food/supplier
 Content-Type: application/json
 
 {
     "SL":10,
     "MACN":"1"
+}
+### Lấy Món theo loại
+GET   http://localhost:5000/food/foodType
+Content-Type: application/json
+
+{
+    "SL":10,
+    "MALAT":"1"
 }
