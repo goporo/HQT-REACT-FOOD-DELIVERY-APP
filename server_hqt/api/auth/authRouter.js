@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const controller = require("./foodController");
+const controller = require("./authController");
 
-router.get('/', controller.getFoods);
+router.post('/register', controller.register);
 
 
 

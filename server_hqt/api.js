@@ -4,6 +4,10 @@ const sql = require("mssql")
 const app = express()
 
 const foodRouter = require('./api/food/foodRouter');
+const supplierRouter = require('./api/supplier/supplierRouter');
+const orderRouter = require('./api/order/orderRouter');
+const authRouter = require('./api/auth/authRouter');
+
 
 
 
@@ -39,9 +43,9 @@ app.options('*', cors())
 // });
 
 app.use('/food', foodRouter)
-// app.use('/supplier', supplierRouter)
-
-// app.use('/course', coursesRouter)
+app.use('/supplier', supplierRouter)
+app.use('/order', orderRouter)
+app.use('/auth', authRouter)
 
 
 const PORT = process.env.PORT || 3000;
