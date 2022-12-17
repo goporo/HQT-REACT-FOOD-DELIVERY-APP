@@ -12,7 +12,7 @@ const authRouter = require('./api/auth/authRouter');
 async function test() {
 
   let pool = await sql.connect(config)
-  let result = await pool.request().query('SELECT * FROM TAIKHOAN')
+  let result = await pool.request().query('SELECT * FROM TAIKHOAN SELECT * FROM THUCDON')
   console.log(result)
   sql.close()
   return result
