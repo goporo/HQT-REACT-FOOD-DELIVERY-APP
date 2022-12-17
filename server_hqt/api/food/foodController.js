@@ -15,23 +15,42 @@ exports.mostSelled = async (req, res) => {
     }
 };
 exports.foodType= async (req, res) => {
-    //example
-    try {
-        let pool = await sql.connect(config)
-        let result = await pool.request().query('SELECT TOP 10 * FROM THUCDON')
-        //console.log(result)
-        sql.close()
-        res.json(result.recordset)
-    }
-    catch (error) {
-        res.send(error.message)
+    if (req.body &&req.body["SL"]>=0)
+    {
+        var SL=req.body["SL"]
+        var MACN=req.body["MALAT"]
+             try {
+                let pool = await sql.connect(config)
+                let result = await pool.request().
+                input("SL",sql.Int,SL).
+                input("MALAT",sql.Char(10),MALAT).
+                execute("sp_MonAn_LoaiAmThuc")
+                sql.close()
+                var success=true
+                var message="Success Get"
+                var foods=result.recordset
+                res.json({success,message,foods})
+                }
+            catch(error){
+                var success=false
+                var message="Failed To Get Food"
+                var foods={}
+                res.json({success,message,foods})
+                }
+   
+}  
+else{
+    var success=false
+    var message="null message "
+    var foods={}
+    res.json({success,message,foods})
     }
 };
 exports.supplier= async (req, res) => {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Methods", " POST");
     res.header("Access-Control-Allow-Headers", "Content-Type")
-    if (req.body &&req.body["SL"])
+    if (req.body &&req.body["SL"]>=0)
     {
         var SL=req.body["SL"]
         var MACN=req.body["MACN"]
@@ -58,7 +77,8 @@ exports.supplier= async (req, res) => {
 else{
     var success=false
     var message="null message "
-    res.json({success,message})
+    var foods={}
+    res.json({success,message,foods})
     }
 };
 exports.price = async (req, res) => {
@@ -92,6 +112,7 @@ exports.price = async (req, res) => {
 else{
     var success=false
     var message="null message "
-    res.json({success,message})
+    var foods={}
+    res.json({success,message,foods})
     }
 };

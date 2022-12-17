@@ -394,6 +394,16 @@ AS
 	ELSE
 	RAISERROR ('KHONG TON TAI CHI NHANH',16,1)
 GO
+--Lấy món theo loại ẩm thực
+CREATE PROC sp_MonAn_LoaiAmThuc
+@SL int,
+@MALAT CHAR(10)
+AS
+	IF EXISTS(SELECT MALAT FROM LOAIAMTHUC WHERE MALAT=@MALAT)
+	SELECT TOP (@SL) * FROM THUCDON WHERE MALAT=@MALAT
+	ELSE
+	RAISERROR ('KHONG TON TAI LOAI AM THUC',16,1)
+GO
 -- //////////////////////TEST//////////////////////////////
 EXEC sp_ThemPhamVi
 EXEC sp_CapNhatPhamVi
