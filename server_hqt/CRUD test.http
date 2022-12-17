@@ -85,3 +85,21 @@ Content-Type: application/json
     "SL":10,
     "MALAT":"1"
 }
+### Lấy Đơn Hàng Khách hàng
+GET   http://localhost:5000/order/customer
+Content-Type: application/json
+
+{
+    "MAKH":"1",
+    "TGBD":"",
+    "TGKT":""
+}
+### Lấy Đơn Hàng TÀI XẾ
+GET   http://localhost:5000/order/shipper
+Content-Type: application/json
+
+{
+    "MATX":"1",
+    "TGBD":"",
+    "TGKT":""
+}
