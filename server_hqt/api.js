@@ -2,13 +2,21 @@ const express = require('express')
 const config = require('./dbConfig')
 const sql = require("mssql")
 const app = express()
-
+var bodyParser = require('body-parser')
 const foodRouter = require('./api/food/foodRouter');
 const supplierRouter = require('./api/supplier/supplierRouter');
 const orderRouter = require('./api/order/orderRouter');
 const authRouter = require('./api/auth/authRouter');
 
 
+var cors = require('cors')
+
+app.use(cors())
+require('dotenv').config()
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded());
+app.options('*', cors())
 async function test() {
 
   let pool = await sql.connect(config)
@@ -20,7 +28,6 @@ async function test() {
 }
 
 
-require('dotenv').config()
 
 // respond with "hello world" when a GET request is made to the homepage
 app.get('/', (req, res) => {
@@ -29,16 +36,21 @@ app.get('/', (req, res) => {
 })
 //const express= require('express');
 
-var cors = require('cors')
-//app.use(express.json());
-//app.use(express.urlencoded({ extended: false }));
-app.use(cors())
-app.options('*', cors())
-app.get('/test', async (req, res, next) => {
- res.header("Access-Control-Allow-Origin", "*")
- res.header("Access-Control-Allow-Methods", " POST");
-   res.header("Access-Control-Allow-Headers", "Content-Type")
-  res.json(await test())
+
+
+
+app.post('/test', async (req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Methods", " POST");
+    res.header("Access-Control-Allow-Headers", "Content-Type")
+    console.log(req.body)
+    //console.log(req.body["TENTK"])
+    //console.log(req.body["MATKHAUTK"])
+   // console.log(req.body["LOAITK"])
+    let pool = await sql.connect(config)
+    let result = await pool.request().query('SELECT * FROM TAIKHOAN SELECT * FROM THUCDON')
+    //console.log(result)
+    sql.close()
 })
 //   //const us_service=new UserService.UserManager(req.body["US_ACCOUNT"],req.body["US_PASSWORD"])
 //   //const US_NEWPASS=""

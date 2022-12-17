@@ -1,0 +1,63 @@
+### DangKy KHACHHANG
+POST   http://localhost:5000/auth/register/customer
+Content-Type: application/json
+
+{
+    "TENTK":"TAIGAVN",
+    "MATKHAUTK":"123",
+    "LOAITK":5
+}
+### DANGKY TAIXE
+POST   http://localhost:5000/auth/register/shipper
+Content-Type: application/json
+
+{
+    "TENTK":"TAIXE1",
+    "MATKHAUTK":"123",
+    "LOAITK":4,
+    "EMAIL":"ABC@GMAIL",
+    "TEN":"TAI",
+    "SDT":"01234567",
+    "BIENSOXE":"60D1.12345",
+    "CMND":"29123333"
+}
+### DANGKY QUANTRIVIEN
+POST   http://localhost:5000/auth/register/admin
+Content-Type: application/json
+
+{
+    "TENTK":"QTV1",
+    "MATKHAUTK":"123",
+    "LOAITK":0,
+    "EMAIL":"ABC@GMAIL",
+    "TEN":"TAI",
+    "SDT":"01234567"
+}
+### DANGKY NHANVIEN
+POST   http://localhost:5000/auth/register/employee
+Content-Type: application/json
+
+{
+    "TENTK":"NV1",
+    "MATKHAUTK":"123",
+    "LOAITK":1,
+    "EMAIL":"ABC@GMAIL",
+    "TEN":"TAI",
+    "SDT":"01234567"
+}
+### Đăng ký đối tác
+POST   http://localhost:5000/auth/register/supplier
+Content-Type: application/json
+
+{
+    "TENTK":"NV1",
+    "MATKHAUTK":"123",
+    "LOAITK":1,
+    "EMAIL":"ABC@GMAIL",
+    "TEN":"TAI",
+    "SDT":"01234567",
+    "MSTHUE":"01236",
+    "MAIL_NDD":"123@gmail",
+    "SLDUKIENMIN":0,
+    "SLDUKIENMAX":100
+}
