@@ -4,7 +4,7 @@ const sql = require("mssql")
 const app = express()
 var bodyParser = require('body-parser')
 const foodRouter = require('./api/food/foodRouter');
-//const supplierRouter = require('./api/supplier/supplierRouter');
+const supplierRouter = require('./api/supplier/supplierRouter');
 const orderRouter = require('./api/order/orderRouter');
 const authRouter = require('./api/auth/authRouter');
 const fs=require('fs')
@@ -117,7 +117,7 @@ app.post('/test', async (req, res, next) => {
 // });
 
 app.use('/food', foodRouter)
-//app.use('/supplier', supplierRouter)
+app.use('/supplier', supplierRouter)
 app.use('/order', orderRouter)
 app.use('/auth', authRouter)
 
