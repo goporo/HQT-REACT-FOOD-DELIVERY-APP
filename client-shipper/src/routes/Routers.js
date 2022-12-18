@@ -6,6 +6,7 @@ import Login from "../pages/Login";
 import Register from "../pages/Register";
 import Statistics from "../pages/Statistics";
 import Order from "../pages/Order";
+import Settings from "../pages/Settings";
 
 const Routers = () => {
   return (
@@ -16,6 +17,7 @@ const Routers = () => {
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route path="/order" element={<Order />} />
+      <Route path="/setting" element={<Settings />} />
     </Routes>
   );
 };
