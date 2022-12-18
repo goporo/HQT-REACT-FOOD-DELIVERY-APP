@@ -156,12 +156,14 @@ Content-Type: application/json
 }
 
 ### cập nhật đơn hàng
-post http://localhost:5000/picture
-
+post http://localhost:5000/supplier/food/1
 Content-Type: application/json
-{
-"MAND": "1         ",
-"TRANGTHAIDH":"CANCELED",
-"MADH": "1         "
 
-}
+{
+    "TENMONAN": "Milk1",
+    "MOTA": null,
+    "GIA": 20000,
+    "HINHANHTD": false,
+    "DIACHIHINHANHTD": null,
+    "MALAT": "1        "
+  }

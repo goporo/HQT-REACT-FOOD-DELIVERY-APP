@@ -683,7 +683,7 @@ BEGIN TRAN
 GO
 --Thêm thực đơn--
 CREATE PROC sp_ThemThucDon
-	@TENMONAN NVARCHAR(100),
+	@TENMONAN VARCHAR(100),
 	@MOTA NVARCHAR (80),
 	@GIA INT,
 	@HINHANHTD BIT,
@@ -755,6 +755,15 @@ BEGIN TRAN
 COMMIT TRAN
 RETURN
 GO
+CREATE PROC sp_insert_LAT
+AS
+	EXEC sp_ThemLoaiAmThuc 'MILKTEA'
+	EXEC sp_ThemLoaiAmThuc 'NOODDLE'
+	EXEC sp_ThemLoaiAmThuc 'BUN BO'
+	EXEC sp_ThemLoaiAmThuc 'CAKE'
+	EXEC sp_ThemLoaiAmThuc 'SNACK'
+	EXEC sp_ThemLoaiAmThuc 'MAIN DISH'
+GO
 -- //////////////////////TEST//////////////////////////////
 EXEC sp_ThemPhamVi
 EXEC sp_CapNhatPhamVi
@@ -767,8 +776,8 @@ EXEC sp_DANGKYNGANHANG '1',1,N'DĨ AN',N'TPBANK','01234456'
 EXEC sp_DANGKYNGANHANG '1',2,N'DĨ AN',N'TPBANK','01234456'
 EXEC sp_ThemChiNhanh '1',null,0,null,null,null,null,'1'
 EXEC  sp_ThemCuaHang '1','BOBABOP','8:00','23:59','AVAILABLE'
+EXEC sp_insert_LAT
 
-EXEC sp_ThemLoaiAmThuc 'TRA SUA'
 EXEC sp_ThemThucDon 'Milk',NULL,20000,0,null,'1','1'
 EXEC sp_ThemThucDon 'Milk tea',NULL,30000,0,null,'1','1'	
 EXEC sp_ThemThucDon 'Milk boba',NULL,400000,0,null,'1','1'
