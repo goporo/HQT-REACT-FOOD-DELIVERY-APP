@@ -48,9 +48,10 @@ app.post('/test', async (req, res, next) => {
     //console.log(req.body["MATKHAUTK"])
    // console.log(req.body["LOAITK"])
     let pool = await sql.connect(config)
-    let result = await pool.request().query('SELECT * FROM TAIKHOAN SELECT * FROM THUCDON')
+    let result = await pool.request().query('SELECT * FROM THUCDON')
     //console.log(result)
     sql.close()
+    res.json(result.recordsets[0])
 })
 //   //const us_service=new UserService.UserManager(req.body["US_ACCOUNT"],req.body["US_PASSWORD"])
 //   //const US_NEWPASS=""

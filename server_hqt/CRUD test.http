@@ -123,8 +123,25 @@ Content-Type: application/json
 }
 ### Lấy Đối tác
 GET   http://localhost:5000/supplier/2
+### tạo đơn hàng
+POST http://localhost:5000/order/place-order
 Content-Type: application/json
 
 {
-
+"MAKH": "1         ",
+"HINHTHUCTT":"VI",
+"MACN": "1         ",
+"MADCGH":null,
+"foods":[{
+            "MAMONAN": "1         ",
+            "SOLUONG":3
+        },
+        {
+            "MAMONAN": "2        ",
+            "SOLUONG":3
+        },
+        {
+            "MAMONAN": "3         ",
+            "SOLUONG":3
+        }]
 }

@@ -45,7 +45,7 @@ exports.getOrdersShipper = async (req, res) => {
         sql.close()
         var success=true
         var message="Success Get"
-        var data=result.recordset
+        var data=result.recordsets[0]
         res.json({success,message,data})
     }
     catch (error){
@@ -73,7 +73,7 @@ exports.getOrdersBranch = async (req, res) => {
         sql.close()
         var success=true
         var message="Success Get"
-        var data=result.recordset
+        var data=result.recordsets[0]
         res.json({success,message,data})
     }
     catch (error){
@@ -100,7 +100,7 @@ exports.getOrdersSupplier = async (req, res) => {
         sql.close()
         var success=true
         var message="Success Get"
-        var data=result.recordset
+        var data=result.recordsets[0]
         res.json({success,message,data})
     }
     catch (error){
@@ -112,6 +112,52 @@ exports.getOrdersSupplier = async (req, res) => {
 
 };
 exports.placeOrder = async (req, res) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Methods", " GET");
+    res.header("Access-Control-Allow-Headers", "Content-Type")
+    try{
+    HINHTHUCTT=req.body.HINHTHUCTT
+    MAKH=req.body.MAKH
+    MACN=req.body.MACN
+    MADCGH=req.body.MADCGH
+    MONAN=req.body.foods
+    ///////////////////
+    var list_MONAN = new sql.Table();  
+    list_MONAN.columns.add('STT',sql.Int)
+    list_MONAN.columns.add('MAMONAN', sql.Char(10));  
+    list_MONAN.columns.add('SOLUONG', sql.Int);
+    
+    for (var i=0;i<MONAN.length;i++)
+    {
+        list_MONAN.rows.add(i+1,MONAN[i].MAMONAN,MONAN[i].SOLUONG)
+    }
+    
+    ////////////////////////
+    let pool = await sql.connect(config)
+    let result = await pool.request().
+        input("MAKH",sql.Char(10),MAKH).
+        input("MACN",sql.Char(10),MACN).
+        input("MADIACHI",sql.Char(10),MADCGH).
+        input("HINHTHUCTT",sql.Char(20),HINHTHUCTT).
+        input("PHIVANCHUYEN",sql.Int,20000).
+        input("list_MONAN",list_MONAN).
+        execute("sp_Tao_DH")
+    
+    
+    sql.close()
+    var success=true
+    var message="Success Get"
+    var data={}
+    res.json({success,message,data})
+  
+    }
+    catch (error)
+    {
+        var success=false
+        var message=error.message
+        var data={}
+        res.json({success,message,data})
+    }
 
 };
 
