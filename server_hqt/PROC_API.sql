@@ -452,6 +452,18 @@ AS
 	ELSE
 	RAISERROR ('KHONG TON TAI DOI TAC',16,1)
 GO
+CREATE PROC sp_Lay_CN
+@MACN CHAR(10)
+AS
+	IF EXISTS(SELECT MACN FROM CHINHANH WHERE MACN=@MACN)
+	BEGIN
+	SELECT * FROM CHINHANH CN JOIN CUAHANG CH ON CN.MACN=CN.MACN
+	WHERE CN.MACN=@MACN
+	SELECT * FROM THUCDON WHERE MACN=@MACN
+	END
+	ELSE
+	RAISERROR ('KHONG TON TAI CHI NHANH',16,1)
+GO
 -- //////////////////////TEST//////////////////////////////
 EXEC sp_ThemPhamVi
 EXEC sp_CapNhatPhamVi
@@ -462,11 +474,13 @@ EXEC sp_DANGKYQTV 'Admin1','123','admin1',N'Phạm Minh Tài','0123456'
 EXEC sp_DANGKYNV 'NHANVIEN1','123','HELLO',N'Phạm Minh Tài','0123456'
 EXEC sp_DANGKYNGANHANG '1',1,N'DĨ AN',N'TPBANK','01234456'
 EXEC sp_DANGKYNGANHANG '1',2,N'DĨ AN',N'TPBANK','01234456'
+EXEC sp_ThemChiNhanh '1',null,0,null,null,null,null,'1'
 
-EXEC sp_ThemThucDon '1','Milk',NULL,20000,'Available',0,null,null,null
-EXEC sp_ThemThucDon '2','Milk tea',NULL,30000,'Available',0,null,null,null	
-EXEC sp_ThemThucDon '3','Milk boba',NULL,400000,'Available',0,null,null,null
+EXEC sp_ThemThucDon '1','Milk',NULL,20000,'Available',0,null,'1',null
+EXEC sp_ThemThucDon '2','Milk tea',NULL,30000,'Available',0,null,'1',null	
+EXEC sp_ThemThucDon '3','Milk boba',NULL,400000,'Available',0,null,'1',null
 EXEC sp_MonAn_TheoGia 1,'INCREASE'
+EXEC sp_Lay_CN '1'
 SELECT * from PHAMVIBANG 
 SELECT * FROM KHACHHANG 
 SELECT * FROM TAIKHOAN
@@ -475,4 +489,5 @@ SELECT * FROM DOITAC
 SELECT *FROM NHANVIEN
 SELECT * FROM NGANHANG
 SELECT * FROM PHUONG
+SELECT *FROM THUCDON
 print convert (int,'123')

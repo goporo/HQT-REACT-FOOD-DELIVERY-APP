@@ -99,7 +99,32 @@ GET   http://localhost:5000/order/shipper
 Content-Type: application/json
 
 {
-    "MATX":"1",
+    "MATX":"2",
     "TGBD":"",
     "TGKT":""
+}
+### Lấy Đơn Hàng CHI NHANH
+GET   http://localhost:5000/order/branch
+Content-Type: application/json
+
+{
+    "MACN":"2",
+    "TGBD":"",
+    "TGKT":""
+}
+### Lấy Đơn Hàng DOI TAC
+GET   http://localhost:5000/order/supplier
+Content-Type: application/json
+
+{
+    "MADT":"1",
+    "TGBD":"",
+    "TGKT":""
+}
+### Lấy Đối tác
+GET   http://localhost:5000/supplier/2
+Content-Type: application/json
+
+{
+
 }
