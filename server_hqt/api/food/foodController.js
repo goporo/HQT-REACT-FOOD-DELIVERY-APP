@@ -119,3 +119,26 @@ else{
     res.json({success,message,foods})
     }
 };
+exports.type = async (req, res) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Methods", " GET");
+    res.header("Access-Control-Allow-Headers", "Content-Type")
+   
+             try {
+                let pool = await sql.connect(config)
+                let result = await pool.request().
+                query('SELECT * FROM LOAIAMTHUC')
+                sql.close()
+                var success=true
+                var message="Success Get"
+                var types=result.recordsets[0]
+                res.json({success,message,foods})
+                }
+            catch(error){
+                var success=false
+                var message="Failed To Get Food"
+                var foods={}
+                res.json({success,message,foods})
+                }
+   
+};

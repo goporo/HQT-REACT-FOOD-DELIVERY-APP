@@ -160,10 +160,10 @@ post http://localhost:5000/supplier/food/1
 Content-Type: application/json
 
 {
-    "TENMONAN": "Milk1",
-    "MOTA": null,
-    "GIA": 20000,
-    "HINHANHTD": false,
-    "DIACHIHINHANHTD": null,
+    "TENMONAN": "Com SUon",
+    "MOTA": "Com Suon Ngon Lam Ban Oi",
+    "GIA": 10000,
+    "HINHANHTD": 1,
+    "DIACHIHINHANHTD": "227 Nguyen Van CU",
     "MALAT": "1        "
   }
