@@ -113,7 +113,7 @@ exports.getOrdersSupplier = async (req, res) => {
 };
 exports.placeOrder = async (req, res) => {
     res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Methods", " GET");
+    res.header("Access-Control-Allow-Methods", " POST");
     res.header("Access-Control-Allow-Headers", "Content-Type")
     try{
     HINHTHUCTT=req.body.HINHTHUCTT
@@ -162,5 +162,56 @@ exports.placeOrder = async (req, res) => {
 };
 
 exports.cancelOrder = async (req, res) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Methods", " POST");
+    res.header("Access-Control-Allow-Headers", "Content-Type")
+    try {
+        var MAND=req.body.MAND
+        var TRANGTHAIDH=req.body.TRANGTHAIDH
+        var MADH=req.body.MADH
+        let pool = await sql.connect(config)
+        let result
 
+        switch(req.params.type)
+        {
+            case '3':
+                result= await pool.request().
+                input("MACN",sql.Char(10),MAND).
+                input("MADH",sql.Char(10),MADH).
+                input("TRANGTHAIDH",sql.Char(20),TRANGTHAIDH).
+                execute("sp_CapNhat_DH_CN");
+                break;
+            case '4':
+                result=await pool.request().
+                input("MATX",sql.Char(10),MAND).
+                input("MADH",sql.Char(10),MADH).
+                input("TRANGTHAIDH",sql.Char(20),TRANGTHAIDH).
+                execute("sp_CapNhat_DH_TX");
+                break;
+            case '5':
+                result=  await pool.request().
+                    input("MAKH",sql.Char(10),MAND).
+                    input("MADH",sql.Char(10),MADH).
+                    input("TRANGTHAIDH",sql.Char(20),TRANGTHAIDH).
+                    execute("sp_CapNhat_DH_KH");
+                    break;
+            default:
+            var success=false
+            var message='SAI LOAI NGUOI DUNG'
+            var data={}
+            res.json({success,message,data})
+            return
+        }
+        sql.close()
+        var success=true
+        var message='CAP NHAT THANH CONG'
+        var data={}
+        res.json({success,message,data})
+    } catch (error) {
+        sql.close()
+        var success=false
+        var message=error.message
+        var data={}
+        res.json({success,message,data})
+    }
 };

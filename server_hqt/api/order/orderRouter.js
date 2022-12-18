@@ -7,7 +7,7 @@ router.get('/shipper', controller.getOrdersShipper);
 router.get('/branch', controller.getOrdersBranch);
 router.get('/supplier', controller.getOrdersSupplier);
 router.post('/place-order', controller.placeOrder);
-router.post('/:id', controller.cancelOrder);
+router.post('/:type', controller.cancelOrder);
 
 
 

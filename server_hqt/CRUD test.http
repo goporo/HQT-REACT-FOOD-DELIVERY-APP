@@ -145,3 +145,12 @@ Content-Type: application/json
             "SOLUONG":3
         }]
 }
+### cập nhật đơn hàng
+POST http://localhost:5000/order/5
+Content-Type: application/json
+{
+"MAND": "1         ",
+"TRANGTHAIDH":"CANCELED",
+"MADH": "1         "
+
+}
