@@ -75,6 +75,8 @@ exports.addFood=async(req,res)=>{
             input("MALAT",sql.Char(10),MALAT).
             execute("sp_ThemThucDon")
         
+        console.log(result);
+
         sql.close()
         var success=true
         var message="Success Get"
