@@ -1,14 +1,14 @@
 import { NavLink } from "react-router-dom";
-const Header = () => {
+const Header = (props) => {
     return (
         <header className="w-11/12 mx-auto flex flex-col flex-wrap md:flex-nowrap md:justify-between items-center md:flex-row gap-6">
             <div className="md:mt-10 text-center md:text-left">
                 <h1 className="text-2xl md:text-3xl lg:text-4xl font-semibold">
-                    Homepage
+                    {props.title}
                 </h1>
 
                 <div className="text-xs md:text-sm whitespace-nowrap text-gray-500 mt-1 tracking-normal">
-                    Hello YeonJi!
+                    Hi Yeonji.
                 </div>
             </div>
 
@@ -16,7 +16,7 @@ const Header = () => {
                 <div className="flex justify-around items-center w-full">
                     <div className="md:flex items-center space-x-3">
 
-                        <div className="rounded-full overflow-hidden h-10 xl:h-12  w-10 xl:w-12">
+                        <div className="rounded-full overflow-hidden h-10 xl:h-12 w-10 xl:w-12">
                             <img
                                 src="https://kynguyenlamdep.com/wp-content/uploads/2022/06/avatar-cute-vui-nhon.jpg"
                                 className="object-cover h-full w-full"

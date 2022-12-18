@@ -1,6 +1,8 @@
 import React from "react";
 import District from "../components/Home/DistrictItem";
 import district from "../assets/fake-data/districts.js";
+import Header from "../components/Layout/Header";
+import Sidebar from "../components/Layout/Sidebar";
 
 const orders = [
   {
@@ -57,38 +59,46 @@ const orders = [
 
 const Order = () => {
   return (
-    <section>
-      <div>
-        <div>
-          <div className="flex flex-row mt-6">
-            <h2 className="text-xl font-semibold mt-4 pl-16">District:</h2>
-            <div className="choices">
-                <div className="mt-3 mb-3 xl:w-96 px-12">
-                    <select className="form-select appearance-none block w-72 px-3 py-1.5 text-base
-                    font-semibold text-center text-gray-700bg-white bg-clip-padding bg-no-repeat
-                    border border-solid border-gray-300 rounded transition ease-in-out m-0
-                    focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label="Default select example">
-                        {district.map((items) => (
-                            <District key={items.id} d={items} />
-                        ))}
-                    </select>
+    <>
+      <main className="flex min-h-screen">
+        <Sidebar />
+        <div className="w-full bg-gray-50">
+          <Header title = "Order"/>
+          <section>
+            <div>
+              <div>
+                <div className="flex flex-row mt-6">
+                  <h2 className="text-xl font-semibold mt-4 pl-16">District:</h2>
+                  <div className="choices">
+                      <div className="mt-3 mb-3 xl:w-96 px-12">
+                          <select className="form-select appearance-none block w-72 px-3 py-1.5 text-base
+                          font-semibold text-center text-gray-700bg-white bg-clip-padding bg-no-repeat
+                          border border-solid border-gray-300 rounded transition ease-in-out m-0
+                          focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label="Default select example">
+                              {district.map((items) => (
+                                  <District key={items.id} d={items} />
+                              ))}
+                          </select>
+                      </div>
+                  </div>
                 </div>
-            </div>
-          </div>
-          <div className="p-10 relative w-11/12">
-            {orders.length === 0 ? (
-              <h5 className="text-center">Your cart is empty</h5>
-            ) : (
-              <div className="">
-                {orders.map((item, index) => (
-                  <Tr key={index} item={item} />
-                ))}
+                <div className="p-10 relative w-11/12">
+                  {orders.length === 0 ? (
+                    <h5 className="text-center">Your cart is empty</h5>
+                  ) : (
+                    <div className="">
+                      {orders.map((item, index) => (
+                        <Tr key={index} item={item} />
+                      ))}
+                    </div>
+                  )}
+                </div>
               </div>
-            )}
-          </div>
+            </div>
+          </section>
         </div>
-      </div>
-    </section>
+      </main>
+    </>
   );
 };
 
