@@ -154,3 +154,14 @@ Content-Type: application/json
 "MADH": "1         "
 
 }
+
+### cập nhật đơn hàng
+post http://localhost:5000/picture
+
+Content-Type: application/json
+{
+"MAND": "1         ",
+"TRANGTHAIDH":"CANCELED",
+"MADH": "1         "
+
+}

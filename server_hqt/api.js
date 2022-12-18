@@ -4,10 +4,10 @@ const sql = require("mssql")
 const app = express()
 var bodyParser = require('body-parser')
 const foodRouter = require('./api/food/foodRouter');
-const supplierRouter = require('./api/supplier/supplierRouter');
+//const supplierRouter = require('./api/supplier/supplierRouter');
 const orderRouter = require('./api/order/orderRouter');
 const authRouter = require('./api/auth/authRouter');
-
+const fs=require('fs')
 
 var cors = require('cors')
 
@@ -28,11 +28,60 @@ async function test() {
 }
 
 
-
+app.post('/picture',(req,res)=>{
+  let formidable=require('formidable');
+  var form= new formidable.IncomingForm()
+  form.uploadDir="./pictures"
+  form.keepExtensions=true;
+  form.maxFieldSize=10*1024*1024
+  form.parse(req,(err,fields,files)=>{
+    if (err){
+      res.json({
+        success:false,
+        message:"Khong the upload hinh",
+        data:{}
+      })
+      return
+    }
+    var  arr=files[""]
+    if (arr.length>0)
+    {
+      var filenames=[]
+      arr.forEach((eachFile)=>{
+        filenames.push(eachFile.path)
+      })
+      res.json({
+        success:true,
+        message:"Upload thanh cong",
+        data:{}
+      })
+      return
+    }
+    else{
+      res.json({
+        success:false,
+        message:"Upload that bai",
+        data:{}
+      })
+      return
+    }
+  })
+})
 // respond with "hello world" when a GET request is made to the homepage
-app.get('/', (req, res) => {
- 
-  res.send("Hello World")
+app.get('/picture/:url', (req, res) => {
+  let image_name='./pictures/'+req.params.url
+  fs.readFile(image_name,(err,ImageData)=>{
+    if (err){
+      res.json({
+        success:false,
+        message:"Khong the lay hinh",
+        data:{}
+      })
+      return
+    }
+    res.writeHead(200,{'Content-Type':'image/jpeg'})
+    res.end(ImageData)
+  })
 })
 //const express= require('express');
 
@@ -68,7 +117,7 @@ app.post('/test', async (req, res, next) => {
 // });
 
 app.use('/food', foodRouter)
-app.use('/supplier', supplierRouter)
+//app.use('/supplier', supplierRouter)
 app.use('/order', orderRouter)
 app.use('/auth', authRouter)
 
