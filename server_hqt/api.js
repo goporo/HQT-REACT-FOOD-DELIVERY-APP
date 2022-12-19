@@ -6,8 +6,8 @@ var bodyParser = require('body-parser')
 const foodRouter = require('./api/food/foodRouter');
 const supplierRouter = require('./api/supplier/supplierRouter');
 const orderRouter = require('./api/order/orderRouter');
-const authRouter = require('./api/auth/authRouter');
-const fs=require('fs')
+const userRouter = require('./api/user/userRouter');
+const fs = require('fs')
 
 var cors = require('cors')
 
@@ -28,40 +28,39 @@ async function test() {
 }
 
 
-app.post('/picture',(req,res)=>{
-  let formidable=require('formidable');
-  var form= new formidable.IncomingForm()
-  form.uploadDir="./pictures"
-  form.keepExtensions=true;
-  form.maxFieldSize=10*1024*1024
-  form.parse(req,(err,fields,files)=>{
-    if (err){
+app.post('/picture', (req, res) => {
+  let formidable = require('formidable');
+  var form = new formidable.IncomingForm()
+  form.uploadDir = "./pictures"
+  form.keepExtensions = true;
+  form.maxFieldSize = 10 * 1024 * 1024
+  form.parse(req, (err, fields, files) => {
+    if (err) {
       res.json({
-        success:false,
-        message:"Khong the upload hinh",
-        data:{}
+        success: false,
+        message: "Khong the upload hinh",
+        data: {}
       })
       return
     }
-    var  arr=files[""]
-    if (arr.length>0)
-    {
-      var filenames=[]
-      arr.forEach((eachFile)=>{
+    var arr = files[""]
+    if (arr.length > 0) {
+      var filenames = []
+      arr.forEach((eachFile) => {
         filenames.push(eachFile.path)
       })
       res.json({
-        success:true,
-        message:"Upload thanh cong",
-        data:{}
+        success: true,
+        message: "Upload thanh cong",
+        data: {}
       })
       return
     }
-    else{
+    else {
       res.json({
-        success:false,
-        message:"Upload that bai",
-        data:{}
+        success: false,
+        message: "Upload that bai",
+        data: {}
       })
       return
     }
@@ -69,17 +68,17 @@ app.post('/picture',(req,res)=>{
 })
 // respond with "hello world" when a GET request is made to the homepage
 app.get('/picture/:url', (req, res) => {
-  let image_name='./pictures/'+req.params.url
-  fs.readFile(image_name,(err,ImageData)=>{
-    if (err){
+  let image_name = './pictures/' + req.params.url
+  fs.readFile(image_name, (err, ImageData) => {
+    if (err) {
       res.json({
-        success:false,
-        message:"Khong the lay hinh",
-        data:{}
+        success: false,
+        message: "Khong the lay hinh",
+        data: {}
       })
       return
     }
-    res.writeHead(200,{'Content-Type':'image/jpeg'})
+    res.writeHead(200, { 'Content-Type': 'image/jpeg' })
     res.end(ImageData)
   })
 })
@@ -90,17 +89,17 @@ app.get('/picture/:url', (req, res) => {
 
 app.post('/test', async (req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Methods", " POST");
-    res.header("Access-Control-Allow-Headers", "Content-Type")
-    console.log(req.body)
-    //console.log(req.body["TENTK"])
-    //console.log(req.body["MATKHAUTK"])
-   // console.log(req.body["LOAITK"])
-    let pool = await sql.connect(config)
-    let result = await pool.request().query('SELECT * FROM THUCDON')
-    //console.log(result)
-    sql.close()
-    res.json(result.recordsets[0])
+  res.header("Access-Control-Allow-Methods", " POST");
+  res.header("Access-Control-Allow-Headers", "Content-Type")
+  console.log(req.body)
+  //console.log(req.body["TENTK"])
+  //console.log(req.body["MATKHAUTK"])
+  // console.log(req.body["LOAITK"])
+  let pool = await sql.connect(config)
+  let result = await pool.request().query('SELECT * FROM THUCDON')
+  //console.log(result)
+  sql.close()
+  res.json(result.recordsets[0])
 })
 //   //const us_service=new UserService.UserManager(req.body["US_ACCOUNT"],req.body["US_PASSWORD"])
 //   //const US_NEWPASS=""
@@ -119,7 +118,7 @@ app.post('/test', async (req, res, next) => {
 app.use('/food', foodRouter)
 app.use('/supplier', supplierRouter)
 app.use('/order', orderRouter)
-app.use('/auth', authRouter)
+app.use('/user', userRouter)
 
 
 const PORT = process.env.PORT || 3000;
