@@ -74,7 +74,7 @@ const MenuPage = () => {
                 {/* {loading && <Skeleton height={192} />} */}
                 <Link to={`/menu/${f.MAMONAN}`}>
                     <LazyLoad className="h-full w-full">
-                        <img src={`https://picsum.photos/id/${Math.floor(Math.random() * 100)}/400/400`} alt={f.TENMONAN}
+                            <img src={`https://statics.vinpearl.com/com-tam-ngon-o-sai-gon-0_1630563211.jpg`} alt={f.TENMONAN}
                             className="h-full w-full object-cover hover:scale-110 transition duration-200"
                         />
                     </LazyLoad>
