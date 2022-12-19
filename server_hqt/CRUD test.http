@@ -167,3 +167,17 @@ Content-Type: application/json
     "DIACHIHINHANHTD": "227 Nguyen Van CU",
     "MALAT": "1        "
   }
+###
+POST http://localhost:5000/contract/1
+Content-Type: application/json
+
+{
+"YEAR": 2,
+"SUPPLIERS":[{
+    "MATKNGANHANG":null,
+    "MADIACHI":null,
+    "TENTK":"CHINHANH1",
+    "MATKHAUTK":"CHINHANH1"
+}]
+
+}

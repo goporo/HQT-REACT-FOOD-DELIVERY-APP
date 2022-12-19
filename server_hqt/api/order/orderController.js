@@ -116,11 +116,11 @@ exports.placeOrder = async (req, res) => {
     res.header("Access-Control-Allow-Methods", " POST");
     res.header("Access-Control-Allow-Headers", "Content-Type")
     try{
-    HINHTHUCTT=req.body.HINHTHUCTT
-    MAKH=req.body.MAKH
-    MACN=req.body.MACN
-    MADCGH=req.body.MADCGH
-    MONAN=req.body.foods
+    var HINHTHUCTT=req.body.HINHTHUCTT
+    var MAKH=req.body.MAKH
+    var MACN=req.body.MACN
+    var MADCGH=req.body.MADCGH
+    var MONAN=req.body.foods
     ///////////////////
     var list_MONAN = new sql.Table();  
     list_MONAN.columns.add('STT',sql.Int)
