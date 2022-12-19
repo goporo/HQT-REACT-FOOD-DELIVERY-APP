@@ -755,6 +755,17 @@ BEGIN TRAN
 COMMIT TRAN
 RETURN
 GO
+-- Tạo hợp đồng cho đối tác
+CREATE TYPE list_ChiNhanh as TABLE (STT INT,MATKNGANHANG CHAR(10),MADIACHI CHAR(10))
+CREATE PROC sp_KyHopDong
+	@SL_CN_DK INT,
+	@PHIKH INT,
+	@MADOITAC CHAR(10)
+
+
+AS
+BEGIN TRAN 
+-- Insert loại ẩm thực
 CREATE PROC sp_insert_LAT
 AS
 	EXEC sp_ThemLoaiAmThuc 'MILKTEA'

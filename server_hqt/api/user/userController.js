@@ -248,3 +248,113 @@ else{
     }
 };
 
+exports.getProfileUser=async (req, res) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Methods", " POST");
+    res.header("Access-Control-Allow-Headers", "Content-Type")
+    if (req.body &&  req.body["LOAITK"])
+    {
+        
+        var LOAITK=req.body["LOAITK"]
+        var TENTK=req.body["TENTK"]
+        var MATKHAUTK=req.body["MATKHAUTK"]
+        var EMAIL=req.body["EMAIL"]
+        var TEN=req.body["TEN"]
+        var SDT=req.body["SDT"]
+        var MSTHUE= req.body["MSTHUE"]
+        var MAIL_NDD=req.body["MAIL_NDD"] 
+        var SLDUKIENMIN=req.body["SLDUKIENMIN"] 
+        var SLDUKIENMAX=req.body["SLDUKIENMAX"] 
+        if(LOAITK&&LOAITK==2)
+        {
+             try {
+                let pool = await sql.connect(config)
+                let result = await pool.request().
+                input("TENTK",sql.VarChar(50),TENTK).
+                input("MATKHAUTK",sql.VarChar(50),MATKHAUTK).
+                input("EMAILDT",sql.VarChar(50),EMAIL).
+                input("TENDT",sql.VarChar(50),TEN).
+                input("SDTDT",sql.Char(10),SDT).
+                input("MSTHUE",sql.Char(10),MSTHUE).
+                input("MAIL_NDD",sql.VarChar(50),MAIL_NDD).
+                input("SLDUKIENMIN",sql.Int,SLDUKIENMIN).
+                input("SLDUKIENMAX",sql.Int,SLDUKIENMAX).
+                execute("sp_DANGKYDT")
+                sql.close()
+                var success=true
+                var message="Success Registered"
+                res.json({success,message})
+                }
+            catch(error){
+                var success=false
+                var message="Failed Registered"
+                res.json({success,message})
+                }
+    }
+    else{
+        var success=false
+        var message="Incorrect user's type "
+        res.json({success,message})
+        }
+}
+else{
+    var success=false
+    var message="null message "
+    res.json({success,message})
+    }
+};
+exports.updateProfileUser=async (req, res) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Methods", " POST");
+    res.header("Access-Control-Allow-Headers", "Content-Type")
+    if (req.body &&  req.body["LOAITK"])
+    {
+        
+        var LOAITK=req.body["LOAITK"]
+        var TENTK=req.body["TENTK"]
+        var MATKHAUTK=req.body["MATKHAUTK"]
+        var EMAIL=req.body["EMAIL"]
+        var TEN=req.body["TEN"]
+        var SDT=req.body["SDT"]
+        var MSTHUE= req.body["MSTHUE"]
+        var MAIL_NDD=req.body["MAIL_NDD"] 
+        var SLDUKIENMIN=req.body["SLDUKIENMIN"] 
+        var SLDUKIENMAX=req.body["SLDUKIENMAX"] 
+        if(LOAITK&&LOAITK==2)
+        {
+             try {
+                let pool = await sql.connect(config)
+                let result = await pool.request().
+                input("TENTK",sql.VarChar(50),TENTK).
+                input("MATKHAUTK",sql.VarChar(50),MATKHAUTK).
+                input("EMAILDT",sql.VarChar(50),EMAIL).
+                input("TENDT",sql.VarChar(50),TEN).
+                input("SDTDT",sql.Char(10),SDT).
+                input("MSTHUE",sql.Char(10),MSTHUE).
+                input("MAIL_NDD",sql.VarChar(50),MAIL_NDD).
+                input("SLDUKIENMIN",sql.Int,SLDUKIENMIN).
+                input("SLDUKIENMAX",sql.Int,SLDUKIENMAX).
+                execute("sp_DANGKYDT")
+                sql.close()
+                var success=true
+                var message="Success Registered"
+                res.json({success,message})
+                }
+            catch(error){
+                var success=false
+                var message="Failed Registered"
+                res.json({success,message})
+                }
+    }
+    else{
+        var success=false
+        var message="Incorrect user's type "
+        res.json({success,message})
+        }
+}
+else{
+    var success=false
+    var message="null message "
+    res.json({success,message})
+    }
+};
