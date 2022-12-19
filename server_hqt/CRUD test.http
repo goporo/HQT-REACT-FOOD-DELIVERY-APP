@@ -167,7 +167,7 @@ Content-Type: application/json
     "DIACHIHINHANHTD": "227 Nguyen Van CU",
     "MALAT": "1        "
   }
-###
+### ký hợp đồng với mảng chi nhánh
 POST http://localhost:5000/contract/1
 Content-Type: application/json
 
@@ -181,3 +181,6 @@ Content-Type: application/json
 }]
 
 }
+### lấy thông tin hoa hồng và phí ký hợp đồng
+GET http://localhost:5000/contract/new
+Content-Type: application/json

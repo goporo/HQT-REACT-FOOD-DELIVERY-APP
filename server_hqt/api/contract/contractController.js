@@ -8,7 +8,41 @@ exports.getContracts = async (req, res) => {
 };
 // lay constract mới để ký 
 exports.getNewContracts = async (req, res) => {
-
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Methods", " GET");
+    res.header("Access-Control-Allow-Headers", "Content-Type")
+    try{
+    
+        var PHIKH=1000000  
+        ////////////////////////
+    
+        let pool = await sql.connect(config)
+        let result = await pool.request().query('SELECT *FROM THONGTIN_HOAHONG WHERE GETDATE() BETWEEN NGAYBD AND NGAYHH')
+        sql.close()
+        if (result.recordsets[0] )//&& result.recordsets[0].length==1)
+        {
+        var success=true
+        var message="Success Get"
+        var HOAHONG=result.recordsets[0]
+        var data={HOAHONG,PHIKH}
+        res.json({success,message,data})
+        return
+        }
+        else{
+            var success=false
+            var message='Thông tin hoa hồng không hợp lệ'
+            var data={}
+            res.json({success,message,data})
+        }
+        }
+        catch (error)
+        {
+            var success=false
+            var message=error.message
+            var data={}
+            res.json({success,message,data})
+        }
+    
 };
 // ký hợp đồng
 exports.postNewContracts = async (req, res) => {

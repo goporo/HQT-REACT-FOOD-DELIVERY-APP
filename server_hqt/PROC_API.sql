@@ -845,6 +845,13 @@ BEGIN
 		RAISERROR ('TAO HOP DONG THAT BAI ',16,1)
 		RETURN
 	END
+	UPDATE HOPDONG SET SL_CN_DK=SL_CN_DK+1 WHERE MAHD=@MAHD
+	IF @@ERROR<>0
+	BEGIN
+		ROLLBACK TRAN
+		RAISERROR ('TAO HOP DONG THAT BAI ',16,1)
+		RETURN
+	END
 	SET @I=@I+1
 
 END
@@ -883,6 +890,7 @@ GO
 -- //////////////////////TEST//////////////////////////////
 EXEC sp_ThemPhamVi
 EXEC sp_CapNhatPhamVi
+EXEC sp_ThemHoaHong '01/01/2020','01/01/2025',10
 EXEC sp_DANGKYKH '123','123'
 EXEC sp_DANGKYTX 'TAIXE','123','taigavn113@gmail.com','TAI','012345678','61D1.42558','0123'
 EXEC sp_DANGKYDT 'DOITAC','123','Pmt@gmail.com',N'Cơm nhà làm','0123456','mail@mail','0123456',0,50
@@ -898,7 +906,7 @@ EXEC sp_ThemThucDon 'chicken burger',NULL,20000,0,'https://i.postimg.cc/8z4jH0mR
 EXEC sp_ThemThucDon 'chicken deluxe fry',NULL,30000,0,'https://i.postimg.cc/DzhPWHy1/chicken-deluxe-fry.jpg','1','0'	
 EXEC sp_ThemThucDon 'chicken malai gravy',NULL,400000,0,'https://i.postimg.cc/qRSL7Rtv/chicken-malai-gravy.jpg','1','0'
 EXEC sp_ThemThucDon 'chicken malai gravy 123',NULL,400000,0,'https://i.postimg.cc/NMQwJWP3/chicken-pizza.jpg','1','0'
-EXEC sp_ThemHoaHong '01/01/2020','01/01/2025',10
+
 EXEC sp_MonAn_TheoGia 1,'INCREASE'
 EXEC sp_Lay_CN '1'
 SELECT * from PHAMVIBANG 
