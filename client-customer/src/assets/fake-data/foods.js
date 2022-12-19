@@ -28,7 +28,7 @@ const foods = [
     title: "chicken pizza",
     price: 400.0,
     rating: 4.3,
-    image: "/images/chicken_pizza.jpg",
+    image: "https://i.postimg.cc/NMQwJWP3/chicken-pizza.jpg",
     supplier: "dxe-salley",
   },
   {

@@ -14,7 +14,7 @@ import axios from 'axios';
 export default function HomePage() {
     const [foods, setFoods] = useState([]);
     const getData = () => {
-        axios.get('/food', {
+        axios.get('/food/mostSold', {
             params: {
                 // ID: 12345
             }
