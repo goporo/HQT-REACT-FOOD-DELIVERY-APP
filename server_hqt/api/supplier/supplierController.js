@@ -119,7 +119,7 @@ exports.updateFood = async (req, res) => {
             input("DIACHIHINHANHTD", sql.VarChar(sql.MAX), DIACHIHINHANHTD).
             input("MALAT", sql.Char(10), MALAT).
             input("MAMONAN", sql.Char(10), MAMONAN).
-            input("TINHTRANG", sql.Char(20), TINHTRANG).
+            input("TINHTRANGTd", sql.Char(20), TINHTRANG).
             execute("sp_CapNhatThucDon")
 
         console.log(result);
