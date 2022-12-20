@@ -111,3 +111,4 @@ EXEC sp_ThemPhamVi
 EXEC sp_CapNhatPhamVi
 select * from PHAMVIBANG
 select * from DON_DH
+UPDATE PHAMVIBANG SET IDMAX  =(SELECT MAX(convert(int,MADH)) FROM DON_DH ) WHERE TENPHAMVI='DON_DH'

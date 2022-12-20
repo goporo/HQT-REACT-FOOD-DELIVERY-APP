@@ -142,8 +142,8 @@ Content-Type: application/json
 
 {
 "MAKH": "1",
-"HINHTHUCTT":"VI",
 "MACN": "1",
+"HINHTHUCTT":"VI",
 "MADCGH":null,
 "foods":[{
             "MAMONAN": "1",
