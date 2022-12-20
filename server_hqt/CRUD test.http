@@ -129,7 +129,10 @@ Content-Type: application/json
     "TGBD":"",
     "TGKT":""
 }
-### Lấy Đối tác
+### Lấy ALL CHI NHANH
+PUT   http://localhost:5000/supplier/
+Content-Type: application/json
+### Lấy 1 CHI NHANH
 PUT   http://localhost:5000/supplier/1
 Content-Type: application/json
 

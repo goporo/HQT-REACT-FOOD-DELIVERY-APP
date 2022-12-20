@@ -1,5 +1,4 @@
 import { BiChevronDown } from "react-icons/bi";
-import restaurants from "../../assets/fake-data/restaurants";
 import FoodItem from "./FoodItem";
 import NearbyResaurant from "./NearbyResaurant";
 
@@ -13,7 +12,9 @@ import axios from 'axios';
 
 export default function HomePage() {
     const [foods, setFoods] = useState([]);
-    const getData = () => {
+    const [restaurants, setRestaurants] = useState([]);
+
+    const getFoods = () => {
         axios.put('/food/mostSold', {
             params: {
                 // ID: 12345
@@ -34,9 +35,34 @@ export default function HomePage() {
                 console.log(e);
             });
     }
+    const getRestaurants = () => {
+        axios.put('/supplier', {
+            params: {
+            }
+        })
+            .then(function (res) {
+                console.log(res.data.data);
 
+                let items = res.data.data.map((item) => {
+                    return {
+                        id: item.MACN[0],
+                        name: item.TENCH,
+                        title: item.GIA,
+                        logo: item.DIACHIHINHANHND,
+                        rating: 5,
+                        distance: '<1km',
+                        offer: 'FreeShip'
+                    }
+                });
+                setRestaurants(items);
+            })
+            .catch(function (e) {
+                console.log(e);
+            });
+    }
     useEffect(() => {
-        getData()
+        getFoods();
+        getRestaurants();
     }, [])
 
     return (
