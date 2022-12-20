@@ -122,13 +122,15 @@ Content-Type: application/json
     "TGKT":""
 }
 ### Lấy Đối tác
-GET   http://localhost:5000/supplier/2
+GET   http://localhost:5000/supplier/1
+Content-Type: application/json
+
 ### tạo đơn hàng
 POST http://localhost:5000/order/place-order
 Content-Type: application/json
 
 {
-"MAKH": "1         ",
+"MAKH": "1",
 "HINHTHUCTT":"VI",
 "MACN": "1         ",
 "MADCGH":null,

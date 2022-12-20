@@ -28,7 +28,7 @@ const FoodItem = ({ f }) => {
 
 
                 <div className="bg-[#ffede6] text-[#ff4f00] text-xs font-semibold px-4 py-1 rounded-md whitespace-nowrap">
-                    ${f.price}
+                    {f.price}đ
                 </div>
             </div>
         </div>

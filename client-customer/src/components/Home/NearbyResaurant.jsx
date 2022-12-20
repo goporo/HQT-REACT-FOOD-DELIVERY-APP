@@ -57,10 +57,10 @@ const NearbyResaurant = ({ restaurants }) => {
                                         </span>
                                     </div>
                                     <span
-                                        className={`text-xs px-2 py-1 rounded ${r.deliveryFree
+                                        className={`text-xs px-2 py-1 rounded {r.deliveryFree
                                             ? "bg-purple-100 text-purple-700"
                                             : "bg-[#ffe7e0] text-[#f25e35]"
-                                            }`}
+                                            }đ`}
                                     >
                                         {r.offer}
                                     </span>

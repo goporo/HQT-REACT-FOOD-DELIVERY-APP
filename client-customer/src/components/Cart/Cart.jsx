@@ -43,7 +43,7 @@ const Cart = () => {
             <div className="mt-5 flex flex-col right-14 absolute text-center">
               <h6>
                 Total:
-                <span className="text-orange-400"> ${totalAmount}</span>
+                <span className="text-orange-400"> {totalAmount}đ</span>
               </h6>
               <div className="mt-4">
                 <button
@@ -104,7 +104,7 @@ const Tr = (props) => {
         <h1 className="font-semibold text-lg capitalize">{title}</h1>
       </td>
       <td >
-        <p className="text-orange-500 text-lg">${price}</p>
+        <p className="text-orange-500 text-lg">{price}đ</p>
       </td>
       <td >
         <div className="flex flex-row justify-center">
@@ -138,7 +138,7 @@ const Checkout = () => {
 
   const shippingInfo = [];
   const cartTotalAmount = useSelector((state) => state.cart.totalAmount);
-  const shippingCost = 30;
+  const shippingCost = 10000;
 
   const totalAmount = cartTotalAmount + Number(shippingCost);
 
@@ -179,15 +179,15 @@ const Checkout = () => {
 
         <div className="my-4">
           <h6 className="flex items-center justify-between mb-4">
-            Subtotal: <span className="text-orange-400">${cartTotalAmount}</span>
+            Subtotal: <span className="text-orange-400">{cartTotalAmount}đ</span>
           </h6>
           <h6 className="flex items-center justify-between mb-4">
-            Shipping: <span className="text-orange-400">${shippingCost}</span>
+            Shipping: <span className="text-orange-400">{shippingCost}đ</span>
           </h6>
           <hr />
           <div className="mt-4">
             <h5 className="flex items-center justify-between font-semibold">
-              Total: <span className="text-orange-400">${totalAmount}</span>
+              Total: <span className="text-orange-400">{totalAmount}đ</span>
             </h5>
           </div>
         </div>

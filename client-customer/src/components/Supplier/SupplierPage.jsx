@@ -5,28 +5,30 @@ import { FaRegHandPointRight } from 'react-icons/fa';
 import { useDispatch } from 'react-redux';
 import { cartActions } from '../../store/shopping-cart/cartSlice';
 import { useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 
-const supplier = {
-    id: "res_4",
-    name: "Burger King - Fast Food",
-    logo: "/images/restaurant-logo/burger-king.png",
-    location: "1041/62/128 Trần Xuân Soạn, P. Tân Hưng, Quận 7, TP. HCM",
-    rating: 4,
-    distance: 4.3,
-    offer: "Free Delivery",
-    deliveryFree: true,
-    category:
-        [
-            "Fried Chicken",
-            "Drinks",
-            "Grilled Meat",
-            "Hamburger",
-            "Hotdog"
-        ]
+// const supplier = {
+//     id: "res_4",
+//     name: "Burger King - Fast Food",
+//     logo: "/images/restaurant-logo/burger-king.png",
+//     location: "1041/62/128 Trần Xuân Soạn, P. Tân Hưng, Quận 7, TP. HCM",
+//     rating: 4,
+//     distance: 4.3,
+//     offer: "Free Delivery",
+//     deliveryFree: true,
+//     category:
+//         [
+//             "Fried Chicken",
+//             "Drinks",
+//             "Grilled Meat",
+//             "Hamburger",
+//             "Hotdog"
+//         ]
 
 
-}
+// }
 
 const foods = [
     {
@@ -111,12 +113,67 @@ const foods = [
     },
 ]
 
+const category =
+    [
+        "Fried Chicken",
+        "Drinks",
+        "Grilled Meat",
+        "Hamburger",
+        "Hotdog"
+    ]
+
 export default function SupplierPage() {
-    const { businessId } = useParams()
+    const { supplierId } = useParams()
+
+    const [supplier, setSupplier] = useState([]);
+    const [foods, setFoods] = useState([]);
+
+
+    useEffect(() => {
+        const getData = () => {
+
+            axios.get(`/supplier/${supplierId}`, {
+                params: {
+                    // ID: 12345
+                }
+            })
+                .then(function (res) {
+
+                    let temp = res.data.data.supplier;
+                    let temp2 = res.data.data.foods;
+
+
+                    temp = temp.map(item => {
+                        return {
+                            name: item.TENCH,
+                            location: "Burger King - Fast Food",
+                            logo: "/images/restaurant-logo/burger-king.png",
+                        }
+                    });
+                    temp2 = temp2.map(item => {
+                        return {
+                            id: item.MAMONAN,
+                            title: item.TENMONAN,
+                            image: item.DIACHIHINHANHTD,
+                            price: item.GIA,
+                        }
+                    });
+
+                    setSupplier(temp[0]);
+                    setFoods(temp2);
+
+                })
+                .catch(function (e) {
+                    console.log(e);
+                });
+        };
+        getData();
+    }, [])
+
+
 
     const dispatch = useDispatch();
     const addToCart = (item) => {
-        console.log(item);
         dispatch(
             cartActions.addItem(
                 item
@@ -132,7 +189,7 @@ export default function SupplierPage() {
                 <div className="flex flex-col ">
                     <h1 className="font-semibold text-xl mb-3">{supplier.name}</h1>
                     <p className="text-gray-500 text-sm mb-3">{supplier.location}</p>
-                    <Rating className='mb-3' name="read-only" value={supplier.rating} readOnly precision={.5} />
+                    <Rating className='mb-3' name="read-only" value={5} readOnly precision={.5} />
                     <div className="flex-row flex items-center mb-3">
                         <span className="text-green-400 text-mdfont-semibold mr-2">Open</span>
                         <AiOutlineClockCircle className=' mr-2' />
@@ -147,7 +204,7 @@ export default function SupplierPage() {
                     <div className='bg-gray-400 text-white text-sm font-semibold px-3 py-1 w-fit rounded-md mb-3 ml-1'>DISCOUNT</div>
                     <p className='text-orange-500 font-bold text-lg ml-4'>MENU</p>
                     {
-                        supplier.category.map((item, index) =>
+                        category.map((item, index) =>
                             <div key={index} className='flex flex-row m-5 cursor-pointer hover:opacity-80'>
                                 <FaRegHandPointRight className='mr-5' />
                                 <div className=''>{item}</div>
@@ -179,7 +236,7 @@ export default function SupplierPage() {
                                     <p className="text-gray-500 text-sm mb-3">Lorem ipsum dolor sit amet, bo corrupti doloribus eum delectus voluptatibus magni rerum, voluptas recusandae illo.</p>
                                 </div>
                                 <div className='flex flex-row items-center'>
-                                    <p className="text-blue-500 text-sm mr-3">${item.price}</p>
+                                    <p className="text-blue-500 text-sm mr-3">{item.price}đ</p>
                                     <button
                                         onClick={() => addToCart(item)}
                                         className='cursor-pointer hover:opacity-80 rounded-lg bg-red-600 text-white text-md font-semibold py-1 px-3'>+</button>

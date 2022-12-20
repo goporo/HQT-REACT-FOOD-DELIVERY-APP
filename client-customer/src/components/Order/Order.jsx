@@ -1,4 +1,7 @@
+import axios from "axios";
 import React from "react";
+import { useState } from "react";
+import { useEffect } from "react";
 import LazyLoad from "react-lazy-load";
 
 const orders = [
@@ -54,7 +57,39 @@ const orders = [
   },
 ]
 
+
+
 const Order = () => {
+  const [supplier, setSupplier] = useState([]);
+
+  useEffect(() => {
+    const getData = () => {
+
+      axios.put(`/order/customer`, {
+
+        "MAKH": "1",
+
+      })
+        .then(function (res) {
+          let temp = res.data.data.supplier;
+
+          temp = temp.map(item => {
+            return {
+              name: item.TENCH,
+              location: "Burger King - Fast Food",
+              logo: "/images/restaurant-logo/burger-king.png",
+            }
+          });
+          setSupplier(temp[0]);
+        })
+        .catch(function (e) {
+          console.log(e);
+        });
+    };
+    getData();
+  }, [])
+
+
   return (
     <section>
       <div>

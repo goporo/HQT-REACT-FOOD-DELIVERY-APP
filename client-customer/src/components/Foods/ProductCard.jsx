@@ -49,7 +49,7 @@ const ProductCard = (props) => {
           <Link to={`/supplier/the-alley`}>{title}</Link>
         </div>
         <div className="flex flex-col items-center justify-between">
-          <span className="text-red-500 text-lg mb-2">${price}</span>
+          <span className="text-red-500 text-lg mb-2">{price}đ</span>
           <button className="bg-red-500 text-white py-2 px-5 text-sm rounded-lg" onClick={addToCart}>
             Add to Cart
           </button>
