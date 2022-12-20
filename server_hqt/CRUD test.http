@@ -181,6 +181,37 @@ Content-Type: application/json
 }]
 
 }
-### lấy thông tin hoa hồng và phí ký hợp đồng
-GET http://localhost:5000/contract/new
+### lấy hợp đồng cho nhân viên nếu lấy hợp đồng hết hạn thì phải có mốc thời gian hết hạn đi theo
+GET http://localhost:5000/contract/employee/expiring
 Content-Type: application/json
+
+{
+    "MONTH":36
+}
+### nhân viên xác nhận/gia hạn
+POST http://localhost:5000/contract/accept
+Content-Type: application/json
+
+{
+    "MAHD":"1",
+    "STT":1,
+    "MANHANVIEN":"1"
+}
+### lấy hợp đồng của đối tác
+POST http://localhost:5000/contract/extend
+Content-Type: application/json
+
+{
+    "MAHD":"1",
+    "THOIHAN":1,
+    "MADT":"1"
+}
+### nhân viên gia hạn
+POST http://localhost:5000/contract/accept
+Content-Type: application/json
+
+{
+    "MAHD":"1",
+    "STT":2,
+    "MANHANVIEN":"1"
+}
