@@ -109,7 +109,7 @@ const Tr = (props) => {
     orderDetails.length ?
       orderDetails.map((item, index) => (
         <div key={index} className="flex flex-row space-y-2">
-          <div className="w-3/12 text-lg capitalize">{item.id}</div>
+          <div className="w-3/12 text-lg capitalize">ID: {item.id}</div>
           <div className="w-4/12 text-lg capitalize">{item.title}</div>
           <p className="w-2/12 text-orange-500 text-lg">{item.price}đ</p>
         </div >

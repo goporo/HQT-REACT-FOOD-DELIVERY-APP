@@ -65,7 +65,7 @@ export default function SupplierPage() {
                         return {
                             name: item.TENCH,
                             location: "Burger King - Fast Food",
-                            logo: item.DIACHIHINHANHND //`${item.DIACHIHINHANHND ?? "/images/restaurant-logo/burger-king.png"}`,
+                            logo: `${item.DIACHIHINHANHND ?? "/images/restaurant-logo/burger-king.png"}`,
                         }
                     });
                     temp2 = temp2.map(item => {
@@ -104,10 +104,10 @@ export default function SupplierPage() {
     return (
         <>
             <div className="flex flex-row w-11/12 mx-auto space-x-5 my-10 bg-white p-5 rounded-lg shadow-sm">
-                <img className="w-40 mr-8" src={supplier.logo} alt="" />
+                <img className="w-40 mr-8" src={supplier?.logo} alt="logo" />
                 <div className="flex flex-col ">
-                    <h1 className="font-semibold text-xl mb-3">{supplier.name}</h1>
-                    <p className="text-gray-500 text-sm mb-3">{supplier.location}</p>
+                    <h1 className="font-semibold text-xl mb-3">{supplier?.name}</h1>
+                    <p className="text-gray-500 text-sm mb-3">{supplier?.location}</p>
                     <Rating className='mb-3' name="read-only" value={5} readOnly precision={.5} />
                     <div className="flex-row flex items-center mb-3">
                         <span className="text-green-400 text-mdfont-semibold mr-2">Open</span>
