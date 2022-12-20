@@ -9,6 +9,7 @@ router.post('/register/employee', controller.registerEmployee);
 router.post('/register/supplier', controller.registerSupplier);
 
 //kh, dt, tx, cn
+router.get('/login/:type',controller.login)
 router.get('/profile/:usid', controller.getProfileUser);
 router.post('/profile/:usid', controller.updateProfileUser);
 

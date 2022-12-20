@@ -358,3 +358,36 @@ else{
     res.json({success,message})
     }
 };
+exports.login=async (req, res) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Methods", " GET");
+    res.header("Access-Control-Allow-Headers", "Content-Type")
+    try{
+        
+        var LOAITK=req.params.type
+        var TENTK=req.body["TENTK"]
+        var MATKHAUTK=req.body["MATKHAUTK"]
+
+        
+                let pool = await sql.connect(config)
+                let result = await pool.request().
+                input("TENTK",sql.VarChar(50),TENTK).
+                input("MATKHAUTK",sql.VarChar(50),MATKHAUTK).
+                input("LOAITK",sql.VarChar(50),LOAITK).
+                execute("sp_DANGNHAP")
+                sql.close()
+                var success=true
+                var message="Succes"
+                var data=result.recordsets[0]
+                res.json({success,message,data})
+                
+          
+  
+}
+catch (error){
+    var success=false
+    var message=error.message
+    var data={}
+    res.json({success,message,data})
+    }
+};
