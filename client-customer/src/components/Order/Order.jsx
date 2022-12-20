@@ -60,7 +60,7 @@ const orders = [
 
 
 const Order = () => {
-  const [supplier, setSupplier] = useState([]);
+  const [orders, setOrders] = useState([]);
 
   useEffect(() => {
     const getData = () => {
@@ -71,16 +71,16 @@ const Order = () => {
 
       })
         .then(function (res) {
-          let temp = res.data.data.supplier;
-
+          let temp = res.data.data;
           temp = temp.map(item => {
             return {
-              name: item.TENCH,
-              location: "Burger King - Fast Food",
-              logo: "/images/restaurant-logo/burger-king.png",
+              orderID: item.MADH,
+              items: [{ id: item.a, title: item.a, price: item.a }],
+              shipper: item.TEN,
+              status: item.TRANGTHAIDH
             }
           });
-          setSupplier(temp[0]);
+          setOrders(temp);
         })
         .catch(function (e) {
           console.log(e);
@@ -134,11 +134,13 @@ const Tr = (props) => {
         </div>
       </div>
       {items.map((item, index) => (
-        <div key={index} className="flex flex-row space-y-2">
-          <div className="w-3/12 text-lg capitalize">{item.id}</div>
-          <div className="w-4/12 text-lg capitalize">{item.title}</div>
-          <p className="w-2/12 text-orange-500 text-lg">${item.price}</p>
-        </div >
+        item.length ?
+          <div key={index} className="flex flex-row space-y-2">
+            <div className="w-3/12 text-lg capitalize">{item.id}</div>
+            <div className="w-4/12 text-lg capitalize">{item.title}</div>
+            <p className="w-2/12 text-orange-500 text-lg">{item.price}đ</p>
+          </div >
+          : null
       ))}
       <hr className="my-2" />
       <div className="flex items-end flex-col space-y-2">

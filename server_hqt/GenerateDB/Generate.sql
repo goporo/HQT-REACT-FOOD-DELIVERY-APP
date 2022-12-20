@@ -2,7 +2,9 @@
 -- //////////////////////TEST//////////////////////////////
 EXEC sp_ThemPhamVi
 EXEC sp_CapNhatPhamVi
-EXEC sp_ThemHoaHong '01/01/2020','01/01/2025',10
+
+
+
 
 EXEC sp_DANGKYKH '123','123'
 EXEC sp_DANGKYKH 'NguyenPhan','pnguyen123'
@@ -37,16 +39,16 @@ EXEC sp_ThemQuanHuyen 'H2', 'Huyện Đồng Văn','KV2'
 EXEC sp_ThemPhuong 'P2', 'Phường 2','H2'
 EXEC sp_ThemDiaChi 'DC2','123 Thành Thái', 'P2'
 
-EXEC sp_ThemChiNhanh 5, '098736325',1,'https://cdn-www.vinid.net/2020/08/c852b982-c%E1%BB%ADa-h%C3%A0ng-ti%E1%BB%87n-l%E1%BB%A3i.jpg','1','12', 'DC1','1'
-EXEC sp_ThemChiNhanh 6, '342342243',1, 'https://image.thanhnien.vn/w1024/Uploaded/2022/wsxrxqeiod/2022_07_14/lang-kinh-2772.jpg', '2', '1', 'DC2', '2'
 
-EXEC sp_ThemChiNhanh '0',null,0,null,null,null,null,'1'
-EXEC sp_ThemChiNhanh 2, '132324', 0, NULL, NULL,NULL,NULL, '3'
-EXEC sp_ThemChiNhanh 3, '1432324', 0, NULL, NULL,NULL,NULL, '2'
-EXEC sp_ThemChiNhanh 4, '13243324', 0, NULL, NULL,NULL,NULL, '2'
+EXEC sp_ThemChiNhanh '1', '132324',0,'https://i.pinimg.com/originals/4e/95/ff/4e95ff2406e7914e70cbbba6dd9c51d2.jpg',null,null,null,'1'
+EXEC sp_ThemChiNhanh '2', '132324', 0, 'https://i.etsystatic.com/21215114/r/il/d0c7bd/4104680841/il_fullxfull.4104680841_hxug.jpg', NULL,NULL,NULL, '3'
+EXEC sp_ThemChiNhanh '3', '098736325',1,'https://cdn-www.vinid.net/2020/08/c852b982-c%E1%BB%ADa-h%C3%A0ng-ti%E1%BB%87n-l%E1%BB%A3i.jpg','1','12', 'DC1','1'
+EXEC sp_ThemChiNhanh '4', '342342243',1, 'https://image.thanhnien.vn/w1024/Uploaded/2022/wsxrxqeiod/2022_07_14/lang-kinh-2772.jpg', '2', '1', 'DC2', '2'
+EXEC sp_ThemChiNhanh '5', '1432324', 0, NULL, NULL,NULL,NULL, '2'
+EXEC sp_ThemChiNhanh '6', '13243324', 0, NULL, NULL,NULL,NULL, '2'
 
 EXEC  sp_ThemCuaHang '0','BOBABOP','8:00','23:59','AVAILABLE'
-
+EXEC  sp_ThemCuaHang '1','BURGER KING','8:00','23:59','AVAILABLE'
 
 EXEC sp_insert_LAT
 
@@ -54,47 +56,52 @@ EXEC sp_ThemThucDon 'chicken burger',NULL,20000,0,'https://i.postimg.cc/8z4jH0mR
 EXEC sp_ThemThucDon 'chicken deluxe fry',NULL,30000,0,'https://i.postimg.cc/DzhPWHy1/chicken-deluxe-fry.jpg','0','1'	
 EXEC sp_ThemThucDon 'chicken malai gravy',NULL,400000,0,'https://i.postimg.cc/qRSL7Rtv/chicken-malai-gravy.jpg','0','1'
 EXEC sp_ThemThucDon 'chicken malai gravy 123',NULL,400000,0,'https://i.postimg.cc/NMQwJWP3/chicken-pizza.jpg','0','1'
-
-EXEC sp_ThemThucDon 'Tra sua full topping', 'Ngon quá trời ngon', 20000, 1, 'https://www.bartender.edu.vn/wp-content/uploads/2022/04/tra-sua-nuong-hap-dan.jpg','5','1'
-EXEC sp_ThemThucDon 'Bun bo Hue dac biet', 'Ngon một chút hoy chứ hong ngon nhiều', 50000, 1, 'https://i.ytimg.com/vi/A_o2qfaTgKs/maxresdefault.jpg','5', '3'
-
-EXEC sp_ThemThucDon 'Bong Lan Trung Muoi', 'Ăn một miếng tăng 5 kí', 25000, 1, 'https://vn-live-02.slatic.net/p/e862cf389a7345d91c1de656a85d4287.jpg','6','4'
-EXEC sp_ThemThucDon 'Tra sua nuong', 'Ngon mà tui tỉnh luôn', 35000, 1, 'https://abar.vn/wp-content/uploads/2021/08/tra-sua-nuong.jpg','6', '1'
+EXEC sp_ThemThucDon 'Tra sua full topping', 'Ngon quá trời ngon', 20000, 1, 'https://www.bartender.edu.vn/wp-content/uploads/2022/04/tra-sua-nuong-hap-dan.jpg','1','1'
+EXEC sp_ThemThucDon 'Bun bo Hue dac biet', 'Ngon một chút hoy chứ hong ngon nhiều', 50000, 1, 'https://i.ytimg.com/vi/A_o2qfaTgKs/maxresdefault.jpg','2', '3'
+EXEC sp_ThemThucDon 'Bong Lan Trung Muoi', 'Ăn một miếng tăng 5 kí', 25000, 1, 'https://vn-live-02.slatic.net/p/e862cf389a7345d91c1de656a85d4287.jpg','1','4'
+EXEC sp_ThemThucDon 'Tra sua nuong', 'Ngon mà tui tỉnh luôn', 35000, 1, 'https://abar.vn/wp-content/uploads/2021/08/tra-sua-nuong.jpg','2', '1'
 
 
 EXEC sp_ThemHopDong HD1, 5, 1000000, 1
 EXEC sp_ThemHopDong HD2, 1, 1000000, 2
 EXEC sp_ThemHopDong HD3, 2, 1000000, 3
 
-
-EXEC sp_ThemHoaHong 'HH1','01/01/2020','01/01/2025',10
-EXEC sp_ThemHoaHong 'HH2','01/01/2020','01/01/2026',10
-EXEC sp_ThemHoaHong 'HH3','01/01/2020','01/01/2022',10
+EXEC sp_ThemHoaHong '01/01/2020','01/01/2025',10
+EXEC sp_ThemHoaHong '01/01/2020','01/01/2025',10
+EXEC sp_ThemHoaHong '01/01/2020','01/01/2026',10
+EXEC sp_ThemHoaHong '01/01/2020','01/01/2022',10
 
 EXEC sp_ThemThongTinHopDong 'HD1',5,'01/01/2020','01/01/2025','HH1','1'
 EXEC sp_ThemThongTinHopDong 'HD2',6,'01/01/2020','01/01/2026','HH2','1'
 EXEC sp_ThemThongTinHopDong 'HD3',2,'01/01/2020','01/01/2022','HH3','2'
 
-EXEC sp_ThemDonDH '1','DELIVERING','12/1/2022','VPBank', 200000, 15000,NULL, 1, 1, NULL, NULL
+EXEC sp_ThemDonDH '1','DELIVERING','12/1/2022','VPBank', 200000, 15000,'1', '1', '1', '1', NULL
+EXEC sp_ThemDonDH '2','DELIVERING','12/1/2022','VPBank', 200000, 15000,'1', '1', '1', '1', NULL
+
+EXEC sp_ThemThucDonDatHang '1', '1', 1
+EXEC sp_ThemThucDonDatHang '2', '1', 1
+EXEC sp_ThemThucDonDatHang '3', '2', 1
+EXEC sp_ThemThucDonDatHang '4', '2', 1
 
 EXEC sp_MonAn_TheoGia 1,'INCREASE'
 EXEC sp_Lay_CN '1'
 
-SELECT * from PHAMVIBANG 
+SELECT * FROM PHAMVIBANG 
 SELECT * FROM KHACHHANG 
 SELECT * FROM TAIKHOAN
-SELECT *FROM TAIXE
+SELECT * FROM TAIXE
 SELECT * FROM DOITAC
-SELECT *FROM NHANVIEN
+SELECT * FROM NHANVIEN
 SELECT * FROM NGANHANG
 SELECT * FROM PHUONG
 SELECT * FROM CHINHANH
-SELECT *FROM THUCDON
+SELECT * FROM THUCDON
 SELECT * FROM DON_DH
 SELECT * FROM THUCDONDATHANG
-SELECT *FROM LOAIAMTHUC
+SELECT * FROM LOAIAMTHUC
 select * from THONGTIN_HOAHONG
 select * from HOPDONG
-select *from HOPDONGCHINHANH
-select *from THONGTIN_HOPDONG
---EXEC sp_ThemThucDonDatHang '6','1',3
+select * from HOPDONGCHINHANH
+select * from THONGTIN_HOPDONG
+
+select * from CUAHANG
