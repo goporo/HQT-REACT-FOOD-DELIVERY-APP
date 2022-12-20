@@ -8,6 +8,5 @@ router.put('/price', controller.price);
 router.put('/supplier', controller.supplier);
 router.put('/type', controller.type);
 
-
-
+router.patch('/supplier', controller.supplier);
 module.exports = router;

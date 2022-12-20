@@ -96,3 +96,51 @@ exports.addFood=async(req,res)=>{
     
     
 }
+exports.updateFood=async(req,res)=>{
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Methods", " PATCH");
+    res.header("Access-Control-Allow-Headers", "Content-Type")
+    try {
+        var MACN=req.body.MACN
+        var TENMONAN=req.body.TENMONAN
+        var MOTA=req.body.MOTA
+        var GIA= req.body.GIA
+        var HINHANHTD=req.body.HINHANHTD
+        var DIACHIHINHANHTD=req.body.DIACHIHINHANHTD
+        var MALAT=req.body.MALAT
+        var TINHTRANG=req.body.TINHTRANG
+        var MAMONAN=req.body.MAMONAN
+        let pool = await sql.connect(config)
+        let result = await pool.request().
+            input("TENMONAN",sql.VarChar(100),TENMONAN).
+            input("MACN",sql.Char(10),MACN).
+            input("MOTA",sql.Char(100),MOTA).
+            input("GIA",sql.Int,GIA).
+            input("HINHANHTD",sql.Bit,HINHANHTD).
+            input("DIACHIHINHANHTD",sql.VarChar(sql.MAX),DIACHIHINHANHTD).
+            input("MALAT",sql.Char(10),MALAT).
+            input("MAMONAN",sql.Char(10),MAMONAN).
+            input("TINHTRANG",sql.Char(20),TINHTRANG).
+            execute("sp_CapNhatThucDon")
+        
+        console.log(result);
+
+        sql.close()
+        var success=true
+        var message="Success Get"
+        var data={}
+        res.json({success,message,data})
+      
+        }
+        catch (error)
+        {
+            var success=false
+            var message=error.message
+            var data={}
+            res.json({success,message,data})
+        }
+    
+        
+    
+    
+}

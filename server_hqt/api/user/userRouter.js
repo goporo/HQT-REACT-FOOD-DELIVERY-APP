@@ -10,6 +10,8 @@ router.post('/register/supplier', controller.registerSupplier);
 
 //kh, dt, tx, cn
 router.put('/profile/:usid', controller.getProfileUser);
+router.put('/login/:type', controller.login)
+router.put('/profile/:usid', controller.getProfileUser);
 router.post('/profile/:usid', controller.updateProfileUser);
 
 
