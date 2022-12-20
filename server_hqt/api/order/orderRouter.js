@@ -6,6 +6,8 @@ router.put('/customer', controller.getOrdersCustomer);
 router.put('/shipper', controller.getOrdersShipper);
 router.put('/branch', controller.getOrdersBranch);
 router.put('/supplier', controller.getOrdersSupplier);
+router.put('/orderdetails', controller.getOrderDetails);
+
 router.post('/place-order', controller.placeOrder);
 router.post('/:type', controller.cancelOrder);
 

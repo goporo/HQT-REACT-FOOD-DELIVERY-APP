@@ -94,6 +94,14 @@ Content-Type: application/json
     "TGBD":"",
     "TGKT":""
 }
+### Lấy Đơn Hàng Chi Tiết
+PUT   http://localhost:5000/order/orderdetails
+Content-Type: application/json
+
+{
+    "MAKH":"1",
+    "MADH":"1"
+}
 ### Lấy Đơn Hàng TÀI XẾ
 PUT   http://localhost:5000/order/shipper
 Content-Type: application/json

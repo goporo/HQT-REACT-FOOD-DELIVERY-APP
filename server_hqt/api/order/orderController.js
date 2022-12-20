@@ -18,9 +18,7 @@ exports.getOrdersCustomer = async (req, res) => {
         sql.close()
         var success = true
         var message = "Success Get"
-        var orders = result.recordsets[0]
-        var orders_details = result.recordsets[1]
-        var data = { orders, orders_details }
+        var data = result.recordsets[0]
         res.json({ success, message, data })
     }
     catch (error) {
@@ -113,6 +111,33 @@ exports.getOrdersSupplier = async (req, res) => {
     }
 
 };
+
+exports.getOrderDetails = async (req, res) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Methods", " GET");
+    res.header("Access-Control-Allow-Headers", "Content-Type")
+    try {
+        var MAKH = req.body["MAKH"]
+        var MADH = req.body["MADH"]
+        let pool = await sql.connect(config)
+        let result = await pool.request().
+            input("MAKH", sql.Char(10), MAKH).
+            input("MADH", sql.Char(10), MADH).
+            execute("sp_DonHang_ChiTiet")
+        sql.close()
+        var success = true
+        var message = "Success Get"
+        var data = result.recordsets[0]
+        res.json({ success, message, data })
+    }
+    catch (error) {
+        var success = false
+        var message = error.message
+        var data = {}
+        res.json({ success, message, data })
+    }
+};
+
 exports.placeOrder = async (req, res) => {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Methods", " POST");
