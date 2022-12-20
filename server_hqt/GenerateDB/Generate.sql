@@ -42,13 +42,15 @@ EXEC sp_ThemDiaChi 'DC2','123 Thành Thái', 'P2'
 
 EXEC sp_ThemChiNhanh '1', '132324',0,'https://i.pinimg.com/originals/4e/95/ff/4e95ff2406e7914e70cbbba6dd9c51d2.jpg',null,null,null,'1'
 EXEC sp_ThemChiNhanh '2', '132324', 0, 'https://i.etsystatic.com/21215114/r/il/d0c7bd/4104680841/il_fullxfull.4104680841_hxug.jpg', NULL,NULL,NULL, '3'
-EXEC sp_ThemChiNhanh '3', '098736325',1,'https://cdn-www.vinid.net/2020/08/c852b982-c%E1%BB%ADa-h%C3%A0ng-ti%E1%BB%87n-l%E1%BB%A3i.jpg','1','12', 'DC1','1'
+EXEC sp_ThemChiNhanh '3', '098736325',1,'https://c8.alamy.com/comp/PCYG1J/pizzeria-fast-food-logo-or-label-happy-chef-holding-pizza-and-scapula-in-hands-vector-illustration-PCYG1J.jpg','1','12', 'DC1','1'
 EXEC sp_ThemChiNhanh '4', '342342243',1, 'https://image.thanhnien.vn/w1024/Uploaded/2022/wsxrxqeiod/2022_07_14/lang-kinh-2772.jpg', '2', '1', 'DC2', '2'
-EXEC sp_ThemChiNhanh '5', '1432324', 0, NULL, NULL,NULL,NULL, '2'
-EXEC sp_ThemChiNhanh '6', '13243324', 0, NULL, NULL,NULL,NULL, '2'
 
-EXEC  sp_ThemCuaHang '0','BOBABOP','8:00','23:59','AVAILABLE'
-EXEC  sp_ThemCuaHang '1','BURGER KING','8:00','23:59','AVAILABLE'
+
+EXEC  sp_ThemCuaHang '1','BOBABOP','8:00','23:59','AVAILABLE'
+EXEC  sp_ThemCuaHang '2','BURGER KING','8:00','23:59','AVAILABLE'
+EXEC  sp_ThemCuaHang '3','CHICKEN ADVENTURE','8:00','23:59','AVAILABLE'
+EXEC  sp_ThemCuaHang '4','MILK CHEA','8:00','23:59','AVAILABLE'
+
 
 EXEC sp_insert_LAT
 
@@ -104,4 +106,7 @@ select * from HOPDONG
 select * from HOPDONGCHINHANH
 select * from THONGTIN_HOPDONG
 
-select * from CUAHANG
+	select tddh.MAMONAN, td.TENMONAN, td.GIA from   THUCDONDATHANG tddh join DON_DH dh  on dh.MADH = tddh.MADH join THUCDON td on td.MAMONAN = tddh.MAMONAN 	
+	
+
+select * from CHINHANH

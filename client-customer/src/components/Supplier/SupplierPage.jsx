@@ -30,88 +30,6 @@ import axios from 'axios';
 
 // }
 
-const foods = [
-    {
-        id: "food_1",
-        title: "chicken burger",
-        price: 80.0,
-        rating: 4.3,
-        image: "/images/chicken_burger.jpg",
-        supplier: "the-alley",
-    },
-    {
-        id: "food_2",
-        title: "chicken deluxe fry",
-        price: 150.0,
-        rating: 4.3,
-        image: "/images/chicken_deluxe_fry.jpg",
-        supplier: "the-alley",
-    },
-    {
-        id: "food_3",
-        title: "chicken malai gravy",
-        price: 200.0,
-        rating: 4.3,
-        image: "/images/chicken_malai_gravy.jpg",
-        supplier: "the-alley",
-    },
-    {
-        id: "food_4",
-        title: "chicken pizza",
-        price: 400.0,
-        rating: 4.3,
-        image: "/images/chicken_pizza.jpg",
-        supplier: "the-alley",
-    },
-    {
-        id: "food_5",
-        title: "chicken sate",
-        price: 100.0,
-        rating: 4.3,
-        image: "/images/chicken_sate.jpg",
-        supplier: "the-alley",
-    },
-    {
-        id: "food_6",
-        title: "fried rice",
-        price: 150.0,
-        rating: 4.3,
-        image: "/images/fried_rice.jpg",
-        supplier: "the-alley",
-    },
-    {
-        id: "food_7",
-        title: "nachos galore",
-        price: 120.0,
-        rating: 4.3,
-        image: "/images/nachos_galore.jpg",
-        supplier: "the-alley",
-    },
-    {
-        id: "food_8",
-        title: "pasta",
-        price: 120.0,
-        rating: 4.3,
-        image: "/images/pasta.jpg",
-        supplier: "the-alley",
-    },
-    {
-        id: "food_9",
-        title: "ramen",
-        price: 80.0,
-        rating: 4.3,
-        image: "/images/ramen.jpg",
-        supplier: "the-alley",
-    },
-    {
-        id: "food_10",
-        title: "noodles",
-        price: 70.0,
-        rating: 4.3,
-        image: "/images/noodles.jpg",
-        supplier: "the-alley",
-    },
-]
 
 const category =
     [
@@ -134,20 +52,20 @@ export default function SupplierPage() {
 
             axios.put(`/supplier/${supplierId}`, {
                 params: {
-                    // ID: 12345
                 }
             })
                 .then(function (res) {
 
                     let temp = res.data.data.supplier;
                     let temp2 = res.data.data.foods;
+                    console.log(res.data.data);
 
 
                     temp = temp.map(item => {
                         return {
                             name: item.TENCH,
                             location: "Burger King - Fast Food",
-                            logo: "/images/restaurant-logo/burger-king.png",
+                            logo: item.DIACHIHINHANHND //`${item.DIACHIHINHANHND ?? "/images/restaurant-logo/burger-king.png"}`,
                         }
                     });
                     temp2 = temp2.map(item => {
@@ -158,6 +76,7 @@ export default function SupplierPage() {
                             price: item.GIA,
                         }
                     });
+
 
                     setSupplier(temp[0]);
                     setFoods(temp2);
