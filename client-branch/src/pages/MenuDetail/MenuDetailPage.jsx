@@ -3,6 +3,7 @@ import { BsPencilSquare, BsSave, BsTrash } from 'react-icons/bs';
 import { useParams } from 'react-router-dom';
 import foods from '../../assets/fake-data/foods';
 import styles from './MenuDetailPage.module.scss';
+import { useNavigate } from 'react-router-dom';
 
 const MenuDetailPage = () => {
   const { id } = useParams();
@@ -11,26 +12,73 @@ const MenuDetailPage = () => {
   const [isEditing, setIsEditing] = useState(false);
   const titleInputRef = useRef(null);
   const imageUploadRef = useRef(null);
+  const navigate = useNavigate();
+  const MACN = '1'; // TODO: edit later
 
   useEffect(() => {
-    const food = foods.find((food) => food.id === id);
-    setFood(food);
-    setIsLoading(false);
+    fetch('http://localhost:5000/supplier/1').then(res => res.json()).then(d => {
+      const { data: { foods } } = d;
+
+      const food = foods.find((food) => food.MAMONAN.trim() === id);
+
+      setFood(food);
+      setIsLoading(false);
+    })
   }, [id, setFood, setIsLoading]);
 
   const deleteFood = () => {
-    console.log('delete');
+    fetch('http://localhost:5000/supplier/food', {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        MACN,
+        MAMONAN: food.MAMONAN?.trim(),
+        TENMONAN: food.TENMONAN?.trim(),
+        GIA: food.GIA,
+        MOTA: food.MOTA?.trim(),
+        HINHANHTD: food.HINHANHTD,
+        TINHTRANG: 'DELETED',
+        MALAT: food.MALAT?.trim(),
+      })
+    }).then(res => res.json()).then(d => {
+      navigate('/menu');
+    }).catch(err => {
+      console.log(err);
+    })
+
+    setIsEditing(false);
   };
 
   const editFood = () => {
     setIsEditing(true);
     titleInputRef.current.focus();
-    console.log('edit');
   };
 
   const updateFood = () => {
+    fetch('http://localhost:5000/supplier/food', {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        MACN,
+        MAMONAN: food.MAMONAN?.trim(),
+        TENMONAN: food.TENMONAN?.trim(),
+        GIA: food.GIA,
+        MOTA: food.MOTA?.trim(),
+        HINHANHTD: food.HINHANHTD,
+        TINHTRANG: food.TINHTRANG?.trim(),
+        MALAT: food.MALAT?.trim(),
+      })
+    }).then(res => res.json()).then(d => {
+      console.log(d);
+    }).catch(err => {
+      console.log(err);
+    })
+
     setIsEditing(false);
-    console.log('update');
   };
 
   const onImageClick = () => {
@@ -62,7 +110,7 @@ const MenuDetailPage = () => {
   return (
     <div className={styles.container}>
       <div className={styles.header}>
-        <img src='/assets/imgs/food-detail.png' alt='food-detail' />
+        <img src="/assets/imgs/food-detail.png" alt='food-detail' />
         <h2>Food detail</h2>
       </div>
 
@@ -71,8 +119,8 @@ const MenuDetailPage = () => {
           <div className={styles.foodImageWrapper}>
             <img
               className={styles.foodImage}
-              src={food.image}
-              alt={food.title}
+              src={`https://picsum.photos/seed/${Math.floor(Math.random() * 1000)}/300/300`}
+              alt={food.TENMONAN}
             />
             {isEditing && (
               <div className={styles.overlay} onClick={onImageClick}>
@@ -88,9 +136,9 @@ const MenuDetailPage = () => {
               <label htmlFor='title'>Name</label>
               <input
                 id='title'
-                name='title'
+                name='TENMONAN'
                 onChange={onChange}
-                value={food.title}
+                value={food.TENMONAN}
                 readOnly={!isEditing}
                 ref={titleInputRef}
               />
@@ -100,25 +148,20 @@ const MenuDetailPage = () => {
               <label htmlFor='price'>Price</label>
               <input
                 id='price'
-                name='price'
+                name='GIA'
                 onChange={onChange}
-                value={food.price}
+                value={food.GIA}
                 readOnly={!isEditing}
               />
-            </div>
-
-            <div className={styles.inputGroup}>
-              <label htmlFor='rating'>Rating</label>
-              <input id='rating' readOnly={true} value={food.rating} />
             </div>
 
             <div className={styles.inputGroup}>
               <label htmlFor='description'>Description</label>
               <textarea
                 id='description'
-                name='description'
+                name='MOTA'
                 onChange={onChange}
-                value={food.description}
+                value={food.MOTA}
                 readOnly={!isEditing}
               />
             </div>
