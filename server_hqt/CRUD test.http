@@ -143,18 +143,14 @@ Content-Type: application/json
 {
 "MAKH": "1",
 "HINHTHUCTT":"VI",
-"MACN": "1         ",
+"MACN": "1",
 "MADCGH":null,
 "foods":[{
-            "MAMONAN": "1         ",
+            "MAMONAN": "1",
             "SOLUONG":3
         },
         {
-            "MAMONAN": "2        ",
-            "SOLUONG":3
-        },
-        {
-            "MAMONAN": "3         ",
+            "MAMONAN": "2",
             "SOLUONG":3
         }]
 }
@@ -173,7 +169,7 @@ post http://localhost:5000/supplier/food/1
 Content-Type: application/json
 
 {
-    "TENMONAN": "Com SUon",
+    "TENMONAN": "Com Suon",
     "MOTA": "Com Suon Ngon Lam Ban Oi",
     "GIA": 10000,
     "HINHANHTD": 1,
