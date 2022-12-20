@@ -1,3 +1,4 @@
+
 -- //////////////////////TEST//////////////////////////////
 EXEC sp_ThemPhamVi
 EXEC sp_CapNhatPhamVi
@@ -13,10 +14,10 @@ EXEC sp_ThemChiNhanh '0',null,0,null,null,null,null,'1'
 EXEC  sp_ThemCuaHang '0','BOBABOP','8:00','23:59','AVAILABLE'
 EXEC sp_insert_LAT
 
-EXEC sp_ThemThucDon 'chicken burger',NULL,20000,0,'https://i.postimg.cc/8z4jH0mR/chicken-burger.jpg','1','0'
-EXEC sp_ThemThucDon 'chicken deluxe fry',NULL,30000,0,'https://i.postimg.cc/DzhPWHy1/chicken-deluxe-fry.jpg','1','0'	
-EXEC sp_ThemThucDon 'chicken malai gravy',NULL,400000,0,'https://i.postimg.cc/qRSL7Rtv/chicken-malai-gravy.jpg','1','0'
-EXEC sp_ThemThucDon 'chicken malai gravy 123',NULL,400000,0,'https://i.postimg.cc/NMQwJWP3/chicken-pizza.jpg','1','0'
+EXEC sp_ThemThucDon 'chicken burger',NULL,20000,0,'https://i.postimg.cc/8z4jH0mR/chicken-burger.jpg','0','1'
+EXEC sp_ThemThucDon 'chicken deluxe fry',NULL,30000,0,'https://i.postimg.cc/DzhPWHy1/chicken-deluxe-fry.jpg','0','1'	
+EXEC sp_ThemThucDon 'chicken malai gravy',NULL,400000,0,'https://i.postimg.cc/qRSL7Rtv/chicken-malai-gravy.jpg','0','1'
+EXEC sp_ThemThucDon 'chicken malai gravy 123',NULL,400000,0,'https://i.postimg.cc/NMQwJWP3/chicken-pizza.jpg','0','1'
 
 EXEC sp_MonAn_TheoGia 1,'INCREASE'
 EXEC sp_Lay_CN '1'
