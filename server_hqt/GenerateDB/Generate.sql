@@ -15,6 +15,7 @@ EXEC sp_DANGKYDT 'DOITAC','123','Ntth@gmail.com',N'Bún bò','0999996','MST01','
 EXEC sp_DANGKYDT 'DOITAC','123','Vnkvy@gmail.com',N'Tokboki','03232446','MST02','mailNDD02',0,150
 
 EXEC sp_DANGKYQTV 'Admin1','123','admin1',N'Phạm Minh Tài','0123456'
+EXEC sp_DANGKYQTV 'Admin2','admin2','adm@mail','Hèng Đẹp Gái', '23321412'
 
 EXEC sp_DANGKYNV 'NHANVIEN1','123','HELLO',N'Phạm Minh Tài','0123456'
 EXEC sp_DANGKYNV 'NHANVIEN2','123','Hi@gmail.com',N'Phan Nguyễn Phước Nguyên','01243256'
@@ -22,6 +23,22 @@ EXEC sp_DANGKYNV 'NHANVIEN3','123','Vie@hcmus.edu',N'Võ Ngọc Khánh Vy','0124
 
 EXEC sp_DANGKYNGANHANG '1',1,N'DĨ AN',N'TPBANK','01234456'
 EXEC sp_DANGKYNGANHANG '1',2,N'DĨ AN',N'TPBANK','01234456'
+EXEC sp_DANGKYNGANHANG '2',2,N'Phú Yên',N'MPBANK','01245456'
+
+EXEC sp_ThemGiaCuoc 'MC1', 15000, 2, '12/12/2022', 'VND', '1'
+EXEC sp_ThemKhuVuc 'KV1', 'Khu vực 1', 'MC1'
+EXEC sp_ThemQuanHuyen 'H1', 'Huyện Quan Hóa','KV1'
+EXEC sp_ThemPhuong 'P1', 'Phường 1','H1'
+EXEC sp_ThemDiaChi 'DC1','123 Bùi Đình Túy', 'P1'
+
+EXEC sp_ThemGiaCuoc 'MC2', 30000, 4, '12/12/2022', 'VND', '2'
+EXEC sp_ThemKhuVuc 'KV2', 'Khu vực 2', 'MC2'
+EXEC sp_ThemQuanHuyen 'H2', 'Huyện Đồng Văn','KV2'
+EXEC sp_ThemPhuong 'P2', 'Phường 2','H2'
+EXEC sp_ThemDiaChi 'DC2','123 Thành Thái', 'P2'
+
+EXEC sp_ThemChiNhanh 5, '098736325',1,'https://cdn-www.vinid.net/2020/08/c852b982-c%E1%BB%ADa-h%C3%A0ng-ti%E1%BB%87n-l%E1%BB%A3i.jpg','1','12', 'DC1','1'
+EXEC sp_ThemChiNhanh 6, '342342243',1, 'https://image.thanhnien.vn/w1024/Uploaded/2022/wsxrxqeiod/2022_07_14/lang-kinh-2772.jpg', '2', '1', 'DC2', '2'
 
 EXEC sp_ThemChiNhanh '0',null,0,null,null,null,null,'1'
 EXEC sp_ThemChiNhanh 2, '132324', 0, NULL, NULL,NULL,NULL, '3'
@@ -37,6 +54,13 @@ EXEC sp_ThemThucDon 'chicken burger',NULL,20000,0,'https://i.postimg.cc/8z4jH0mR
 EXEC sp_ThemThucDon 'chicken deluxe fry',NULL,30000,0,'https://i.postimg.cc/DzhPWHy1/chicken-deluxe-fry.jpg','0','1'	
 EXEC sp_ThemThucDon 'chicken malai gravy',NULL,400000,0,'https://i.postimg.cc/qRSL7Rtv/chicken-malai-gravy.jpg','0','1'
 EXEC sp_ThemThucDon 'chicken malai gravy 123',NULL,400000,0,'https://i.postimg.cc/NMQwJWP3/chicken-pizza.jpg','0','1'
+
+EXEC sp_ThemThucDon 'Tra sua full topping', 'Ngon quá trời ngon', 20000, 1, 'https://www.bartender.edu.vn/wp-content/uploads/2022/04/tra-sua-nuong-hap-dan.jpg','5','1'
+EXEC sp_ThemThucDon 'Bun bo Hue dac biet', 'Ngon một chút hoy chứ hong ngon nhiều', 50000, 1, 'https://i.ytimg.com/vi/A_o2qfaTgKs/maxresdefault.jpg','5', '3'
+
+EXEC sp_ThemThucDon 'Bong Lan Trung Muoi', 'Ăn một miếng tăng 5 kí', 25000, 1, 'https://vn-live-02.slatic.net/p/e862cf389a7345d91c1de656a85d4287.jpg','6','4'
+EXEC sp_ThemThucDon 'Tra sua nuong', 'Ngon mà tui tỉnh luôn', 35000, 1, 'https://abar.vn/wp-content/uploads/2021/08/tra-sua-nuong.jpg','6', '1'
+
 
 EXEC sp_ThemHopDong HD1, 5, 1000000, 1
 EXEC sp_ThemHopDong HD2, 1, 1000000, 2

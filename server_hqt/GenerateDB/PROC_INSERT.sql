@@ -203,7 +203,7 @@ COMMIT TRAN
 return 
 GO	
 
---Thêm đường--
+--Thêm phường--
 CREATE PROC sp_ThemPhuong
 	@MAPHUONG CHAR(10),
 	@TENPHUONG NVARCHAR(50),
