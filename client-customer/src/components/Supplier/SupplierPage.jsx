@@ -132,7 +132,7 @@ export default function SupplierPage() {
     useEffect(() => {
         const getData = () => {
 
-            axios.get(`/supplier/${supplierId}`, {
+            axios.put(`/supplier/${supplierId}`, {
                 params: {
                     // ID: 12345
                 }
