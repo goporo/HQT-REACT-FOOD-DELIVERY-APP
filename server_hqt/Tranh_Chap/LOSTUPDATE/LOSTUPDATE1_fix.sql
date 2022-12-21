@@ -1,6 +1,6 @@
 ﻿use QL_BANHANG_TRANHCHAP
 --T1: tài xế A cập nhật tình trạng đơn hàng
-CREATE PROC sp_CapNhat_DH_TX_fix
+CREATE PROC sp_CapNhat_DH_TX
 @TRANGTHAIDH CHAR(20),
 @MATX CHAR(10),
 @MADH CHAR(10)
@@ -65,7 +65,7 @@ GO
 
 
 --T2: tài xế B tiến hành cập nhật trạng thái đơn hàng (cùng 1 đơn với tài xế A)
-CREATE PROC sp_CapNhat_DH_TX_Tranhchap2_fix
+CREATE PROC sp_CapNhat_DH_TX_Tranhchap2
 @TRANGTHAIDH CHAR(20),
 @MATX CHAR(10),
 @MADH CHAR(10)
