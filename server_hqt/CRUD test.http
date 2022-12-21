@@ -62,7 +62,7 @@ Content-Type: application/json
     "SLDUKIENMAX":100
 }
 ### Lấy SP theo GIá
-GET   http://localhost:5000/food/price
+PUT   http://localhost:5000/food/price
 Content-Type: application/json
 
 {
@@ -70,7 +70,7 @@ Content-Type: application/json
     "THUTU":"INCREASE"
 }
 ### Lấy Món theo chi nhánh
-GET   http://localhost:5000/food/supplier
+PUT   http://localhost:5000/food/supplier
 Content-Type: application/json
 
 {
@@ -78,7 +78,7 @@ Content-Type: application/json
     "MACN":"1"
 }
 ### Lấy Món theo loại
-GET   http://localhost:5000/food/foodType
+PUT   http://localhost:5000/food/foodType
 Content-Type: application/json
 
 {
@@ -86,7 +86,7 @@ Content-Type: application/json
     "MALAT":"1"
 }
 ### Lấy Đơn Hàng Khách hàng
-GET   http://localhost:5000/order/customer
+PUT   http://localhost:5000/order/customer
 Content-Type: application/json
 
 {
@@ -95,7 +95,7 @@ Content-Type: application/json
     "TGKT":""
 }
 ### Lấy Đơn Hàng TÀI XẾ
-GET   http://localhost:5000/order/shipper
+PUT   http://localhost:5000/order/shipper
 Content-Type: application/json
 
 {
@@ -104,7 +104,7 @@ Content-Type: application/json
     "TGKT":""
 }
 ### Lấy Đơn Hàng CHI NHANH
-GET   http://localhost:5000/order/branch
+PUT   http://localhost:5000/order/branch
 Content-Type: application/json
 
 {
@@ -113,7 +113,7 @@ Content-Type: application/json
     "TGKT":""
 }
 ### Lấy Đơn Hàng DOI TAC
-GET   http://localhost:5000/order/supplier
+PUT   http://localhost:5000/order/supplier
 Content-Type: application/json
 
 {
@@ -122,7 +122,7 @@ Content-Type: application/json
     "TGKT":""
 }
 ### Lấy Đối tác
-GET   http://localhost:5000/supplier/2
+PUT   http://localhost:5000/supplier/2
 ### tạo đơn hàng
 POST http://localhost:5000/order/place-order
 Content-Type: application/json
@@ -182,7 +182,7 @@ Content-Type: application/json
 
 }
 ### lấy hợp đồng cho nhân viên nếu lấy hợp đồng hết hạn thì phải có mốc thời gian hết hạn đi theo
-GET http://localhost:5000/contract/employee/expiring
+PUT http://localhost:5000/contract/employee/expiring
 Content-Type: application/json
 
 {
@@ -216,7 +216,7 @@ Content-Type: application/json
     "MANHANVIEN":"1"
 }
 ### đăng nhập
-GET http://localhost:5000/user/login/4
+PUT http://localhost:5000/user/login/4
 Content-Type: application/json
 
 {
