@@ -16,6 +16,9 @@ const routes = {
   },
   profile: {
     path: '/profile'
+  },
+  login: {
+    path: '/login'
   }
 };
 
