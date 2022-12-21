@@ -85,6 +85,14 @@ Content-Type: application/json
     "SL":10,
     "MALAT":"1"
 }
+### Lấy Đơn Hàng chi tiết
+PUT   http://localhost:5000/order/orderdetails
+Content-Type: application/json
+
+{
+    "MAKH":"1",
+    "MADH":"1"
+}
 ### Lấy Đơn Hàng Khách hàng
 PUT   http://localhost:5000/order/customer
 Content-Type: application/json
@@ -122,13 +130,14 @@ Content-Type: application/json
     "TGKT":""
 }
 ### Lấy Đối tác
-PUT   http://localhost:5000/supplier/2
+GET   http://localhost:5000/supplier/2
 ### tạo đơn hàng
 POST http://localhost:5000/order/place-order
 Content-Type: application/json
 
 {
-"MAKH": "1         ",
+"MAKH": "1",
+"MACN": "1",
 "HINHTHUCTT":"VI",
 "MADCGH":null,
 "foods":[{

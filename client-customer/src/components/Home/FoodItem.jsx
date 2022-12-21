@@ -5,7 +5,9 @@ import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 import { useState } from "react";
 
-
+const formatCurrency = (num) => {
+    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + 'đ'
+}
 
 const FoodItem = ({ f }) => {
     const [loading, setLoading] = useState(true)
@@ -28,7 +30,7 @@ const FoodItem = ({ f }) => {
 
 
                 <div className="bg-[#ffede6] text-[#ff4f00] text-xs font-semibold px-4 py-1 rounded-md whitespace-nowrap">
-                    {f.price}đ
+                    {formatCurrency(f.price)}
                 </div>
             </div>
         </div>
