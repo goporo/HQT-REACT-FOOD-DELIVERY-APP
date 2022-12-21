@@ -111,8 +111,8 @@ exports.postNewContracts = async (req, res) => {
     ///////////////////
     var list_CHINHANH = new sql.Table();  
     list_CHINHANH.columns.add('STT',sql.Int)
-    list_CHINHANH.columns.add('MATKNGANHANG', sql.Char(10));  
-    list_CHINHANH.columns.add('MADIACHI', sql.Char(10));  
+    list_CHINHANH.columns.add('MATKNGANHANG', sql.VarChar(10));  
+    list_CHINHANH.columns.add('MADIACHI', sql.VarChar(10));  
     list_CHINHANH.columns.add('TENTK', sql.VarChar(50));  
     list_CHINHANH.columns.add('MATKHAUTK', sql.VarChar(50));  
 
@@ -126,7 +126,7 @@ exports.postNewContracts = async (req, res) => {
     ////////////////////////
     let pool = await sql.connect(config)
     let result = await pool.request().
-        input("MADOITAC",sql.Char(10),MADT).
+        input("MADOITAC",sql.VarChar(10),MADT).
         input("THOIHAN",sql.Int,THOIHAN).
         input("PHIKH",sql.Int,PHIKH).
         input("list_CHINHANH",list_CHINHANH).
@@ -158,9 +158,9 @@ exports.postAccept = async (req, res) => {
         var MANHANVIEN =req.body.MANHANVIEN
         let pool = await sql.connect(config)
         let result = await pool.request().
-            input("MAHD",sql.Char(10),MAHD).
+            input("MAHD",sql.VarChar(10),MAHD).
             input("STT",sql.Int,STT).
-            input("MANV",sql.Char(10),MANHANVIEN).
+            input("MANV",sql.VarChar(10),MANHANVIEN).
             execute("sp_HopDong_XacNhan")
         sql.close()
         var success=true
@@ -190,9 +190,9 @@ exports.postExtendContracts = async (req, res) => {
         var MADT =req.body.MADT
         let pool = await sql.connect(config)
         let result = await pool.request().
-            input("MADT",sql.Char(10),MADT).
+            input("MADT",sql.VarChar(10),MADT).
             input("THOIHAN",sql.Int,THOIHAN).
-            input("MAHD",sql.Char(10),MAHD).
+            input("MAHD",sql.VarChar(10),MAHD).
             execute("sp_HopDong_YeuCauGiaHan")
         sql.close()
         var success=true

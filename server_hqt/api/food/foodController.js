@@ -25,7 +25,7 @@ exports.foodType = async (req, res) => {
             let pool = await sql.connect(config)
             let result = await pool.request().
                 input("SL", sql.Int, SL).
-                input("MALAT", sql.Varchar(10), MALAT).
+                input("MALAT", sql.VarChar(10), MALAT).
                 execute("sp_MonAn_LoaiAmThuc")
             sql.close()
             var success = true
@@ -59,7 +59,7 @@ exports.supplier = async (req, res) => {
             let pool = await sql.connect(config)
             let result = await pool.request().
                 input("SL", sql.Int, SL).
-                input("MACN", sql.Varchar(10), MACN).
+                input("MACN", sql.VarChar(10), MACN).
                 execute("sp_MonAn_ChiNhanh")
             sql.close()
             var success = true
@@ -93,7 +93,7 @@ exports.price = async (req, res) => {
             let pool = await sql.connect(config)
             let result = await pool.request().
                 input("SL", sql.Int, SL).
-                input("THUTU", sql.Varchar(10), THUTU).
+                input("THUTU", sql.VarChar(10), THUTU).
                 execute("sp_MonAn_TheoGia")
             sql.close()
             var success = true
