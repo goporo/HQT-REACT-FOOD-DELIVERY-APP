@@ -9,26 +9,9 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 
 
-// const supplier = {
-//     id: "res_4",
-//     name: "Burger King - Fast Food",
-//     logo: "/images/restaurant-logo/burger-king.png",
-//     location: "1041/62/128 Trần Xuân Soạn, P. Tân Hưng, Quận 7, TP. HCM",
-//     rating: 4,
-//     distance: 4.3,
-//     offer: "Free Delivery",
-//     deliveryFree: true,
-//     category:
-//         [
-//             "Fried Chicken",
-//             "Drinks",
-//             "Grilled Meat",
-//             "Hamburger",
-//             "Hotdog"
-//         ]
-
-
-// }
+const formatCurrency = (num) => {
+    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + 'đ'
+}
 
 
 const category =
@@ -153,7 +136,7 @@ export default function SupplierPage() {
                                     <p className="text-gray-500 text-sm mb-3">Lorem ipsum dolor sit amet, bo corrupti doloribus eum delectus voluptatibus magni rerum, voluptas recusandae illo.</p>
                                 </div>
                                 <div className='flex flex-row items-center'>
-                                    <p className="text-blue-500 text-sm mr-3">{item.price}đ</p>
+                                    <p className="text-orange-500 text-sm mr-3">{formatCurrency(item.price)}</p>
                                     <button
                                         onClick={() => addToCart(item)}
                                         className='cursor-pointer hover:opacity-80 rounded-lg bg-red-600 text-white text-md font-semibold py-1 px-3'>+</button>

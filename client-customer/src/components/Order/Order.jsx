@@ -57,7 +57,6 @@ const Order = () => {
       })
         .then(function (res) {
           let temp = res.data.data;
-          console.log(res.data.data);
           temp = temp.map((item) => {
             return {
               orderID: item.MADH,
@@ -95,7 +94,11 @@ const Order = () => {
               <hr className="my-2" />
               <div className="flex items-end flex-col space-y-2">
                 <div className="">Total: {formatCurrency(item.total)}</div>
-                <div className="text-lg">Người giao hàng: <span className="text-orange-400">{item.shipper}</span></div>
+                {item.shipper ?
+                  <div className="text-lg">Người giao hàng: <span className="text-orange-400">{item.shipper}</span></div>
+                  :
+                  null
+                }
                 {
                   orderStatus(item.status, item.orderID)
                 }
