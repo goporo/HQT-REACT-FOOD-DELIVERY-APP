@@ -169,10 +169,11 @@ const Checkout = (props) => {
     });
     e.preventDefault();
     // console.log(e.target[0].value)
+    console.log(cartItems[0]);
     try {
       axios.post(`/order/place-order`, {
         "MAKH": makh,
-        "MACN": "1",
+        "MACN": cartItems[0].MACN,
         "HINHTHUCTT": "VI",
         "MADCGH": null,
         "foods": foods

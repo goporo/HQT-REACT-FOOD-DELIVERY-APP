@@ -51,6 +51,7 @@ export default function SupplierPage() {
                     });
                     temp2 = temp2.map(item => {
                         return {
+                            MACN: item.MACN,
                             id: item.MAMONAN,
                             title: item.TENMONAN,
                             image: item.DIACHIHINHANHTD,
