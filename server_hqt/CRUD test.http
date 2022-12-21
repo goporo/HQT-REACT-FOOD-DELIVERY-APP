@@ -128,12 +128,7 @@ POST http://localhost:5000/order/place-order
 Content-Type: application/json
 
 {
-<<<<<<< Updated upstream
-"MAKH": "1",
-"MACN": "1",
-=======
 "MAKH": "1         ",
->>>>>>> Stashed changes
 "HINHTHUCTT":"VI",
 "MADCGH":null,
 "foods":[{

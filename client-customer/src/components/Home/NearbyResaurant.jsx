@@ -14,7 +14,7 @@ const NearbyResaurant = ({ restaurants }) => {
                 <div className="flex flex-col gap-8">
                     {restaurants.map((r) => (
                         <div className="flex space-x-3" key={r.id}>
-                            <div className="h-20 w-20 rounded-xl overflow-hidden border-gray-50 border-2 shadow-sm">
+                            <div className="h-20 w-20 rounded-xl overflow-y-hidden border-gray-50 border-2 shadow-sm">
                                 <span>
                                     <Link to={`/supplier/${r.id}`}>
 

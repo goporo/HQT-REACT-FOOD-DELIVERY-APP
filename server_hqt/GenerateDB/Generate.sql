@@ -1,10 +1,4 @@
-
 -- //////////////////////TEST//////////////////////////////
-EXEC sp_ThemPhamVi
-EXEC sp_CapNhatPhamVi
-
-
-
 
 EXEC sp_DANGKYKH '123','123'
 EXEC sp_DANGKYKH 'NguyenPhan','pnguyen123'
@@ -73,9 +67,9 @@ EXEC sp_ThemHoaHong '01/01/2020','01/01/2025',10
 EXEC sp_ThemHoaHong '01/01/2020','01/01/2026',10
 EXEC sp_ThemHoaHong '01/01/2020','01/01/2022',10
 
-EXEC sp_ThemThongTinHopDong '1',5,'01/01/2020','01/01/2025','HH1','1'
-EXEC sp_ThemThongTinHopDong '2',6,'01/01/2020','01/01/2026','HH2','1'
-EXEC sp_ThemThongTinHopDong '3',2,'01/01/2020','01/01/2022','HH3','2'
+EXEC sp_ThemThongTinHopDong 1,5,'01/01/2020','01/01/2025','HH1','1'
+EXEC sp_ThemThongTinHopDong 2,6,'01/01/2020','01/01/2026','HH2','1'
+EXEC sp_ThemThongTinHopDong 3,2,'01/01/2020','01/01/2022','HH3','2'
 
 EXEC sp_ThemDonDH '1','DELIVERING','12/1/2022','VPBank', 200000, 15000,'1', '1', '1', '1', NULL
 EXEC sp_ThemDonDH '2','DELIVERING','12/1/2022','VPBank', 200000, 15000,'1', '1', '1', '1', NULL
@@ -86,29 +80,9 @@ EXEC sp_ThemThucDonDatHang '2', '1', 1
 EXEC sp_ThemThucDonDatHang '3', '2', 1
 EXEC sp_ThemThucDonDatHang '4', '2', 1
 
-EXEC sp_MonAn_TheoGia 1,'INCREASE'
-EXEC sp_Lay_CN '1'
 
-SELECT * FROM PHAMVIBANG 
-SELECT * FROM KHACHHANG 
-SELECT * FROM TAIKHOAN
-SELECT * FROM TAIXE
-SELECT * FROM DOITAC
-SELECT * FROM NHANVIEN
-SELECT * FROM NGANHANG
-SELECT * FROM PHUONG
-SELECT * FROM CHINHANH
-SELECT * FROM THUCDON
-SELECT * FROM DON_DH
-SELECT * FROM THUCDONDATHANG
-SELECT * FROM LOAIAMTHUC
-select * from THONGTIN_HOAHONG
-select * from HOPDONG
-select * from HOPDONGCHINHANH
-select * from THONGTIN_HOPDONG
+
 
 EXEC sp_ThemPhamVi
 EXEC sp_CapNhatPhamVi
-select * from PHAMVIBANG
-select * from DON_DH
 UPDATE PHAMVIBANG SET IDMAX  =(SELECT MAX(convert(int,MADH)) FROM DON_DH ) WHERE TENPHAMVI='DON_DH'

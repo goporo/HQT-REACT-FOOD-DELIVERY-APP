@@ -36,7 +36,7 @@ export default function HomePage() {
             });
     }
     const getRestaurants = () => {
-        axios.put('/supplier', {
+        axios.get('/supplier', {
             params: {
             }
         })
@@ -79,7 +79,7 @@ export default function HomePage() {
                 </div>
 
                 <div className="w-11/12 mx-auto">
-                    <div className="grid grid-cols-2 md:grid-cols-3 gap-x-5 gap-y-16">
+                    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-x-5 gap-y-16">
                         {foods.map((food, index) => (
                             <FoodItem key={index} f={food} />
                         ))}
@@ -87,7 +87,7 @@ export default function HomePage() {
                 </div>
             </div>
 
-            <div className="hidden 2xl:block">
+            <div className="">
                 <NearbyResaurant restaurants={restaurants} />
             </div>
         </div>
