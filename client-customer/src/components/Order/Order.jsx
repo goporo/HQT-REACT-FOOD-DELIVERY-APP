@@ -15,9 +15,32 @@ const Order = () => {
   const [orders, setOrders] = useState([]);
   const cancelOrder = () => {
     // /order/:userType
-    axios.post(`/order/5`, {
+    axios.post(`/order/4`, {
       "MAKH": makh,
     })
+  }
+  const orderStatus = (status) => {
+    status = status.replace(/\s/g, '').toLowerCase();
+    if (status === "available") return <button
+      className="w-[150px] py-3 bg-red-500 text-white cursor-pointer hover:opacity-80 rounded-md">
+      Cancel
+    </button>
+    if (status === "canceled") return <button
+      className="w-[150px] py-3 bg-gray-500 cursor-not-allowed text-white rounded-md">
+      Canceled
+    </button>
+    if (status === "delivering") return <button
+      className="w-[150px] py-3 bg-red-500 text-white cursor-pointer hover:opacity-80 rounded-md">
+      Received
+    </button>
+    if (status === "received") return <button
+      className="w-[150px] py-3 bg-gray-500 cursor-not-allowed text-white rounded-md">
+      Received
+    </button>
+    return <button
+      className="w-[150px] py-3 bg-red-500 text-white cursor-pointer hover:opacity-80 rounded-md">
+      Received
+    </button>
   }
 
   useEffect(() => {
@@ -58,7 +81,7 @@ const Order = () => {
             <div key={index} className="mb-10 bg-white p-5 shadow-sm rounded-lg">
               <div className="flex items-center justify-between mb-2">
                 <div className="font-semibold bg-orange-400 text-white text-sm w-fit rounded-md py-2 px-3">ORDER: {item.orderID}</div>
-                <div className={`flex flex-row justify-center text-white text-sm py-1 px-2 rounded-md ${(item.status.replace(/\s/g, '') === "PROCESSING" || item.status.replace(/\s/g, '') === "DELIVERED") ? "bg-green-500" : "bg-orange-400"}`}>
+                <div className={`flex flex-row justify-center text-white text-sm py-1 px-2 rounded-md ${(item.status.replace(/\s/g, '') === "AVAILABLE" || item.status.replace(/\s/g, '') === "DELIVERED") ? "bg-green-500" : "bg-orange-400"}`}>
                   {item.status}
                 </div>
               </div>
@@ -68,16 +91,7 @@ const Order = () => {
                 <div className="">Total: {formatCurrency(item.total)}</div>
                 <div className="text-lg">Người giao hàng: <span className="text-orange-400">{item.shipper}</span></div>
                 {
-                  (item.status.replace(/\s/g, '') === "PROCESSING") ?
-                    <button
-                      className="w-[150px] py-3 bg-red-500 text-white cursor-pointer hover:opacity-80 rounded-md">
-                      Cancel
-                    </button>
-                    :
-                    <button
-                      className="w-[150px] py-3 bg-red-500 text-white cursor-pointer hover:opacity-80 rounded-md">
-                      Received
-                    </button>
+                  orderStatus(item.status)
                 }
               </div>
             </div>
