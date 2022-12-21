@@ -2,25 +2,41 @@ import React, { useState } from "react";
 
 import { useSelector, useDispatch } from "react-redux";
 import { cartActions } from "../../store/shopping-cart/cartSlice";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { BsFillTrashFill } from 'react-icons/bs';
 import Select from 'react-select'
 import Modal from 'react-modal';
 import { FormControl, FormControlLabel, FormLabel, Radio, RadioGroup, TextField } from "@mui/material";
 import LazyLoad from "react-lazy-load";
+import axios from "axios";
 
+const makh = '1'
+
+const formatCurrency = (num) => {
+  return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + 'đ'
+}
 
 const Cart = () => {
   const [showModal, setShowModal] = useState(false);
   const cartItems = useSelector((state) => state.cart.cartItems);
   const totalAmount = useSelector((state) => state.cart.totalAmount);
+
+
   return (
     <section>
       <div>
         <div>
           <div className="p-10 relative w-11/12">
             {cartItems.length === 0 ? (
-              <h5 className="text-center">Your cart is empty</h5>
+              <div >
+                <div className="text-center text-lg mb-5">Your cart is empty
+                  <a
+                    href="/"
+                    className="text-orange-500 hover:underline ml-2"
+                  >Order Now</a>
+                </div>
+
+              </div>
             ) : (
               <table className="table-fixed w-full">
                 <thead >
@@ -39,20 +55,26 @@ const Cart = () => {
                 </tbody>
               </table>
             )}
-            <hr />
-            <div className="mt-5 flex flex-col right-14 absolute text-center">
-              <h6>
-                Total:
-                <span className="text-orange-400"> {totalAmount}đ</span>
-              </h6>
-              <div className="mt-4">
-                <button
-                  onClick={() => setShowModal(true)}
-                  className="px-10 py-3 bg-red-500 text-white cursor-pointer hover:opacity-80 rounded-md">
-                  Checkout
-                </button>
-              </div>
-            </div>
+            {cartItems.length === 0 ?
+              null :
+              <>
+                <hr />
+                <div className="mt-5 flex flex-col right-14 absolute text-center">
+                  <h6>
+                    Total:
+                    <span className="text-orange-400"> {formatCurrency(totalAmount)}</span>
+                  </h6>
+                  <div className="mt-4">
+                    <button
+                      onClick={() => setShowModal(true)}
+                      className="px-10 py-3 bg-red-500 text-white cursor-pointer hover:opacity-80 rounded-md">
+                      Checkout
+                    </button>
+                  </div>
+                </div>
+              </>
+            }
+
           </div>
         </div>
       </div>
@@ -68,7 +90,7 @@ const Cart = () => {
         }}
       >
         <div className="w-full flex justify-center p-5">
-          <Checkout />
+          <Checkout cartItems={cartItems} />
           <button
             className="fixed top-0 right-0 bg-red-500 text-white text-center py-3 px-4 font-bold rounded-lg"
             onClick={() => setShowModal(false)}>X</button>
@@ -104,7 +126,7 @@ const Tr = (props) => {
         <h1 className="font-semibold text-lg capitalize">{title}</h1>
       </td>
       <td >
-        <p className="text-orange-500 text-lg">{price}đ</p>
+        <p className="text-orange-500 text-md">{formatCurrency(price)}</p>
       </td>
       <td >
         <div className="flex flex-row justify-center">
@@ -126,15 +148,11 @@ const Tr = (props) => {
 export default Cart;
 
 
-
 // MODAL
-const Checkout = () => {
-  const [enterName, setEnterName] = useState("");
-  const [enterEmail, setEnterEmail] = useState("");
-  const [enterNumber, setEnterNumber] = useState("");
-  const [enterCountry, setEnterCountry] = useState("");
-  const [enterCity, setEnterCity] = useState("");
-  const [postalCode, setPostalCode] = useState("");
+const Checkout = (props) => {
+  const cartItems = props.cartItems;
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const shippingInfo = [];
   const cartTotalAmount = useSelector((state) => state.cart.totalAmount);
@@ -142,60 +160,77 @@ const Checkout = () => {
 
   const totalAmount = cartTotalAmount + Number(shippingCost);
 
-  const submitHandler = (e) => {
+  const handleCheckout = (e) => {
+    const foods = cartItems.map(item => {
+      return {
+        MAMONAN: item.id,
+        SOLUONG: item.quantity
+      }
+    });
     e.preventDefault();
-    const userShippingAddress = {
-      name: enterName,
-      email: enterEmail,
-      phone: enterNumber,
-      country: enterCountry,
-      city: enterCity,
-      postalCode: postalCode,
-    };
+    // console.log(e.target[0].value)
+    try {
+      axios.post(`/order/place-order`, {
+        "MAKH": makh,
+        "MACN": "1",
+        "HINHTHUCTT": "VI",
+        "MADCGH": null,
+        "foods": foods
+      })
+      //xoa thuc an khoi cart
+      foods.forEach((item) => {
+        dispatch(cartActions.deleteItem(item.MAMONAN));
+      })
 
-    shippingInfo.push(userShippingAddress);
-    console.log(shippingInfo);
+      navigate("/order")
+
+    } catch (error) {
+      alert(error);
+    }
+
   };
 
   return (
     <div>
       <h6 className="mb-4">Shipping Information</h6>
-      <FormControl>
-        <TextField id="outlined-basic" label="Name" variant="outlined" margin="normal" />
-        <TextField required id="outlined-basic" label="Phone Number" variant="outlined" margin="normal" />
-        <TextField required id="outlined-basic" label="Address" variant="outlined" margin="normal" />
-        <FormLabel id="demo-radio-buttons-group-label">Payment method</FormLabel>
-        <RadioGroup
-          required
-          row
-          aria-labelledby="demo-radio-buttons-group-label"
-          defaultValue="female"
-          name="radio-buttons-group"
-        >
-          <FormControlLabel value="cod" control={<Radio />} label="Cash On Delivery" />
-          <FormControlLabel value="cc" control={<Radio />} label="Credit Card" />
-          <FormControlLabel value="mm" control={<Radio />} label="Momo" />
-        </RadioGroup>
+      <form onSubmit={handleCheckout}>
+        <FormControl >
+          <TextField id="outlined-basic" label="Name" variant="outlined" margin="normal" />
+          <TextField id="outlined-basic" label="Phone Number" variant="outlined" margin="normal" />
+          <TextField id="outlined-basic" label="Address" variant="outlined" margin="normal" />
+          <FormLabel id="demo-radio-buttons-group-label">Payment method</FormLabel>
+          <RadioGroup
+            row
+            aria-labelledby="demo-radio-buttons-group-label"
+            defaultValue="vi"
+            name="radio-buttons-group"
+          >
+            <FormControlLabel value="vi" control={<Radio />} label="Cash On Delivery" />
+            <FormControlLabel value="cc" control={<Radio />} label="Credit Card" />
+            <FormControlLabel value="mm" control={<Radio />} label="Momo" />
+          </RadioGroup>
 
-        <div className="my-4">
-          <h6 className="flex items-center justify-between mb-4">
-            Subtotal: <span className="text-orange-400">{cartTotalAmount}đ</span>
-          </h6>
-          <h6 className="flex items-center justify-between mb-4">
-            Shipping: <span className="text-orange-400">{shippingCost}đ</span>
-          </h6>
-          <hr />
-          <div className="mt-4">
-            <h5 className="flex items-center justify-between font-semibold">
-              Total: <span className="text-orange-400">{totalAmount}đ</span>
-            </h5>
+          <div className="my-4">
+            <h6 className="flex items-center justify-between mb-4">
+              Subtotal: <span className="text-orange-400">{formatCurrency(cartTotalAmount)}</span>
+            </h6>
+            <h6 className="flex items-center justify-between mb-4">
+              Shipping: <span className="text-orange-400">{formatCurrency(shippingCost)}</span>
+            </h6>
+            <hr />
+            <div className="mt-4">
+              <h5 className="flex items-center justify-between font-semibold">
+                Total: <span className="text-orange-400">{formatCurrency(totalAmount)}</span>
+              </h5>
+            </div>
           </div>
-        </div>
-
-        <button type="submit" className="py-3 px-14 text-white bg-red-500 rounded-lg hover:opacity-80">
+        </FormControl>
+        <button
+          type="submit"
+          className="py-3 px-14 text-white bg-red-500 rounded-lg hover:opacity-80">
           Buy
         </button>
-      </FormControl>
+      </form>
     </div>
   );
 };
