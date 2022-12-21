@@ -64,6 +64,7 @@ exports.getOrdersBranch = async (req, res) => {
         var MACN = req.body["MACN"]
         var TGBD = req.body["TGBD"]
         var TGBD = req.body["TGKT"]
+
         let pool = await sql.connect(config)
         let result = await pool.request().
             input("MACN", sql.VarChar(10), MACN).

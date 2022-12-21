@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import foods from '../../assets/fake-data/foods';
 import styles from './MenuDetailPage.module.scss';
 import { useNavigate } from 'react-router-dom';
+import Select from 'react-select';
 
 const MenuDetailPage = () => {
   const { id } = useParams();
@@ -15,16 +16,40 @@ const MenuDetailPage = () => {
   const navigate = useNavigate();
   const MACN = '1'; // TODO: edit later
 
+  const [typeOptions, setTypeOptions] = useState([]);
+  const [selectedOption, setSelectedOption] = useState(null);
+
+  const handleSelectChange = (selectedOption) => {
+    setFood({ ...food, MALAT: selectedOption.value });
+    setSelectedOption(selectedOption);
+  };
+
   useEffect(() => {
     fetch('http://localhost:5000/supplier/1').then(res => res.json()).then(d => {
       const { data: { foods } } = d;
 
       const food = foods.find((food) => food.MAMONAN.trim() === id);
 
-      setFood(food);
-      setIsLoading(false);
+      fetch('http://localhost:5000/food/type', {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }).then((res) => res.json()).then((data) => {
+        const options = data.types.map((type) => {
+          return {
+            value: type.MALAT,
+            label: type.TENLAT,
+          }
+        });
+
+        setFood({ ...food });
+        setSelectedOption(food.MALAT ? options.find((option) => option.value === food.MALAT) : null);
+        setTypeOptions(options);
+        setIsLoading(false);
+      });
     })
-  }, [id, setFood, setIsLoading]);
+  }, [id, setFood, setIsLoading, setTypeOptions, setSelectedOption]);
 
   const deleteFood = () => {
     fetch('http://localhost:5000/supplier/food', {
@@ -69,6 +94,7 @@ const MenuDetailPage = () => {
         GIA: food.GIA,
         MOTA: food.MOTA?.trim(),
         HINHANHTD: food.HINHANHTD,
+        DIACHIHINHANHTD: food.DIACHIHINHANHTD,
         TINHTRANG: food.TINHTRANG?.trim(),
         MALAT: food.MALAT?.trim(),
       })
@@ -81,26 +107,15 @@ const MenuDetailPage = () => {
     setIsEditing(false);
   };
 
-  const onImageClick = () => {
-    console.log('image clicked');
-
-    imageUploadRef.current.click();
-
-    imageUploadRef.current.onchange = (e) => {
-      const file = e.target.files[0];
-      const reader = new FileReader();
-
-      reader.onloadend = () => {
-        setFood({ ...food, image: reader.result });
-      };
-
-      reader.readAsDataURL(file);
-    };
-  };
-
   const onChange = (e) => {
     const { name, value } = e.target;
     setFood({ ...food, [name]: value });
+
+    if (name === 'DIACHIHINHANHTD') {
+      setFood({ ...food, [name]: value, HINHANHTD: !!value });
+    } else {
+      setFood({ ...food, [name]: value });
+    }
   };
 
   if (isLoading) {
@@ -119,14 +134,9 @@ const MenuDetailPage = () => {
           <div className={styles.foodImageWrapper}>
             <img
               className={styles.foodImage}
-              src={`https://picsum.photos/seed/${Math.floor(Math.random() * 1000)}/300/300`}
+              src={food.DIACHIHINHANHTD || 'http://yummyverse.net/images/default.png'}
               alt={food.TENMONAN}
             />
-            {isEditing && (
-              <div className={styles.overlay} onClick={onImageClick}>
-                <BsPencilSquare className={styles.overlayBtnIcon} />
-              </div>
-            )}
           </div>
 
           <div className={styles.foodDetailWrapper}>
@@ -156,12 +166,34 @@ const MenuDetailPage = () => {
             </div>
 
             <div className={styles.inputGroup}>
+              <label htmlFor='image'>Image</label>
+              <input
+                id='image'
+                name='DIACHIHINHANHTD'
+                onChange={onChange}
+                readOnly={!isEditing}
+                value={food.DIACHIHINHANHTD || ''}
+              />
+            </div>
+
+            <div className={styles.inputGroup}>
+              <label htmlFor='type'>Type</label>
+              <Select
+                value={selectedOption}
+                onChange={handleSelectChange}
+                options={typeOptions}
+                menuPortalTarget={document.body}
+                isDisabled={!isEditing}
+              />
+            </div>
+
+            <div className={styles.inputGroup}>
               <label htmlFor='description'>Description</label>
               <textarea
                 id='description'
                 name='MOTA'
                 onChange={onChange}
-                value={food.MOTA}
+                value={food.MOTA || ''}
                 readOnly={!isEditing}
               />
             </div>
