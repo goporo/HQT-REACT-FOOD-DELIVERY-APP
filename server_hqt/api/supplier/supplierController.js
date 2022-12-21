@@ -35,7 +35,7 @@ exports.getSuppliersDetails = async (req, res) => {
         var MACN = req.params.id
 
         let pool = await sql.connect(config)
-        let result = await pool.request().input("MACN", sql.Char(10), MACN).execute("sp_Lay_CN")
+        let result = await pool.request().input("MACN", sql.Varchar(10), MACN).execute("sp_Lay_CN")
 
         sql.close()
         var success = true
@@ -67,12 +67,12 @@ exports.addFood = async (req, res) => {
         let pool = await sql.connect(config)
         let result = await pool.request().
             input("TENMONAN", sql.VarChar(100), TENMONAN).
-            input("MACN", sql.Char(10), MACN).
+            input("MACN", sql.Varchar(10), MACN).
             input("MOTA", sql.Char(100), MOTA).
             input("GIA", sql.Int, GIA).
             input("HINHANHTD", sql.Bit, HINHANHTD).
             input("DIACHIHINHANHTD", sql.VarChar(sql.MAX), DIACHIHINHANHTD).
-            input("MALAT", sql.Char(10), MALAT).
+            input("MALAT", sql.Varchar(10), MALAT).
             execute("sp_ThemThucDon")
 
         console.log(result);
@@ -112,13 +112,13 @@ exports.updateFood = async (req, res) => {
         let pool = await sql.connect(config)
         let result = await pool.request().
             input("TENMONAN", sql.VarChar(100), TENMONAN).
-            input("MACN", sql.Char(10), MACN).
+            input("MACN", sql.Varchar(10), MACN).
             input("MOTA", sql.Char(100), MOTA).
             input("GIA", sql.Int, GIA).
             input("HINHANHTD", sql.Bit, HINHANHTD).
             input("DIACHIHINHANHTD", sql.VarChar(sql.MAX), DIACHIHINHANHTD).
-            input("MALAT", sql.Char(10), MALAT).
-            input("MAMONAN", sql.Char(10), MAMONAN).
+            input("MALAT", sql.Varchar(10), MALAT).
+            input("MAMONAN", sql.Varchar(10), MAMONAN).
             input("TINHTRANGTd", sql.Char(20), TINHTRANG).
             execute("sp_CapNhatThucDon")
 

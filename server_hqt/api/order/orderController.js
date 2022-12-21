@@ -11,7 +11,7 @@ exports.getOrdersCustomer = async (req, res) => {
         var TGBD = req.body["TGKT"]
         let pool = await sql.connect(config)
         let result = await pool.request().
-            input("MAKH", sql.Char(10), MAKH).
+            input("MAKH", sql.Varchar(10), MAKH).
             input("TGBD", sql.DateTime, new Date()).
             input("TGKT", sql.DateTime, new Date()).
             execute("sp_DonHang_KH")
@@ -38,7 +38,7 @@ exports.getOrdersShipper = async (req, res) => {
         var TGBD = req.body["TGKT"]
         let pool = await sql.connect(config)
         let result = await pool.request().
-            input("MATX", sql.Char(10), MATX).
+            input("MATX", sql.Varchar(10), MATX).
             input("TGBD", sql.DateTime, new Date()).
             input("TGKT", sql.DateTime, new Date()).
             execute("sp_DonHang_TX")
@@ -66,7 +66,7 @@ exports.getOrdersBranch = async (req, res) => {
         var TGBD = req.body["TGKT"]
         let pool = await sql.connect(config)
         let result = await pool.request().
-            input("MACN", sql.Char(10), MACN).
+            input("MACN", sql.Varchar(10), MACN).
             input("TGBD", sql.DateTime, new Date()).
             input("TGKT", sql.DateTime, new Date()).
             execute("sp_DonHang_CN")
@@ -93,7 +93,7 @@ exports.getOrdersSupplier = async (req, res) => {
         var TGBD = req.body["TGKT"]
         let pool = await sql.connect(config)
         let result = await pool.request().
-            input("MADT", sql.Char(10), MADT).
+            input("MADT", sql.Varchar(10), MADT).
             input("TGBD", sql.DateTime, new Date()).
             input("TGKT", sql.DateTime, new Date()).
             execute("sp_DonHang_DT")
@@ -121,8 +121,8 @@ exports.getOrderDetails = async (req, res) => {
         var MADH = req.body["MADH"]
         let pool = await sql.connect(config)
         let result = await pool.request().
-            input("MAKH", sql.Char(10), MAKH).
-            input("MADH", sql.Char(10), MADH).
+            input("MAKH", sql.Varchar(10), MAKH).
+            input("MADH", sql.Varchar(10), MADH).
             execute("sp_DonHang_ChiTiet")
         sql.close()
         var success = true
@@ -151,7 +151,7 @@ exports.placeOrder = async (req, res) => {
         ///////////////////
         var list_MONAN = new sql.Table();
         list_MONAN.columns.add('STT', sql.Int)
-        list_MONAN.columns.add('MAMONAN', sql.Char(10));
+        list_MONAN.columns.add('MAMONAN', sql.Varchar(10));
         list_MONAN.columns.add('SOLUONG', sql.Int);
 
         for (var i = 0; i < MONAN.length; i++) {
@@ -161,9 +161,9 @@ exports.placeOrder = async (req, res) => {
         ////////////////////////
         let pool = await sql.connect(config)
         let result = await pool.request().
-            input("MAKH", sql.Char(10), MAKH).
-            input("MACN", sql.Char(10), MACN).
-            input("MADIACHI", sql.Char(10), MADCGH).
+            input("MAKH", sql.Varchar(10), MAKH).
+            input("MACN", sql.Varchar(10), MACN).
+            input("MADIACHI", sql.Varchar(10), MADCGH).
             input("HINHTHUCTT", sql.Char(20), HINHTHUCTT).
             input("PHIVANCHUYEN", sql.Int, 20000).
             input("list_MONAN", list_MONAN).
@@ -200,22 +200,22 @@ exports.cancelOrder = async (req, res) => {
         switch (req.params.type) {
             case '3':
                 result = await pool.request().
-                    input("MACN", sql.Char(10), MAND).
-                    input("MADH", sql.Char(10), MADH).
+                    input("MACN", sql.Varchar(10), MAND).
+                    input("MADH", sql.Varchar(10), MADH).
                     input("TRANGTHAIDH", sql.Char(20), TRANGTHAIDH).
                     execute("sp_CapNhat_DH_CN");
                 break;
             case '4':
                 result = await pool.request().
-                    input("MATX", sql.Char(10), MAND).
-                    input("MADH", sql.Char(10), MADH).
+                    input("MATX", sql.Varchar(10), MAND).
+                    input("MADH", sql.Varchar(10), MADH).
                     input("TRANGTHAIDH", sql.Char(20), TRANGTHAIDH).
                     execute("sp_CapNhat_DH_TX");
                 break;
             case '5':
                 result = await pool.request().
-                    input("MAKH", sql.Char(10), MAND).
-                    input("MADH", sql.Char(10), MADH).
+                    input("MAKH", sql.Varchar(10), MAND).
+                    input("MADH", sql.Varchar(10), MADH).
                     input("TRANGTHAIDH", sql.Char(20), TRANGTHAIDH).
                     execute("sp_CapNhat_DH_KH");
                 break;

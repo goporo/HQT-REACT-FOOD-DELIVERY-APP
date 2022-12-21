@@ -66,8 +66,8 @@ exports.registerShipper = async (req, res) => {
                 input("MATKHAUTK",sql.VarChar(50),MATKHAUTK).
                 input("EMAIL",sql.VarChar(50),EMAIL).
                 input("TEN",sql.VarChar(50),TEN).
-                input("SDT",sql.Char(10),SDT).
-                input("BIENSOXE",sql.Char(10),BIENSOXE).
+                input("SDT",sql.Varchar(10),SDT).
+                input("BIENSOXE",sql.Varchar(10),BIENSOXE).
                 input("CMND",sql.Char(12),CMND).
                 execute("sp_DANGKYTX")
                 sql.close()
@@ -118,7 +118,7 @@ exports.registerAdmin = async (req, res) => {
                 input("MATKHAUTK",sql.VarChar(50),MATKHAUTK).
                 input("EMAIL",sql.VarChar(50),EMAIL).
                 input("TEN",sql.VarChar(50),TEN).
-                input("SDT",sql.Char(10),SDT).
+                input("SDT",sql.Varchar(10),SDT).
                 execute("sp_DANGKYQTV")
                 sql.close()
                 var success=true
@@ -166,7 +166,7 @@ exports.registerEmployee = async (req, res) => {
                 input("MATKHAUTK",sql.VarChar(50),MATKHAUTK).
                 input("EMAIL",sql.VarChar(50),EMAIL).
                 input("TEN",sql.VarChar(50),TEN).
-                input("SDT",sql.Char(10),SDT).
+                input("SDT",sql.Varchar(10),SDT).
                 execute("sp_DANGKYNV")
                 sql.close()
                 var success=true
@@ -218,8 +218,8 @@ exports.registerSupplier = async (req, res) => {
                 input("MATKHAUTK",sql.VarChar(50),MATKHAUTK).
                 input("EMAILDT",sql.VarChar(50),EMAIL).
                 input("TENDT",sql.VarChar(50),TEN).
-                input("SDTDT",sql.Char(10),SDT).
-                input("MSTHUE",sql.Char(10),MSTHUE).
+                input("SDTDT",sql.Varchar(10),SDT).
+                input("MSTHUE",sql.Varchar(10),MSTHUE).
                 input("MAIL_NDD",sql.VarChar(50),MAIL_NDD).
                 input("SLDUKIENMIN",sql.Int,SLDUKIENMIN).
                 input("SLDUKIENMAX",sql.Int,SLDUKIENMAX).
@@ -274,8 +274,8 @@ exports.getProfileUser=async (req, res) => {
                 input("MATKHAUTK",sql.VarChar(50),MATKHAUTK).
                 input("EMAILDT",sql.VarChar(50),EMAIL).
                 input("TENDT",sql.VarChar(50),TEN).
-                input("SDTDT",sql.Char(10),SDT).
-                input("MSTHUE",sql.Char(10),MSTHUE).
+                input("SDTDT",sql.Varchar(10),SDT).
+                input("MSTHUE",sql.Varchar(10),MSTHUE).
                 input("MAIL_NDD",sql.VarChar(50),MAIL_NDD).
                 input("SLDUKIENMIN",sql.Int,SLDUKIENMIN).
                 input("SLDUKIENMAX",sql.Int,SLDUKIENMAX).
@@ -329,8 +329,8 @@ exports.updateProfileUser=async (req, res) => {
                 input("MATKHAUTK",sql.VarChar(50),MATKHAUTK).
                 input("EMAILDT",sql.VarChar(50),EMAIL).
                 input("TENDT",sql.VarChar(50),TEN).
-                input("SDTDT",sql.Char(10),SDT).
-                input("MSTHUE",sql.Char(10),MSTHUE).
+                input("SDTDT",sql.Varchar(10),SDT).
+                input("MSTHUE",sql.Varchar(10),MSTHUE).
                 input("MAIL_NDD",sql.VarChar(50),MAIL_NDD).
                 input("SLDUKIENMIN",sql.Int,SLDUKIENMIN).
                 input("SLDUKIENMAX",sql.Int,SLDUKIENMAX).
