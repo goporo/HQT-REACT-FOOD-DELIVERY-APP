@@ -14,7 +14,7 @@ const FoodItem = ({ f }) => {
         {/* {loading && <Skeleton height={192} />} */}
         <Link to={`/menu/${food.MAMONAN}`}>
           <LazyLoad className="h-full w-full">
-            <img src={`https://statics.vinpearl.com/com-tam-ngon-o-sai-gon-0_1630563211.jpg`} alt={food.TENMONAN}
+            <img src={food.DIACHIHINHANHTD || 'http://yummyverse.net/images/default.png'} alt={food.TENMONAN}
               className="h-full w-full object-cover hover:scale-110 transition duration-200"
             />
           </LazyLoad>

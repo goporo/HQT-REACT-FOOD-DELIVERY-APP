@@ -12,35 +12,18 @@ const MenuPage = () => {
   const [foods, setFoods] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const addFood = async () => {
-    const response = await fetch("http://localhost:5000/supplier/food/1", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        TENMONAN: "com tam " + Math.random(),
-        MOTA: "com tam ngon lam ban oi",
-        GIA: 20000,
-        HINHANHTD: 0,
-        DIACHIHINHANHTD: "227 Nguyen Van Cu",
-        MALAT: "1"
-      }),
-    });
-
-    if (response.ok) {
-      console.log("success");
-
-      getFoods();
-    } else {
-      console.log("fail");
-    }
-  }
-
   async function getFoods() {
     const response = await fetch("http://localhost:5000/supplier/1");
     const data = await response.json();
     setFoods(data.data.foods);
+  }
+
+  const setModal = async (state, isAdd = false) => {
+    if (isAdd) {
+      await getFoods();
+    }
+
+    setIsModalOpen(state);
   }
 
   useEffect(() => {
@@ -60,14 +43,14 @@ const MenuPage = () => {
 
         <div className="w-11/12 mx-auto">
           <div className="grid xl:grid-cols-4 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-x-5 gap-y-16">
-            {foods.map((food, index) => (
-              <FoodItem key={index} f={food} />
+            {foods.map((food) => (
+              <FoodItem key={food.MAMONAN} f={food} />
             ))}
           </div>
         </div>
       </div>
 
-      <AddFoodModal isOpen={isModalOpen} setIsOpen={setIsModalOpen} />
+      <AddFoodModal isOpen={isModalOpen} setIsOpen={setModal} />
     </div>
   );
 };

@@ -129,13 +129,12 @@ exports.type = async (req, res) => {
         var success = true
         var message = "Success Get"
         var types = result.recordsets[0]
-        res.json({ success, message, foods })
+        res.json({ success, message, types })
     }
     catch (error) {
         var success = false
         var message = "Failed To Get Food"
-        var foods = {}
-        res.json({ success, message, foods })
+        res.json({ success, message })
     }
 
 };

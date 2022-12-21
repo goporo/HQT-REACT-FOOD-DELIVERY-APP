@@ -7,6 +7,7 @@ import routes from 'routes/routes';
 import ContractPage from 'pages/Contract/ContractPage';
 import ProfilePage from 'pages/Profile/ProfilePage';
 import MenuDetailPage from 'pages/MenuDetail/MenuDetailPage';
+import LoginPage from 'pages/Login/LoginPage';
 
 function App() {
   return (
@@ -24,6 +25,8 @@ function App() {
         />
         <Route path={routes.profile.path} element={<ProfilePage />} />
       </Route>
+
+     <Route path={routes.login.path} element={<LoginPage />} />
     </Routes>
   );
 }
