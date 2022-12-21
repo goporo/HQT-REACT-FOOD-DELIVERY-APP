@@ -53,7 +53,7 @@ EXEC sp_insert_LAT
 EXEC sp_ThemThucDon 'chicken burger',NULL,20000,0,'https://i.postimg.cc/8z4jH0mR/chicken-burger.jpg','3','1'
 EXEC sp_ThemThucDon 'chicken deluxe fry',NULL,30000,0,'https://i.postimg.cc/DzhPWHy1/chicken-deluxe-fry.jpg','1','1'	
 EXEC sp_ThemThucDon 'chicken malai gravy',NULL,400000,0,'https://i.postimg.cc/qRSL7Rtv/chicken-malai-gravy.jpg','4','1'
-EXEC sp_ThemThucDon 'chicken malai gravy 123',NULL,400000,0,'https://i.postimg.cc/NMQwJWP3/chicken-pizza.jpg','3','1'
+EXEC sp_ThemThucDon 'france pizza',NULL,400000,0,'https://i.postimg.cc/NMQwJWP3/chicken-pizza.jpg','3','1'
 EXEC sp_ThemThucDon 'Tra sua full topping', 'Ngon quá trời ngon', 20000, 1, 'https://www.bartender.edu.vn/wp-content/uploads/2022/04/tra-sua-nuong-hap-dan.jpg','1','1'
 EXEC sp_ThemThucDon 'Bun bo Hue dac biet', 'Ngon một chút hoy chứ hong ngon nhiều', 50000, 1, 'https://i.ytimg.com/vi/A_o2qfaTgKs/maxresdefault.jpg','2', '3'
 EXEC sp_ThemThucDon 'Bong Lan Trung Muoi', 'Ăn một miếng tăng 5 kí', 25000, 1, 'https://vn-live-02.slatic.net/p/e862cf389a7345d91c1de656a85d4287.jpg','1','4'

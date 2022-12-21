@@ -44,7 +44,7 @@ const cartSlice = createSlice({
         // ===== note: if you use just redux you should not mute state array instead of clone the state array, but if you use redux toolkit that will not a problem because redux toolkit clone the array behind the scene
 
         state.cartItems.push({
-          macn: newItem.macn,
+          MACN: newItem.MACN,
           id: newItem.id,
           title: newItem.title,
           price: newItem.price,
