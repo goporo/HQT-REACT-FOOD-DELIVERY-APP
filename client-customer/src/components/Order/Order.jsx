@@ -13,15 +13,21 @@ const formatCurrency = (num) => {
 
 const Order = () => {
   const [orders, setOrders] = useState([]);
-  const cancelOrder = () => {
+  const [needRefresh, setNeedRefresh] = useState(false);
+
+  const updateOrder = (status, madh) => {
     // /order/:userType
-    axios.post(`/order/4`, {
-      "MAKH": makh,
+    axios.post(`/order/5`, {
+      "MAND": makh,
+      "TRANGTHAIDH": status,
+      "MADH": madh,
     })
+    setNeedRefresh(!needRefresh)
   }
-  const orderStatus = (status) => {
+  const orderStatus = (status, orderID) => {
     status = status.replace(/\s/g, '').toLowerCase();
     if (status === "available") return <button
+      onClick={() => updateOrder("CANCELED", orderID)}
       className="w-[150px] py-3 bg-red-500 text-white cursor-pointer hover:opacity-80 rounded-md">
       Cancel
     </button>
@@ -67,7 +73,7 @@ const Order = () => {
         });
     };
     getData();
-  }, [])
+  }, [needRefresh])
 
 
 
@@ -91,7 +97,7 @@ const Order = () => {
                 <div className="">Total: {formatCurrency(item.total)}</div>
                 <div className="text-lg">Người giao hàng: <span className="text-orange-400">{item.shipper}</span></div>
                 {
-                  orderStatus(item.status)
+                  orderStatus(item.status, item.orderID)
                 }
               </div>
             </div>

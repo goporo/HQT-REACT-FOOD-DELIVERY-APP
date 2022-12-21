@@ -150,13 +150,13 @@ Content-Type: application/json
         }]
 }
 ### cập nhật đơn hàng
-POST http://localhost:5000/order/4
+POST http://localhost:5000/order/5
 Content-Type: application/json
 
 {
 "MAND": "1",
 "TRANGTHAIDH":"CANCELED",
-"MADH": "3"
+"MADH": "1"
 
 }
 
