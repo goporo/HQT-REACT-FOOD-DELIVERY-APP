@@ -216,7 +216,7 @@ Content-Type: application/json
 
 {
     "MAHD":"1",
-    "THOIHAN":2,
+    "THOIHAN":4,
     "MADT":"1"
 }
 ### Lấy hợp đồng của đối tác
