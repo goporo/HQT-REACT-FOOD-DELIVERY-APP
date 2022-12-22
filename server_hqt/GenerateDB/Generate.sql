@@ -12,8 +12,9 @@ EXEC sp_DANGKYDT 'doitac','doitac','Pmt@gmail.com',N'Cơm nhà làm','0123456','
 EXEC sp_DANGKYDT 'doitac2','doitac2','Ntth@gmail.com',N'Bún bò','0999996','MST01','mailNDD01',0,150
 EXEC sp_DANGKYDT 'doitac3','doitac3','Vnkvy@gmail.com',N'Tokboki','03232446','MST02','mailNDD02',0,150
 
-EXEC sp_DANGKYQTV 'admin','admin','admin1',N'Phạm Minh Tài','0123456'
-EXEC sp_DANGKYQTV 'admin2','admin2','adm@mail','Hèng Đẹp Gái', '23321412'
+-- bug
+-- EXEC sp_DANGKYQTV 'admin','admin','admin1',N'Phạm Minh Tài','0123456'
+-- EXEC sp_DANGKYQTV 'admin2','admin2','adm@mail','Hèng Đẹp Gái', '23321412'
 
 EXEC sp_DANGKYNV 'nhanvien','nhanvien','HELLO',N'Phạm Minh Tài','0123456'
 EXEC sp_DANGKYNV 'nhanvien2','nhanvien2','Hi@gmail.com',N'Phan Nguyễn Phước Nguyên','01243256'
@@ -58,12 +59,14 @@ EXEC sp_ThemThucDon 'Tra sua full topping', 'Ngon quá trời ngon', 20000, 1, '
 EXEC sp_ThemThucDon 'Bun bo Hue dac biet', 'Ngon một chút hoy chứ hong ngon nhiều', 50000, 1, 'https://i.ytimg.com/vi/A_o2qfaTgKs/maxresdefault.jpg','2', '3'
 EXEC sp_ThemThucDon 'Bong Lan Trung Muoi', 'Ăn một miếng tăng 5 kí', 25000, 1, 'https://vn-live-02.slatic.net/p/e862cf389a7345d91c1de656a85d4287.jpg','1','4'
 EXEC sp_ThemThucDon 'Tra sua nuong', 'Ngon mà tui tỉnh luôn', 35000, 1, 'https://abar.vn/wp-content/uploads/2021/08/tra-sua-nuong.jpg','2', '1'
+EXEC sp_ThemThucDon 'hong tra', 'Ngon mà tui tỉnh luôn', 35000, 1, 'https://image.thanhnien.vn/w1024/Uploaded/2022/wobjohb/2022_10_15/p1-7475.jpeg','1', '1'
+
 
 EXEC sp_ThemHoaHong '01/01/2020','01/01/2025',10
 
 EXEC sp_ThemThongTinHopDong '1',1,10,'01/01/2020','01/01/2025','1','1'
-EXEC sp_ThemThongTinHopDong '2',2,12,'01/01/2020','01/01/2026','2','1'
-EXEC sp_ThemThongTinHopDong '3',3,6,'01/01/2020','01/01/2022','3',NULL
+EXEC sp_ThemThongTinHopDong '2',2,12,'01/01/2020','01/01/2026','1','1'
+EXEC sp_ThemThongTinHopDong '3',3,6,'01/01/2020','01/01/2022','1',NULL
 EXEC sp_ThemThongTinHopDong '4',4,24,'01/01/2020','01/01/2022','1',NULL
 
 EXEC sp_ThemHopDong '1', 5, 1000000, 1
