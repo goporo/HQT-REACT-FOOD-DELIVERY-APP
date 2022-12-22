@@ -5,8 +5,8 @@ import Home from "../pages/Home";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 import Statistics from "../pages/Statistics";
-import Order from "../pages/Order";
 import Settings from "../pages/Settings";
+import Order from "../components/Order/Order";
 
 const Routers = () => {
   return (
@@ -18,6 +18,7 @@ const Routers = () => {
       <Route path="/register" element={<Register />} />
       <Route path="/order" element={<Order />} />
       <Route path="/setting" element={<Settings />} />
+
     </Routes>
   );
 };
