@@ -3,6 +3,8 @@ import { BsGrid } from "react-icons/bs";
 import { IoSettingsOutline } from "react-icons/io5";
 import SidebarRow from "./SidebarRow";
 import imageSidebar from "../../assets/images/undraw_On_the_way_re_swjt.svg";
+import { RiHeart2Line, RiFileList3Line } from "react-icons/ri";
+import { Link } from "react-router-dom";
 
 const nav__links = [
     {
@@ -11,20 +13,21 @@ const nav__links = [
         Icon: BsGrid,
     },
     {
-        display: "Received Order",
+        display: "Order",
         to: "/order",
-        Icon: FiBookmark,
+        Icon: RiFileList3Line,
+        badge: 3,
     },
     {
         display: "Statistics",
         to: "/statistics",
         Icon: FiPieChart,
     },
-    {
-        display: "Settings",
-        to: "/setting",
-        Icon: IoSettingsOutline,
-    },
+    // {
+    //     display: "Settings",
+    //     to: "/setting",
+    //     Icon: IoSettingsOutline,
+    // },
 ];
 
 const Sidebar = () => {
@@ -72,6 +75,9 @@ const Sidebar = () => {
                                 Free delivery service in first order & every
                                 purchase of ₹1500.
                             </div>
+                            <Link to="/login" className="mt-4 mb-2 text-sm font-semibold bg-purple-600 text-white px-3 py-2 rounded-lg">
+                                Order Now
+                            </Link>
                         </div>
                     </div>
                 </div>

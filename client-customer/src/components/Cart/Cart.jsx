@@ -10,6 +10,7 @@ import { FormControl, FormControlLabel, FormLabel, Radio, RadioGroup, TextField 
 import LazyLoad from "react-lazy-load";
 import axios from "axios";
 
+const makh = localStorage.getItem("MAKH")
 
 
 const formatCurrency = (num) => {
