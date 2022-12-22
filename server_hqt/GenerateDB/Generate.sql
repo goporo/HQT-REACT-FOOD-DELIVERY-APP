@@ -39,7 +39,7 @@ EXEC sp_ThemDiaChi 'DC2','123 Thành Thái', 'P2'
 
 EXEC sp_ThemChiNhanh '1', '132324',0,'https://i.pinimg.com/originals/4e/95/ff/4e95ff2406e7914e70cbbba6dd9c51d2.jpg',null,null,null,'1'
 EXEC sp_ThemChiNhanh '2', '132324', 0, 'https://i.etsystatic.com/21215114/r/il/d0c7bd/4104680841/il_fullxfull.4104680841_hxug.jpg', NULL,NULL,NULL, '3'
-EXEC sp_ThemChiNhanh '3', '098736325',1,'https://c8.alamy.com/comp/PCYG1J/pizzeria-fast-food-logo-or-label-happy-chef-holding-pizza-and-scapula-in-hands-vector-illustration-PCYG1J.jpg','1','12', 'DC1','1'
+EXEC sp_ThemChiNhanh '3', '098736325',1,'https://c8.alamy.com/comp/PCYG1J/pizzeria-fast-food-logo-or-label-happy-chef-holding-pizza-and-scapula-in-hands-vector-illustration-PCYG1J.jpg','1','12', 'DC1','4'
 EXEC sp_ThemChiNhanh '4', '342342243',1, 'https://dynamic.brandcrowd.com/asset/logo/fc77e70d-34f4-44ca-8773-b3884b2213b9/logo-search-grid-1x?v=637936310133200000', '2', '1', 'DC2', '2'
 
 

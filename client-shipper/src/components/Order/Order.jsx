@@ -141,6 +141,7 @@ const Tr = (props) => {
       return axios.put(`/order/orderdetails`, {
         "MAKH": makh,
         "MADH": madh,
+        "USER_TYPE": "4"
       })
         .then(function (res) {
           let temp = res.data.data;
