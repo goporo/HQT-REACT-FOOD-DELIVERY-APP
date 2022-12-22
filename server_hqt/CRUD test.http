@@ -98,7 +98,7 @@ PUT   http://localhost:5000/order/customer
 Content-Type: application/json
 
 {
-    "MAKH":"1",
+    "MAKH":"2",
     "TGBD":"",
     "TGKT":""
 }
@@ -181,8 +181,8 @@ Content-Type: application/json
 "SUPPLIERS":[{
     "MATKNGANHANG":null,
     "MADIACHI":null,
-    "TENTK":"CHINHANH1",
-    "MATKHAUTK":"CHINHANH1"
+    "TENTK":null,
+    "MATKHAUTK":null
 }]
 
 }
@@ -193,6 +193,10 @@ Content-Type: application/json
 {
     "MONTH":36
 }
+###
+PUT http://localhost:5000/contract/employee/new
+Content-Type: application/json
+
 ### nhân viên xác nhận/gia hạn
 POST http://localhost:5000/contract/accept
 Content-Type: application/json
@@ -202,15 +206,18 @@ Content-Type: application/json
     "STT":1,
     "MANHANVIEN":"1"
 }
-### lấy hợp đồng của đối tác
+### Gia hạn hợp đồng của đối tác
 POST http://localhost:5000/contract/extend
 Content-Type: application/json
 
 {
     "MAHD":"1",
-    "THOIHAN":1,
+    "THOIHAN":2,
     "MADT":"1"
 }
+### Lấy hợp đồng của đối tác
+PUT http://localhost:5000/contract/business/1
+Content-Type: application/json
 ### nhân viên gia hạn
 POST http://localhost:5000/contract/accept
 Content-Type: application/json

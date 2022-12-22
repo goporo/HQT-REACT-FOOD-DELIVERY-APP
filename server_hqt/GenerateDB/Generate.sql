@@ -59,17 +59,18 @@ EXEC sp_ThemThucDon 'Bun bo Hue dac biet', 'Ngon một chút hoy chứ hong ngon
 EXEC sp_ThemThucDon 'Bong Lan Trung Muoi', 'Ăn một miếng tăng 5 kí', 25000, 1, 'https://vn-live-02.slatic.net/p/e862cf389a7345d91c1de656a85d4287.jpg','1','4'
 EXEC sp_ThemThucDon 'Tra sua nuong', 'Ngon mà tui tỉnh luôn', 35000, 1, 'https://abar.vn/wp-content/uploads/2021/08/tra-sua-nuong.jpg','2', '1'
 
+EXEC sp_ThemHoaHong '01/01/2020','01/01/2025',10
+
+EXEC sp_ThemThongTinHopDong '1',1,10,'01/01/2020','01/01/2025','1','1'
+EXEC sp_ThemThongTinHopDong '2',2,12,'01/01/2020','01/01/2026','2','1'
+EXEC sp_ThemThongTinHopDong '3',3,6,'01/01/2020','01/01/2022','3',NULL
+EXEC sp_ThemThongTinHopDong '4',4,24,'01/01/2020','01/01/2022','1',NULL
 
 EXEC sp_ThemHopDong '1', 5, 1000000, 1
 EXEC sp_ThemHopDong '2', 1, 1000000, 2
 EXEC sp_ThemHopDong '3', 2, 1000000, 3
 
-EXEC sp_ThemHoaHong '01/01/2020','01/01/2025',10
 
-
-EXEC sp_ThemThongTinHopDong '1',5,'01/01/2020','01/01/2025','HH1','1'
-EXEC sp_ThemThongTinHopDong '2',6,'01/01/2020','01/01/2026','HH2','1'
-EXEC sp_ThemThongTinHopDong '3',2,'01/01/2020','01/01/2022','HH3','2'
 
 EXEC sp_ThemDonDH '1','DELIVERING','12/1/2022','VPBank', 200000, 15000,'1', '1', '1', '1', NULL
 EXEC sp_ThemDonDH '2','DELIVERING','12/1/2022','VPBank', 200000, 15000,'1', '1', '1', '1', NULL

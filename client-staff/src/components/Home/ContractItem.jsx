@@ -1,23 +1,31 @@
-import { Link } from "react-router-dom";
 
-import LazyLoad from 'react-lazy-load';
-import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 import { useState } from "react";
 import { AiOutlineUser } from "react-icons/ai";
 
 import { useParams } from "react-router-dom";
+import axios from 'axios';
 
 
 
 
-const id = "the-alley"
+const manv = '1'
 
 const ContractItem = (props) => {
     const { contractId } = useParams()
-
-    const deleteItem = () => {
-
+    const [needRefresh, setNeedRefresh] = useState(false)
+    const handleAccept = (mahd) => {
+        try {
+            axios.post(`/contract/accept`, {
+                "MAHD": mahd,
+                "STT": 1,
+                "MANHANVIEN": manv
+            })
+            //tai lai trang
+            window.location.reload(true);
+        } catch (error) {
+            alert(error)
+        }
     }
 
     const {
@@ -27,7 +35,6 @@ const ContractItem = (props) => {
         thoihan,
         pthh,
         iddoitac,
-        idnhanvien
     } = props.item;
     return (
         <>
@@ -36,7 +43,7 @@ const ContractItem = (props) => {
                 <div className="w-2/12 flex justify-center my-6">
                     <AiOutlineUser size={48} />
                 </div>
-                <div className="w-2/12">
+                <div className="w-1/12">
                     <h1 className="capitalize">HD{idhopdong}</h1>
                 </div>
                 <div className="w-2/12">
@@ -48,13 +55,11 @@ const ContractItem = (props) => {
                 <div className="w-2/12">
                     <p className="">{pthh}%</p>
                 </div>
-                <div className="w-2/12">
-                    {
-                        idnhanvien ?
-                            <button className='w-[125px] text-center py-2 px-3 bg-red-500 text-white hover:opacity-80 rounded-md'>Extend</button>
-                            : <button className='text-center py-2 px-3 bg-orange-500 text-white cursor-default rounded-md'>Processing</button>
-
-                    }
+                <div className="w-3/12">
+                    <button
+                        onClick={() => handleAccept(idhopdong)}
+                        className='mr-2 text-center py-2 px-3 bg-green-500 text-white hover:opacity-80 rounded-md'>Accept</button>
+                    <button className='text-center py-2 px-3 bg-red-500 text-white hover:opacity-80 rounded-md'>Decline</button>
                 </div>
 
             </div >
