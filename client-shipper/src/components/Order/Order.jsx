@@ -6,7 +6,7 @@ import Header from "../Layout/Header";
 import Sidebar from "../Layout/Sidebar";
 
 
-const matx = '1'
+const matx = localStorage.getItem("MATX")
 
 const formatCurrency = (num) => {
   return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + 'đ'

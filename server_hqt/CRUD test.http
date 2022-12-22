@@ -102,12 +102,16 @@ Content-Type: application/json
     "TGBD":"",
     "TGKT":""
 }
+### Lấy đơn hàng available
+PUT   http://localhost:5000/order/AVAILABLE
+Content-Type: application/json
+
 ### Lấy Đơn Hàng TÀI XẾ
 PUT   http://localhost:5000/order/shipper
 Content-Type: application/json
 
 {
-    "MATX":"2",
+    "MATX":"1",
     "TGBD":"",
     "TGKT":""
 }
@@ -202,7 +206,7 @@ POST http://localhost:5000/contract/accept
 Content-Type: application/json
 
 {
-    "MAHD":"1",
+    "MAHD":"3",
     "STT":1,
     "MANHANVIEN":"1"
 }
@@ -228,10 +232,10 @@ Content-Type: application/json
     "MANHANVIEN":"1"
 }
 ### đăng nhập
-POST http://localhost:5000/user/login/5
+POST http://localhost:5000/user/login/4
 Content-Type: application/json
 
 {
-    "TENTK":"NguyenPhan",
-    "MATKHAUTK":"pnguyen123"
+    "TENTK":"TAIXE",
+    "MATKHAUTK":"123"
 }

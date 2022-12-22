@@ -51,7 +51,7 @@ const ContractItem = (props) => {
                 <div className="w-2/12">
                     {
                         idnhanvien ?
-                            <button className='w-[125px] text-center py-2 px-3 bg-red-500 text-white hover:opacity-80 rounded-md'>Extend</button>
+                            <button className='w-[125px] text-center py-2 px-3 bg-green-500 text-white cursor-default rounded-md'>Active</button>
                             : <button className='text-center py-2 px-3 bg-orange-500 text-white cursor-default rounded-md'>Processing</button>
 
                     }

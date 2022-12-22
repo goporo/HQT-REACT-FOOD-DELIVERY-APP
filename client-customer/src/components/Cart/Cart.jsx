@@ -121,7 +121,7 @@ const Tr = (props) => {
     <tr className="text-center">
       <td className="flex justify-center my-6">
         <LazyLoad height={64}>
-          <img className='w-[64px] h-[64px] rounded-lg' src={image} alt="" />
+          <img className='w-[64px] h-[64px] rounded-lg object-cover' src={image} alt="" />
         </LazyLoad>
       </td>
       <td >

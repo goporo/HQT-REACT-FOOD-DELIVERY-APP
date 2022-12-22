@@ -131,7 +131,7 @@ export default function SupplierPage() {
                         {foods.map((item, index) =>
 
                             <div key={index} className='flex flex-row justify-between mb-3 items-center'>
-                                <img className='w-[64px] h-[64px] rounded-lg' src={item.image} alt="" />
+                                <img className='object-cover w-[64px] h-[64px] rounded-lg' src={item.image} alt="" />
                                 <div className='w-8/12'>
                                     <h1 className="font-semibold text-xl mb-3">{item.title.toUpperCase()}</h1>
                                     <p className="text-gray-500 text-sm mb-3">Lorem ipsum dolor sit amet, bo corrupti doloribus eum delectus voluptatibus magni rerum, voluptas recusandae illo.</p>
