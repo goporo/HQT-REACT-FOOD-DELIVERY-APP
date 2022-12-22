@@ -2,116 +2,112 @@ import React from "react";
 import { useEffect, useState } from 'react';
 import moment from 'moment';
 
-const orders = [
-  {
-    orderID: "001",
-    items: [
-      {
-        id: "food_1",
-        title: "Nạm Gân",
-        price: 40000,
-      },
-      {
-        id: "food_2",
-        title: "Tái ",
-        price: 35000,
-      }
-    ],
-    status: "waiting",
-  },
-  {
-    orderID: "002",
-    items: [
-      {
-        id: "food_3",
-        title: "Tái Nạm",
-        price: 40000,
-      },
-      {
-        id: "food_4",
-        title: "Thập Cẩm",
-        price: 45000,
-      }
-    ],
-    status: "success",
-    shipper: "Ngin Phan",
-  },
-  {
-    orderID: "003",
-    items: [
-      {
-        id: "food_5",
-        title: "Đặc biệt",
-        price: 50000,
-      },
-      {
-        id: "food_6",
-        title: "Nạm",
-        price: 35000,
-      }
-    ],
-    status: "doing",
-  },
-  {
-    orderID: "004",
-    items: [
-      {
-        id: "food_7",
-        title: "Trà gừng",
-        price: 20000,
-      },
-      {
-        id: "food_8",
-        title: "Thập cẩm",
-        price: 45000,
-      }
-    ],
-    status: "shipping",
-    shipper: "Nguyen Phan",
-  },
-  {
-    orderID: "005",
-    items: [
-      {
-        id: "food_9",
-        title: "Đặc biệt",
-        price: 50000,
-      },
-      {
-        id: "food_10",
-        title: "Nạm",
-        price: 35000,
-      }
-    ],
-    status: "cancel",
-  },
-  {
-    orderID: "006",
-    items: [
-      {
-        id: "food_11",
-        title: "Nạm Gân",
-        price: 40000,
-      },
-      {
-        id: "food_12",
-        title: "Nạm",
-        price: 35000,
-      }
-    ],
-    status: "shipping",
-    shipper: "Minh Tei",
-  },
-]
+// const orders = [
+//   {
+//     orderID: "001",
+//     items: [
+//       {
+//         id: "food_1",
+//         title: "Nạm Gân",
+//         price: 40000,
+//       },
+//       {
+//         id: "food_2",
+//         title: "Tái ",
+//         price: 35000,
+//       }
+//     ],
+//     status: "waiting",
+//   },
+//   {
+//     orderID: "002",
+//     items: [
+//       {
+//         id: "food_3",
+//         title: "Tái Nạm",
+//         price: 40000,
+//       },
+//       {
+//         id: "food_4",
+//         title: "Thập Cẩm",
+//         price: 45000,
+//       }
+//     ],
+//     status: "success",
+//     shipper: "Ngin Phan",
+//   },
+//   {
+//     orderID: "003",
+//     items: [
+//       {
+//         id: "food_5",
+//         title: "Đặc biệt",
+//         price: 50000,
+//       },
+//       {
+//         id: "food_6",
+//         title: "Nạm",
+//         price: 35000,
+//       }
+//     ],
+//     status: "doing",
+//   },
+//   {
+//     orderID: "004",
+//     items: [
+//       {
+//         id: "food_7",
+//         title: "Trà gừng",
+//         price: 20000,
+//       },
+//       {
+//         id: "food_8",
+//         title: "Thập cẩm",
+//         price: 45000,
+//       }
+//     ],
+//     status: "shipping",
+//     shipper: "Nguyen Phan",
+//   },
+//   {
+//     orderID: "005",
+//     items: [
+//       {
+//         id: "food_9",
+//         title: "Đặc biệt",
+//         price: 50000,
+//       },
+//       {
+//         id: "food_10",
+//         title: "Nạm",
+//         price: 35000,
+//       }
+//     ],
+//     status: "cancel",
+//   },
+//   {
+//     orderID: "006",
+//     items: [
+//       {
+//         id: "food_11",
+//         title: "Nạm Gân",
+//         price: 40000,
+//       },
+//       {
+//         id: "food_12",
+//         title: "Nạm",
+//         price: 35000,
+//       }
+//     ],
+//     status: "shipping",
+//     shipper: "Minh Tei",
+//   },
+// ]
 
 const OrdersPage = () => {
-  useEffect(() => {
-    console.log(JSON.stringify({
-      MACN: '1         ',
-      TGBD: moment().subtract(1, 'years').format('YYYY-MM-DD'),
-      TGKT: moment().format('YYYY-MM-DD'),
-    }));
+  const [orders, setOrders] = useState([]);
 
+  useEffect(() => {
     fetch('http://localhost:5000/order/branch', {
       method: 'PUT',
       headers: {
@@ -125,8 +121,31 @@ const OrdersPage = () => {
       })
     }).then(res => res.json()).then(data => {
       console.log(data);
+
+      const orders = data.data.Orders.map(item => {
+        return {
+          MADH: item.MADH[0],
+          MAKH: item.MAKH[0],
+        }
+      })
+
+      Promise.all(orders.map(item => {
+        return fetch('http://localhost:5000/order/orderdetails', {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(item)
+            }).then(res => res.json()).then(data => {
+              return data.data;
+            })
+          })).then(orders => {
+            data.data.Orders.items = orders;
+            console.log(data.data.Orders);
+            setOrders(data.data.Orders);
+          })
     })
-  }, []);
+  }, [setOrders]);
 
   return (
     <section>
@@ -134,7 +153,7 @@ const OrdersPage = () => {
         <div>
           <div className="p-10 relative w-12/12">
             {orders.length === 0 ? (
-              <h5 className="text-center">Your cart is empty</h5>
+              <h5 className="text-center">Empty</h5>
             ) : (
               <div className="">
                 {orders.map((item, index) => (
@@ -155,6 +174,9 @@ const Tr = (props) => {
     style: 'currency',
     currency: 'VND'
   });
+
+  console.log(props.item);
+
   const {
     orderID,
     items,

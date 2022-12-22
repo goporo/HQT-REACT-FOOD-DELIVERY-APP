@@ -185,8 +185,8 @@ Content-Type: application/json
 "SUPPLIERS":[{
     "MATKNGANHANG":null,
     "MADIACHI":null,
-    "TENTK":null,
-    "MATKHAUTK":null
+    "TENTK": "chinhanh",
+    "MATKHAUTK": "chinhanh"
 }]
 
 }
