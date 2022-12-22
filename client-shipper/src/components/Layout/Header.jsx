@@ -22,8 +22,11 @@ const Header = (props) => {
                                 className="object-cover h-full w-full"
                             />
                         </div>
+                        <p>Tai xe {localStorage.getItem("MATX") ?? "NULL"}</p>
                         <NavLink to='/login'>
-                            <button className="w-20 rounded-md text-lg bg-orange-600 text-white">Log out</button>
+                            <button
+                                onClick={() => localStorage.removeItem("MATX")}
+                                className="w-20 rounded-md text-lg bg-orange-600 text-white">Log out</button>
                         </NavLink>
                     </div>
                 </div>

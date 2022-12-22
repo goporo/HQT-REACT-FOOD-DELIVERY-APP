@@ -240,3 +240,25 @@ exports.cancelOrder = async (req, res) => {
         res.json({ success, message, data })
     }
 };
+
+exports.getOrdersByStatus = async (req, res) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Methods", " GET");
+    res.header("Access-Control-Allow-Headers", "Content-Type")
+    try {
+        var status = req.params.status
+        let pool = await sql.connect(config)
+        let result = await pool.request().query("SELECT * FROM DON_DH WHERE TRANGTHAIDH = " + '\'' + status + '\'')
+
+        sql.close()
+        var success = true
+        var message = "Success Get"
+        var data = result.recordsets[0]
+        res.json({ success, message, data })
+    } catch (error) {
+        var success = false
+        var message = error.message
+        var data = {}
+        res.json({ success, message, data })
+    }
+};
