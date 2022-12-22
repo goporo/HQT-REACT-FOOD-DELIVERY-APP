@@ -15,6 +15,8 @@ const MenuPage = () => {
   async function getFoods() {
     const response = await fetch("http://localhost:5000/supplier/1");
     const data = await response.json();
+
+    console.log(data);
     setFoods(data.data.foods);
   }
 

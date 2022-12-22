@@ -1,4 +1,6 @@
 import React from "react";
+import { useEffect, useState } from 'react';
+import moment from 'moment';
 
 const orders = [
   {
@@ -103,6 +105,29 @@ const orders = [
 ]
 
 const OrdersPage = () => {
+  useEffect(() => {
+    console.log(JSON.stringify({
+      MACN: '1         ',
+      TGBD: moment().subtract(1, 'years').format('YYYY-MM-DD'),
+      TGKT: moment().format('YYYY-MM-DD'),
+    }));
+
+    fetch('http://localhost:5000/order/branch', {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        MACN: '1',
+        TGBD: moment().subtract(1, 'years').format('YYYY-MM-DD'),
+        TGKT: moment().format('YYYY-MM-DD'),
+        TRANGTHAIDH: 'ALL',
+      })
+    }).then(res => res.json()).then(data => {
+      console.log(data);
+    })
+  }, []);
+
   return (
     <section>
       <div>
@@ -142,6 +167,7 @@ const Tr = (props) => {
     shipper,
     status
   } = props.item;
+
   return (
     <div className="mb-10 bg-white p-5 shadow-sm rounded-lg">
       <div className="flex items-center justify-between mb-2">
