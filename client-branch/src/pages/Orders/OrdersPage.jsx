@@ -208,7 +208,7 @@ const Tr = (props) => {
 
         <div className="flex items-end flex-col-2 space-x-3 space-y-2">
           {
-            TRANGTHAIDH?.trim() === 'WAITING' && (
+            TRANGTHAIDH?.trim() === 'AVAILABLE' && (
               <>
                 <button
                   className="w-[150px] py-3 bg-red-500 text-white cursor-pointer hover:opacity-80 rounded-md">
