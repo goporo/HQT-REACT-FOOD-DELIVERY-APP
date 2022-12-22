@@ -98,7 +98,7 @@ PUT   http://localhost:5000/order/customer
 Content-Type: application/json
 
 {
-    "MAKH":"2",
+    "MAKH":"1",
     "TGBD":"",
     "TGKT":""
 }
@@ -185,8 +185,8 @@ Content-Type: application/json
 "SUPPLIERS":[{
     "MATKNGANHANG":null,
     "MADIACHI":null,
-    "TENTK":null,
-    "MATKHAUTK":null
+    "TENTK":"chinhanh",
+    "MATKHAUTK":"chinhanh"
 }]
 
 }

@@ -29,8 +29,8 @@ const Order = () => {
     status = status.replace(/\s/g, '').toLowerCase();
     if (status === "available") return <button
       onClick={() => updateOrder("CANCELED", orderID)}
-      className="w-[150px] py-3 bg-red-500 text-white cursor-pointer hover:opacity-80 rounded-md">
-      Cancel
+      className="w-[150px] py-3 bg-orange-500 text-white cursor-pointer hover:opacity-80 rounded-md">
+      Accept
     </button>
     if (status === "canceled") return <button
       className="w-[150px] py-3 bg-gray-500 cursor-not-allowed text-white rounded-md">
@@ -52,11 +52,17 @@ const Order = () => {
 
   useEffect(() => {
     const getData = async () => {
-      axios.put(`/order/shipper`, {
-        "MATX": matx,
-      })
-        .then(function (res) {
-          let temp = res.data.data;
+      axios.all([
+        axios.put(`/order/shipper`, {
+          "MATX": matx,
+        }),
+        axios.put(`/order/AVAILABLE`, {
+
+        })
+
+      ])
+        .then(axios.spread((res1, res2) => {
+          const temp = res1.data.data.concat(res2.data.data);
           temp = temp.map((item) => {
             return {
               orderID: item.MADH,
@@ -66,12 +72,16 @@ const Order = () => {
             }
           });
           setOrders(temp);
-        })
+        }))
         .catch(function (e) {
           console.log(e);
-        });
+        })
+
+
     };
+
     getData();
+
   }, [needRefresh])
 
 

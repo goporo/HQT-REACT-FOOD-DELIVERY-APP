@@ -16,7 +16,7 @@ const Profile = () => {
             label: 'Hamburger',
         },
         {
-            value: 'EUR',
+            value: 'TEA',
             label: 'Milk Tea',
         }
     ];
@@ -29,13 +29,13 @@ const Profile = () => {
                 "SUPPLIERS": [{
                     "MATKNGANHANG": null,
                     "MADIACHI": null,
-                    "TENTK": null,
-                    "MATKHAUTK": null
+                    "TENTK": e.target[2].value,
+                    "MATKHAUTK": e.target[4].value
                 }]
 
-            }
-            )
-            alert("Create Successful!");
+            }).then((res) => {
+                alert("Create Successful!");
+            })
         } catch (error) {
             alert(error)
         }
@@ -58,9 +58,11 @@ const Profile = () => {
             </div>
 
             <form onSubmit={handleSubmit} className="flex flex-col space-y-4 mt-4">
-                <TextField id="outlined-basic" label="Name" variant="outlined" />
-                <TextField id="outlined-basic" label="Phone Number" variant="outlined" />
-                <TextField id="outlined-basic" label="Card Number" variant="outlined" />
+                <TextField required id="name" label="Name" variant="outlined" />
+                <TextField required id="un" label="Username for branch" variant="outlined" />
+                <TextField required type="password" id="pw" label="Password for branch" variant="outlined" />
+                <TextField id="phone" label="Phone Number" variant="outlined" />
+                <TextField id="card" label="Card Number" variant="outlined" />
                 <TextField
                     label="Native select"
                     defaultValue="EUR"
@@ -74,9 +76,7 @@ const Profile = () => {
                         </option>
                     ))}
                 </TextField>
-
                 <TextField id="outlined-basic" label="Address" variant="outlined" />
-                <TextField id="outlined-basic" label="Email" variant="outlined" />
                 <button type='submit' className='text-center py-3 bg-red-500 text-white hover:opacity-80 rounded-md'>
                     Create Contract
                 </button>
