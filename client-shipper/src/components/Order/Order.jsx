@@ -18,7 +18,7 @@ const Order = () => {
 
   const updateOrder = (status, madh) => {
     // /order/:userType
-    axios.post(`/order/5`, {
+    axios.post(`/order/4`, {
       "MAND": matx,
       "TRANGTHAIDH": status,
       "MADH": madh,
@@ -27,9 +27,9 @@ const Order = () => {
   }
   const orderStatus = (status, orderID) => {
     status = status.replace(/\s/g, '').toLowerCase();
-    if (status === "available") return <button
-      onClick={() => updateOrder("CANCELED", orderID)}
-      className="w-[150px] py-3 bg-orange-500 text-white cursor-pointer hover:opacity-80 rounded-md">
+    if (status === "processing") return <button
+      onClick={() => updateOrder("DELIVERING", orderID)}
+      className="w-[150px] py-3 bg-red-500 text-white cursor-pointer hover:opacity-80 rounded-md">
       Accept
     </button>
     if (status === "canceled") return <button
@@ -56,28 +56,29 @@ const Order = () => {
         axios.put(`/order/shipper`, {
           "MATX": matx,
         }),
-        axios.put(`/order/AVAILABLE`, {
+        axios.put(`/order/PROCESSING`, {
 
         })
 
       ])
         .then(axios.spread((res1, res2) => {
-          const temp = res1.data.data.concat(res2.data.data);
+          let temp = res1.data.data.concat(res2.data.data);
           temp = temp.map((item) => {
             return {
               orderID: item.MADH,
               shipper: item.TEN,
-              status: item.TRANGTHAIDH,
+              status: item.TRANGTHAIDH?.trim(),
               total: item.PHISP
             }
           });
-          setOrders(temp);
+          setOrders(temp.sort((a, b) => {
+            if (a.status < b.status) return 1
+            return -1
+          }));
         }))
         .catch(function (e) {
           console.log(e);
         })
-
-
     };
 
     getData();
@@ -100,7 +101,7 @@ const Order = () => {
                 <div key={index} className="mb-10 bg-white p-5 shadow-sm rounded-lg">
                   <div className="flex items-center justify-between mb-2">
                     <div className="font-semibold bg-orange-400 text-white text-sm w-fit rounded-md py-2 px-3">ORDER: {item.orderID}</div>
-                    <div className={`flex flex-row justify-center text-white text-sm py-1 px-2 rounded-md ${(item.status.replace(/\s/g, '') === "AVAILABLE" || item.status.replace(/\s/g, '') === "DELIVERED") ? "bg-green-500" : "bg-orange-400"}`}>
+                    <div className={`flex flex-row justify-center text-white text-sm py-1 px-2 rounded-md ${(item.status.replace(/\s/g, '') === "PROCESSING") ? "bg-green-500" : "bg-orange-400"}`}>
                       {item.status}
                     </div>
                   </div>

@@ -79,6 +79,7 @@ EXEC sp_ThemDonDH '1','DELIVERING','12/1/2022','VPBank', 0, 15000,'1', '1', '1',
 EXEC sp_ThemDonDH '2','DELIVERING','12/1/2022','VPBank', 0, 15000,'1', '1', '1', '1', NULL
 
 
+
 EXEC sp_ThemThucDonDatHang '1', '1', 1
 EXEC sp_ThemThucDonDatHang '2', '1', 1
 EXEC sp_ThemThucDonDatHang '3', '2', 1
