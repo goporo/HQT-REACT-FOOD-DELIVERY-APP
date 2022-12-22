@@ -77,6 +77,7 @@ EXEC sp_ThemHopDong '3', 2, 1000000, 3
 
 EXEC sp_ThemDonDH '1','DELIVERING','12/1/2022','VPBank', 200000, 15000,'1', '1', '1', '1', NULL
 EXEC sp_ThemDonDH '2','DELIVERING','12/1/2022','VPBank', 200000, 15000,'1', '1', '1', '1', NULL
+EXEC sp_ThemDonDH '3', 'AVAILABLE', '12/1/2002','MPBank', 20000, 10000,'1', '1', '1', '1', NULL
 
 
 EXEC sp_ThemThucDonDatHang '1', '1', 1
