@@ -63,7 +63,7 @@ exports.getOrdersBranch = async (req, res) => {
     try {
         var MACN = req.body["MACN"]
         var TGBD = req.body["TGBD"]
-        var TGBD = req.body["TGKT"]
+        var TGKT = req.body["TGKT"]
         var TRANGTHAIDH=req.body["TRANGTHAIDH"]
         let pool = await sql.connect(config)
         let result = await pool.request().
