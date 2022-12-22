@@ -64,17 +64,20 @@ exports.getOrdersBranch = async (req, res) => {
         var MACN = req.body["MACN"]
         var TGBD = req.body["TGBD"]
         var TGBD = req.body["TGKT"]
-
+        var TRANGTHAIDH=req.body["TRANGTHAIDH"]
         let pool = await sql.connect(config)
         let result = await pool.request().
             input("MACN", sql.VarChar(10), MACN).
-            input("TGBD", sql.DateTime, new Date()).
-            input("TGKT", sql.DateTime, new Date()).
+            input("TGBD", sql.DateTime, TGBD).
+            input("TGKT", sql.DateTime, TGKT).
+            input("TRANGTHAIDH",sql.Char(20),TRANGTHAIDH).
             execute("sp_DonHang_CN")
         sql.close()
         var success = true
         var message = "Success Get"
-        var data = result.recordsets[0]
+        var Orders=result.recordsets[0]
+        var Statics=result.recordsets[1]
+        var data = {Orders,Statics}
         res.json({ success, message, data })
     }
     catch (error) {
