@@ -10,13 +10,14 @@ import { FormControl, FormControlLabel, FormLabel, Radio, RadioGroup, TextField 
 import LazyLoad from "react-lazy-load";
 import axios from "axios";
 
-const makh = '1'
+
 
 const formatCurrency = (num) => {
   return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + 'đ'
 }
 
 const Cart = () => {
+  const [makh, setMakh] = useState(localStorage.getItem("MAKH"))
   const [showModal, setShowModal] = useState(false);
   const cartItems = useSelector((state) => state.cart.cartItems);
   const totalAmount = useSelector((state) => state.cart.totalAmount);

@@ -221,10 +221,10 @@ Content-Type: application/json
     "MANHANVIEN":"1"
 }
 ### đăng nhập
-PUT http://localhost:5000/user/login/4
+POST http://localhost:5000/user/login/5
 Content-Type: application/json
 
 {
-    "TENTK":"TAIXE",
-    "MATKHAUTK":"123"
+    "TENTK":"NguyenPhan",
+    "MATKHAUTK":"pnguyen123"
 }

@@ -5,13 +5,13 @@ import { useEffect } from "react";
 
 
 
-const makh = '1';
 
 const formatCurrency = (num) => {
   return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + 'đ'
 }
 
 const Order = () => {
+  const [makh, setMakh] = useState(localStorage.getItem("MAKH"))
   const [orders, setOrders] = useState([]);
   const [needRefresh, setNeedRefresh] = useState(false);
 
@@ -51,7 +51,6 @@ const Order = () => {
 
   useEffect(() => {
     const getData = async () => {
-
       axios.put(`/order/customer`, {
         "MAKH": makh,
       })
@@ -79,7 +78,7 @@ const Order = () => {
   return (
     <div className="p-10 relative w-11/12">
       {orders.length === 0 ? (
-        <h5 className="text-center">Your cart is empty</h5>
+        <h5 className="text-center">No order yet!</h5>
       ) : (
         <div className="">
           {orders.map((item, index) => (
@@ -114,9 +113,8 @@ const Order = () => {
 
 const Tr = (props) => {
   const [orderDetails, setOrderDetails] = useState([]);
-  const calcTotal = () => {
-    return orderDetails.reduce((prev, cur) => prev + cur.price * cur.sl, 0)
-  }
+  const [makh, setMakh] = useState(localStorage.getItem("MAKH"))
+
   useEffect(() => {
     const getDetails = (makh, madh) => {
       return axios.put(`/order/orderdetails`, {

@@ -2,22 +2,22 @@
 USE QL_BANHANG_TRANHCHAP
 GO
 EXEC sp_ThemPhamVi
-EXEC sp_DANGKYKH '123','123'
-EXEC sp_DANGKYKH 'NguyenPhan','pnguyen123'
-EXEC sp_DANGKYKH 'HangThanh', 'abcdxyz123'
+EXEC sp_DANGKYKH 'khachhang','khachhang'
+EXEC sp_DANGKYKH 'khachhang2','khachhang2'
+EXEC sp_DANGKYKH 'khachhang3', 'khachhang3'
 
-EXEC sp_DANGKYTX 'TAIXE','123','taigavn113@gmail.com','TAI','012345678','61D1.42558','0123'
+EXEC sp_DANGKYTX 'taixe','taixe','taigavn113@gmail.com','TAI','012345678','61D1.42558','0123'
 
-EXEC sp_DANGKYDT 'DOITAC','123','Pmt@gmail.com',N'Cơm nhà làm','0123456','mail@mail','0123456',0,50
-EXEC sp_DANGKYDT 'DOITAC','123','Ntth@gmail.com',N'Bún bò','0999996','MST01','mailNDD01',0,150
-EXEC sp_DANGKYDT 'DOITAC','123','Vnkvy@gmail.com',N'Tokboki','03232446','MST02','mailNDD02',0,150
+EXEC sp_DANGKYDT 'doitac','doitac','Pmt@gmail.com',N'Cơm nhà làm','0123456','mail@mail','0123456',0,50
+EXEC sp_DANGKYDT 'doitac2','doitac2','Ntth@gmail.com',N'Bún bò','0999996','MST01','mailNDD01',0,150
+EXEC sp_DANGKYDT 'doitac3','doitac3','Vnkvy@gmail.com',N'Tokboki','03232446','MST02','mailNDD02',0,150
 
-EXEC sp_DANGKYQTV 'Admin1','123','admin1',N'Phạm Minh Tài','0123456'
-EXEC sp_DANGKYQTV 'Admin2','admin2','adm@mail','Hèng Đẹp Gái', '23321412'
+EXEC sp_DANGKYQTV 'admin','admin','admin1',N'Phạm Minh Tài','0123456'
+EXEC sp_DANGKYQTV 'admin2','admin2','adm@mail','Hèng Đẹp Gái', '23321412'
 
-EXEC sp_DANGKYNV 'NHANVIEN1','123','HELLO',N'Phạm Minh Tài','0123456'
-EXEC sp_DANGKYNV 'NHANVIEN2','123','Hi@gmail.com',N'Phan Nguyễn Phước Nguyên','01243256'
-EXEC sp_DANGKYNV 'NHANVIEN3','123','Vie@hcmus.edu',N'Võ Ngọc Khánh Vy','012434343'
+EXEC sp_DANGKYNV 'nhanvien','nhanvien','HELLO',N'Phạm Minh Tài','0123456'
+EXEC sp_DANGKYNV 'nhanvien2','nhanvien2','Hi@gmail.com',N'Phan Nguyễn Phước Nguyên','01243256'
+EXEC sp_DANGKYNV 'nhanvien3','nhanvien3','Vie@hcmus.edu',N'Võ Ngọc Khánh Vy','012434343'
 
 EXEC sp_DANGKYNGANHANG '1',1,N'DĨ AN',N'TPBANK','01234456'
 EXEC sp_DANGKYNGANHANG '1',2,N'DĨ AN',N'TPBANK','01234456'
