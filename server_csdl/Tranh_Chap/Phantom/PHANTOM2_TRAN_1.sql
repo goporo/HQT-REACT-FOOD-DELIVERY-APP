@@ -1,0 +1,5 @@
+USE QL_BANHANG_TRANHCHAP
+GO
+EXEC sp_HopDong_YeuCauGiaHan '1','1',3
+GO
+USE MASTER

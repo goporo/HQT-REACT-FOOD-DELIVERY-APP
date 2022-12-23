@@ -1,0 +1,243 @@
+### DangKy KHACHHANG
+POST   http://localhost:5000/user/register/customer
+Content-Type: application/json
+
+{
+    "TENTK":"TAIGAVN",
+    "MATKHAUTK":"123",
+    "LOAITK":5
+}
+### DANGKY TAIXE
+POST   http://localhost:5000/user/register/shipper
+Content-Type: application/json
+
+{
+    "TENTK":"TAIXE1",
+    "MATKHAUTK":"123",
+    "LOAITK":4,
+    "EMAIL":"ABC@GMAIL",
+    "TEN":"TAI",
+    "SDT":"01234567",
+    "BIENSOXE":"60D1.12345",
+    "CMND":"29123333"
+}
+### DANGKY QUANTRIVIEN
+POST   http://localhost:5000/user/register/admin
+Content-Type: application/json
+
+{
+    "TENTK":"QTV1",
+    "MATKHAUTK":"123",
+    "LOAITK":0,
+    "EMAIL":"ABC@GMAIL",
+    "TEN":"TAI",
+    "SDT":"01234567"
+}
+### DANGKY NHANVIEN
+POST   http://localhost:5000/user/register/employee
+Content-Type: application/json
+
+{
+    "TENTK":"NV1",
+    "MATKHAUTK":"123",
+    "LOAITK":1,
+    "EMAIL":"ABC@GMAIL",
+    "TEN":"TAI",
+    "SDT":"01234567"
+}
+### Đăng ký đối tác
+POST   http://localhost:5000/user/register/supplier
+Content-Type: application/json
+
+{
+    "TENTK":"DT1",
+    "MATKHAUTK":"123",
+    "LOAITK":2,
+    "EMAIL":"ABC@GMAIL",
+    "TEN":"TAI",
+    "SDT":"01234567",
+    "MSTHUE":"01236",
+    "MAIL_NDD":"123@gmail",
+    "SLDUKIENMIN":0,
+    "SLDUKIENMAX":100
+}
+### Lấy SP theo GIá
+PUT   http://localhost:5000/food/price
+Content-Type: application/json
+
+{
+    "SL":10,
+    "THUTU":"INCREASE"
+}
+### Lấy Món theo chi nhánh
+PUT   http://localhost:5000/food/supplier
+Content-Type: application/json
+
+{
+    "SL":10,
+    "MACN":"1"
+}
+### Lấy Món theo loại
+PUT   http://localhost:5000/food/foodType
+Content-Type: application/json
+
+{
+    "SL":10,
+    "MALAT":"1"
+}
+### Lấy Đơn Hàng chi tiết
+PUT   http://localhost:5000/order/orderdetails
+Content-Type: application/json
+
+{
+    "MAKH":"1",
+    "MADH":"1",
+    "USER_TYPE":"3"
+}
+### Lấy Đơn Hàng Khách hàng
+PUT   http://localhost:5000/order/customer
+Content-Type: application/json
+
+{
+    "MAKH":"1",
+    "TGBD":"",
+    "TGKT":""
+}
+### Lấy đơn hàng available
+PUT   http://localhost:5000/order/AVAILABLE
+Content-Type: application/json
+
+### Lấy Đơn Hàng TÀI XẾ
+PUT   http://localhost:5000/order/shipper
+Content-Type: application/json
+
+{
+    "MATX":"1",
+    "TGBD":"",
+    "TGKT":""
+}
+### Lấy Đơn Hàng CHI NHANH
+PUT   http://localhost:5000/order/branch
+Content-Type: application/json
+
+{
+    "MACN":"1",
+    "TRANGTHAIDH":"ALL",
+    "TGBD":"2020-01-01",
+    "TGKT":"2030-01-01"
+}
+### Lấy Đơn Hàng DOI TAC
+PUT   http://localhost:5000/order/supplier
+Content-Type: application/json
+
+{
+    "MADT":"1",
+    "TGBD":"",
+    "TGKT":""
+}
+### Lấy Đối tác
+GET   http://localhost:5000/supplier/2
+### tạo đơn hàng
+POST http://localhost:5000/order/place-order
+Content-Type: application/json
+
+{
+"MAKH": "1",
+"MACN": "1",
+"HINHTHUCTT":"VI",
+"MADCGH":null,
+"foods":[{
+            "MAMONAN": "1",
+            "SOLUONG":3
+        },
+        {
+            "MAMONAN": "2",
+            "SOLUONG":3
+        }]
+}
+### cập nhật đơn hàng
+POST http://localhost:5000/order/4
+Content-Type: application/json
+
+{
+"MAND": "1",
+"TRANGTHAIDH":"DELIVERING",
+"MADH": "1"
+
+}
+
+### cập nhật đơn hàng
+post http://localhost:5000/supplier/food/1
+Content-Type: application/json
+
+{
+    "TENMONAN": "Com Suon",
+    "MOTA": "Com Suon Ngon Lam Ban Oi",
+    "GIA": 10000,
+    "HINHANHTD": 1,
+    "DIACHIHINHANHTD": "227 Nguyen Van CU",
+    "MALAT": "1        "
+  }
+### ký hợp đồng với mảng chi nhánh
+POST http://localhost:5000/contract/1
+Content-Type: application/json
+
+{
+"YEAR": 2,
+"SUPPLIERS":[{
+    "MATKNGANHANG":null,
+    "MADIACHI":null,
+    "TENTK":null,
+    "MATKHAUTK":null
+}]
+
+}
+### lấy hợp đồng cho nhân viên nếu lấy hợp đồng hết hạn thì phải có mốc thời gian hết hạn đi theo
+PUT http://localhost:5000/contract/employee/expiring
+Content-Type: application/json
+
+{
+    "MONTH":36
+}
+###
+PUT http://localhost:5000/contract/employee/new
+Content-Type: application/json
+
+### nhân viên xác nhận/gia hạn
+POST http://localhost:5000/contract/accept
+Content-Type: application/json
+
+{
+    "MAHD":"3",
+    "STT":1,
+    "MANHANVIEN":"1"
+}
+### Gia hạn hợp đồng của đối tác
+POST http://localhost:5000/contract/extend
+Content-Type: application/json
+
+{
+    "MAHD":"1",
+    "THOIHAN":4,
+    "MADT":"1"
+}
+### Lấy hợp đồng của đối tác
+PUT http://localhost:5000/contract/business/1
+Content-Type: application/json
+### nhân viên gia hạn
+POST http://localhost:5000/contract/accept
+Content-Type: application/json
+
+{
+    "MAHD":"1",
+    "STT":2,
+    "MANHANVIEN":"1"
+}
+### đăng nhập
+POST http://localhost:5000/user/login/4
+Content-Type: application/json
+
+{
+    "TENTK":"TAIXE",
+    "MATKHAUTK":"123"
+}

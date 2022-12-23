@@ -9,13 +9,14 @@
   },
   "dependencies": {
     "body-parser": "~1.0.1",
+    "connect": "^3.7.0",
     "cors": "2.8.1",
     "dotenv": "^16.0.3",
     "express": "~4.0.0",
     "mssql": "^6.4.1"
   },
   "devDependencies": {
-    "nodemon": "^2.0.4"
+    "nodemon": "^2.0.20"
   },
   "keywords": [],
   "author": "",
