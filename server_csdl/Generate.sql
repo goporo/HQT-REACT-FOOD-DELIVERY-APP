@@ -1,7 +1,8 @@
 -- //////////////////////TEST//////////////////////////////
---USE QL_BANHANG_TRANHCHAP
+USE QL_BANHANG
 GO
 EXEC sp_ThemPhamVi
+GO
 EXEC sp_DANGKYKH 'khachhang','khachhang'
 EXEC sp_DANGKYKH 'khachhang2','khachhang2'
 EXEC sp_DANGKYKH 'khachhang3', 'khachhang3'
@@ -38,17 +39,16 @@ EXEC sp_ThemQuanHuyen 'H2', 'Huyện Đồng Văn','KV2'
 EXEC sp_ThemPhuong 'P2', 'Phường 2','H2'
 EXEC sp_ThemDiaChi 'DC2','123 Thành Thái', 'P2'
 
+EXEC sp_ThemChiNhanh '1', '132324',null,null,null,null,null,'1'
+EXEC sp_ThemChiNhanh '2', '132324',null,null,null,null,null,'2'
+EXEC sp_ThemChiNhanh '3', '098736325',null,null,null,null,null,'3'
+EXEC sp_ThemChiNhanh '4', '342342243',null,null,null,null,null,'4'
 
-EXEC sp_ThemChiNhanh '1', '132324',0,'https://i.pinimg.com/originals/4e/95/ff/4e95ff2406e7914e70cbbba6dd9c51d2.jpg',null,null,null,'1'
-EXEC sp_ThemChiNhanh '2', '132324', 0, 'https://i.etsystatic.com/21215114/r/il/d0c7bd/4104680841/il_fullxfull.4104680841_hxug.jpg', NULL,NULL,NULL, '2'
-EXEC sp_ThemChiNhanh '3', '098736325',1,'https://c8.alamy.com/comp/PCYG1J/pizzeria-fast-food-logo-or-label-happy-chef-holding-pizza-and-scapula-in-hands-vector-illustration-PCYG1J.jpg',NULL,NULL,NULL,'3'
-EXEC sp_ThemChiNhanh '4', '342342243',1, 'https://dynamic.brandcrowd.com/asset/logo/fc77e70d-34f4-44ca-8773-b3884b2213b9/logo-search-grid-1x?v=637936310133200000', NULL,NULL,NULL, '4'
 
-
-EXEC  sp_ThemCuaHang '1','BOBABOP','8:00','23:59','AVAILABLE'
-EXEC  sp_ThemCuaHang '2','BURGER KING','8:00','23:59','AVAILABLE'
-EXEC  sp_ThemCuaHang '3','CHICKEN ADVENTURE','8:00','23:59','AVAILABLE'
-EXEC  sp_ThemCuaHang '4','MILK CHEA','8:00','23:59','AVAILABLE'
+EXEC  sp_ThemCuaHang '1','BOBABOP','8:00','23:59','AVAILABLE',0,'https://i.pinimg.com/originals/4e/95/ff/4e95ff2406e7914e70cbbba6dd9c51d2.jpg',0,0
+EXEC  sp_ThemCuaHang '2','BURGER KING','8:00','23:59','AVAILABLE', 0, 'https://i.etsystatic.com/21215114/r/il/d0c7bd/4104680841/il_fullxfull.4104680841_hxug.jpg',0,0
+EXEC  sp_ThemCuaHang '3','CHICKEN ADVENTURE','8:00','23:59','AVAILABLE',1,'https://c8.alamy.com/comp/PCYG1J/pizzeria-fast-food-logo-or-label-happy-chef-holding-pizza-and-scapula-in-hands-vector-illustration-PCYG1J.jpg',0,0
+EXEC  sp_ThemCuaHang '4','MILK CHEA','8:00','23:59','AVAILABLE',1, 'https://dynamic.brandcrowd.com/asset/logo/fc77e70d-34f4-44ca-8773-b3884b2213b9/logo-search-grid-1x?v=637936310133200000',0,0
 
 
 EXEC sp_insert_LAT
@@ -79,15 +79,17 @@ EXEC sp_ThemThongTinHopDong '4',4,24,'01/01/2020','01/01/2022','1',NULL
 
 
 
-EXEC sp_ThemDonDH '1','DELIVERED','12/1/2022','VPBank', 0, 15000,'1', '1', '1', '1', NULL
-EXEC sp_ThemDonDH '2','DELIVERED','12/1/2022','VPBank', 0, 15000,'1', '1', '1', '1', NULL
+--EXEC sp_ThemDonDH '1','DELIVERED','12/1/2022','VPBank', 0, 15000,NULL,NULL,NULL, '1',NULL,NULL,NULL,NULL, NULL,NULL,NULL,NULL,NULL,NULL,NULL
+--EXEC sp_ThemDonDH '2','DELIVERED','12/1/2022','VPBank', 0, 15000,NULL,NULL,NULL, '1',NULL,NULL,NULL,NULL, NULL,NULL,NULL,NULL,NULL,NULL,NULL
+--EXEC sp_ThemDonDH '2','DELIVERED','12/1/2022','VPBank', 0, 15000,'1', '1', '1', '1', NULL
 
 
 
-EXEC sp_ThemThucDonDatHang '1', '1', 1
-EXEC sp_ThemThucDonDatHang '2', '1', 1
-EXEC sp_ThemThucDonDatHang '3', '2', 1
-EXEC sp_ThemThucDonDatHang '4', '2', 1
+--EXEC sp_ThemThucDonDatHang '1', '1', 1
+--EXEC sp_ThemThucDonDatHang '2', '1', 1
+--EXEC sp_ThemThucDonDatHang '3', '2', 1
+--EXEC sp_ThemThucDonDatHang '4', '2', 1
+SELECT *FROM PHAMVIBANG
 
 
 

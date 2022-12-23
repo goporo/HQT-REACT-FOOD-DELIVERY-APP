@@ -2,7 +2,7 @@
 const sql = require("mssql")
 const config = {
     server: "localhost",
-    database: "QL_BANHANG_TRANHCHAP",
+    database: "QL_BANHANG",
     user: "admin",
     password: "admin",
     port: null,
