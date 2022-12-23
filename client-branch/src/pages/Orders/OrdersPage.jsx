@@ -66,7 +66,10 @@ const Order = () => {
               total: item.PHISP
             }
           });
-          setOrders(temp);
+          setOrders(temp.sort((a, b) => {
+            if (a.status[2] > b.status[2]) return 1
+            return -1
+          }));
         })
         .catch(function (e) {
           console.log(e);

@@ -6,11 +6,14 @@ EXEC sp_DANGKYKH 'khachhang','khachhang'
 EXEC sp_DANGKYKH 'khachhang2','khachhang2'
 EXEC sp_DANGKYKH 'khachhang3', 'khachhang3'
 
-EXEC sp_DANGKYTX 'taixe','taixe','taigavn113@gmail.com','TAI','012345678','61D1.42558','0123'
+EXEC sp_DANGKYTX 'taixe','taixe','taigavn113@gmail.com','Pham Minh Tai','012345678','61D1.42558','0123'
+EXEC sp_DANGKYTX 'taixe2','taixe2','taigavn114@gmail.com','Grabber','01234678','1D1.42558','123'
+
 
 EXEC sp_DANGKYDT 'doitac','doitac','Pmt@gmail.com',N'Cơm nhà làm','0123456','mail@mail','0123456',0,50
 EXEC sp_DANGKYDT 'doitac2','doitac2','Ntth@gmail.com',N'Bún bò','0999996','MST01','mailNDD01',0,150
 EXEC sp_DANGKYDT 'doitac3','doitac3','Vnkvy@gmail.com',N'Tokboki','03232446','MST02','mailNDD02',0,150
+EXEC sp_DANGKYDT 'doitac4','doitac4','nkvy@gmail.com',N'Tokboki2','0323246','MST03','mailNDD03',0,150
 
 -- bug
 -- EXEC sp_DANGKYQTV 'admin','admin','admin1',N'Phạm Minh Tài','0123456'
@@ -18,7 +21,6 @@ EXEC sp_DANGKYDT 'doitac3','doitac3','Vnkvy@gmail.com',N'Tokboki','03232446','MS
 
 EXEC sp_DANGKYNV 'nhanvien','nhanvien','HELLO',N'Phạm Minh Tài','0123456'
 EXEC sp_DANGKYNV 'nhanvien2','nhanvien2','Hi@gmail.com',N'Phan Nguyễn Phước Nguyên','01243256'
-EXEC sp_DANGKYNV 'nhanvien3','nhanvien3','Vie@hcmus.edu',N'Võ Ngọc Khánh Vy','012434343'
 
 EXEC sp_DANGKYNGANHANG '1',1,N'DĨ AN',N'TPBANK','01234456'
 EXEC sp_DANGKYNGANHANG '1',2,N'DĨ AN',N'TPBANK','01234456'
@@ -38,9 +40,9 @@ EXEC sp_ThemDiaChi 'DC2','123 Thành Thái', 'P2'
 
 
 EXEC sp_ThemChiNhanh '1', '132324',0,'https://i.pinimg.com/originals/4e/95/ff/4e95ff2406e7914e70cbbba6dd9c51d2.jpg',null,null,null,'1'
-EXEC sp_ThemChiNhanh '2', '132324', 0, 'https://i.etsystatic.com/21215114/r/il/d0c7bd/4104680841/il_fullxfull.4104680841_hxug.jpg', NULL,NULL,NULL, '3'
-EXEC sp_ThemChiNhanh '3', '098736325',1,'https://c8.alamy.com/comp/PCYG1J/pizzeria-fast-food-logo-or-label-happy-chef-holding-pizza-and-scapula-in-hands-vector-illustration-PCYG1J.jpg','1','12', 'DC1','4'
-EXEC sp_ThemChiNhanh '4', '342342243',1, 'https://dynamic.brandcrowd.com/asset/logo/fc77e70d-34f4-44ca-8773-b3884b2213b9/logo-search-grid-1x?v=637936310133200000', '2', '1', 'DC2', '2'
+EXEC sp_ThemChiNhanh '2', '132324', 0, 'https://i.etsystatic.com/21215114/r/il/d0c7bd/4104680841/il_fullxfull.4104680841_hxug.jpg', NULL,NULL,NULL, '2'
+EXEC sp_ThemChiNhanh '3', '098736325',1,'https://c8.alamy.com/comp/PCYG1J/pizzeria-fast-food-logo-or-label-happy-chef-holding-pizza-and-scapula-in-hands-vector-illustration-PCYG1J.jpg',NULL,NULL,NULL,'3'
+EXEC sp_ThemChiNhanh '4', '342342243',1, 'https://dynamic.brandcrowd.com/asset/logo/fc77e70d-34f4-44ca-8773-b3884b2213b9/logo-search-grid-1x?v=637936310133200000', NULL,NULL,NULL, '4'
 
 
 EXEC  sp_ThemCuaHang '1','BOBABOP','8:00','23:59','AVAILABLE'
@@ -64,14 +66,16 @@ EXEC sp_ThemThucDon 'hong tra', 'Ngon mà tui tỉnh luôn', 35000, 1, 'https://
 
 EXEC sp_ThemHoaHong '01/01/2020','01/01/2025',10
 
+EXEC sp_ThemHopDong '1', 5, 1000000, 1
+EXEC sp_ThemHopDong '2', 1, 1000000, 2
+EXEC sp_ThemHopDong '3', 2, 1000000, 3
+
 EXEC sp_ThemThongTinHopDong '1',1,10,'01/01/2020','01/01/2025','1','1'
 EXEC sp_ThemThongTinHopDong '2',2,12,'01/01/2020','01/01/2026','1','1'
 EXEC sp_ThemThongTinHopDong '3',3,6,'01/01/2020','01/01/2022','1',NULL
 EXEC sp_ThemThongTinHopDong '4',4,24,'01/01/2020','01/01/2022','1',NULL
 
-EXEC sp_ThemHopDong '1', 5, 1000000, 1
-EXEC sp_ThemHopDong '2', 1, 1000000, 2
-EXEC sp_ThemHopDong '3', 2, 1000000, 3
+
 
 
 
@@ -86,14 +90,9 @@ EXEC sp_ThemThucDonDatHang '3', '2', 1
 EXEC sp_ThemThucDonDatHang '4', '2', 1
 
 
-SELECT *FROM THONGTIN_HOAHONG
-SELECT *FROM TAIKHOAN
 
 EXEC sp_CapNhatPhamVi
-SELECT *FROM PHAMVIBANG
 
 UPDATE KHACHHANG SET SODUVI=1000000
 UPDATE TAIXE SET PHITHECHAN=1000000
 UPDATE PHAMVIBANG SET IDMAX  =(SELECT MAX(convert(int,MADH)) FROM DON_DH ) WHERE TENPHAMVI='DON_DH'
-USE master
-GO

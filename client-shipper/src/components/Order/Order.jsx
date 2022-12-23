@@ -134,12 +134,11 @@ const Order = () => {
 
 const Tr = (props) => {
   const [orderDetails, setOrderDetails] = useState([]);
-  const [makh, setMakh] = useState(localStorage.getItem("MAKH"))
 
   useEffect(() => {
     const getDetails = (makh, madh) => {
       return axios.put(`/order/orderdetails`, {
-        "MAKH": makh,
+        "MAKH": matx,
         "MADH": madh,
         "USER_TYPE": "4"
       })
@@ -160,7 +159,7 @@ const Tr = (props) => {
           console.log(e);
         });
     };
-    getDetails(makh, props.madh);
+    getDetails(matx, props.madh);
   }, [])
 
   return (
