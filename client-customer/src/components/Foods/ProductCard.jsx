@@ -14,7 +14,6 @@ const ProductCard = (props) => {
         id,
         title,
         price,
-        rating,
         image,
         supplier,
     } = props.item;
@@ -26,9 +25,7 @@ const ProductCard = (props) => {
                 id,
                 title,
                 price,
-                rating,
                 image,
-                supplier,
             })
         );
         alert("Add successful!")
@@ -37,7 +34,7 @@ const ProductCard = (props) => {
     return (
         <div className="flex flex-col bg-white py-4 mb-4 rounded-md">
             <div className="flex justify-center">
-                <Link to={`/supplier/${id}`}>
+                <Link to={`/supplier/${supplier}`}>
                     <LazyLoad height={208}>
                         <img src={image} alt="product-img" className="w-52 h-52 object-cover rounded-md" />
                     </LazyLoad>
