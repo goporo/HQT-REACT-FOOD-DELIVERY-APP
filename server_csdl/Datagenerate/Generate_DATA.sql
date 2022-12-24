@@ -1,8 +1,7 @@
 -- //////////////////////TEST//////////////////////////////
 USE QL_BANHANG
 GO
-EXEC sp_ThemPhamVi
-GO
+
 EXEC sp_DANGKYKH 'khachhang','khachhang'
 EXEC sp_DANGKYKH 'khachhang2','khachhang2'
 EXEC sp_DANGKYKH 'khachhang3', 'khachhang3'
@@ -51,7 +50,7 @@ EXEC  sp_ThemCuaHang '3','CHICKEN ADVENTURE','8:00','23:59','AVAILABLE',1,'https
 EXEC  sp_ThemCuaHang '4','MILK CHEA','8:00','23:59','AVAILABLE',1, 'https://dynamic.brandcrowd.com/asset/logo/fc77e70d-34f4-44ca-8773-b3884b2213b9/logo-search-grid-1x?v=637936310133200000',0,0
 
 
-EXEC sp_insert_LAT
+
 SELECT *FROM PHAMVIBANG
 EXEC sp_ThemThucDon 'chicken burger',NULL,20000,0,'https://i.postimg.cc/8z4jH0mR/chicken-burger.jpg','3','1'
 EXEC sp_ThemThucDon 'chicken deluxe fry',NULL,30000,0,'https://i.postimg.cc/DzhPWHy1/chicken-deluxe-fry.jpg','1','1'	
@@ -64,7 +63,7 @@ EXEC sp_ThemThucDon 'Tra sua nuong', 'Ngon mà tui tỉnh luôn', 35000, 1, 'htt
 EXEC sp_ThemThucDon 'hong tra', 'Ngon mà tui tỉnh luôn', 35000, 1, 'https://image.thanhnien.vn/w1024/Uploaded/2022/wobjohb/2022_10_15/p1-7475.jpeg','1', '1'
 
 
-EXEC sp_ThemHoaHong '01/01/2020','01/01/2025',10
+
 
 EXEC sp_ThemHopDong '1', 5, 1000000, 1
 EXEC sp_ThemHopDong '2', 1, 1000000, 2

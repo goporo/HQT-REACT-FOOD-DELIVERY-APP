@@ -20,7 +20,7 @@ exports.foodType = async (req, res) => {
     res.header("Access-Control-Allow-Headers", "Content-Type")
     if (req.body && req.body["SL"] >= 0) {
         var SL = req.body["SL"]
-        var MACN = req.body["MALAT"]
+        var MALAT = req.body["MALAT"]
         try {
             let pool = await sql.connect(config)
             let result = await pool.request().
@@ -35,7 +35,7 @@ exports.foodType = async (req, res) => {
         }
         catch (error) {
             var success = false
-            var message = "Failed To Get Food"
+            var message = error.message
             var foods = {}
             res.json({ success, message, foods })
         }

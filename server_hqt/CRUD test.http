@@ -143,7 +143,7 @@ Content-Type: application/json
 
 {
 "MAKH": "1",
-"MACN": "1",
+"MACN": "3",
 "HINHTHUCTT":"VI",
 "MADCGH":null,
 "foods":[{
@@ -151,9 +151,19 @@ Content-Type: application/json
             "SOLUONG":3
         },
         {
-            "MAMONAN": "2",
+            "MAMONAN": "4",
             "SOLUONG":3
         }]
+}
+### nhận đơn chi nhánh
+POST http://localhost:5000/order/3
+Content-Type: application/json
+
+{
+"MAND": "1",
+"TRANGTHAIDH":"PROCESSING",
+"MADH": "1"
+
 }
 ### cập nhật đơn hàng
 POST http://localhost:5000/order/4
@@ -179,7 +189,7 @@ Content-Type: application/json
     "MALAT": "1        "
   }
 ### ký hợp đồng với mảng chi nhánh
-POST http://localhost:5000/contract/1
+POST http://localhost:5000/contract/2
 Content-Type: application/json
 
 {
@@ -187,8 +197,8 @@ Content-Type: application/json
 "SUPPLIERS":[{
     "MATKNGANHANG":null,
     "MADIACHI":null,
-    "TENTK":null,
-    "MATKHAUTK":null
+    "TENTK":"TEST",
+    "MATKHAUTK":"123"
 }]
 
 }
@@ -208,7 +218,7 @@ POST http://localhost:5000/contract/accept
 Content-Type: application/json
 
 {
-    "MAHD":"3",
+    "MAHD":"96000",
     "STT":1,
     "MANHANVIEN":"1"
 }
@@ -230,7 +240,7 @@ Content-Type: application/json
 
 {
     "MAHD":"1",
-    "STT":2,
+    "STT":1,
     "MANHANVIEN":"1"
 }
 ### đăng nhập
@@ -238,6 +248,11 @@ POST http://localhost:5000/user/login/5
 Content-Type: application/json
 
 {
+<<<<<<< Updated upstream
     "TENTK":"khachhang",
     "MATKHAUTK":"khachhang"
+=======
+    "TENTK":"taixe",
+    "MATKHAUTK":"taixe"
+>>>>>>> Stashed changes
 }
