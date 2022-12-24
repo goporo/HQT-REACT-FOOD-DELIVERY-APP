@@ -91,7 +91,7 @@ const Cart = () => {
           },
         }}
       >
-        <div className="w-full flex justify-center p-5">
+        <div className="flex justify-center p-5">
           <Checkout cartItems={cartItems} />
           <button
             className="fixed top-0 right-0 bg-red-500 text-white text-center py-3 px-4 font-bold rounded-lg"
@@ -170,8 +170,6 @@ const Checkout = (props) => {
       }
     });
     e.preventDefault();
-    // console.log(e.target[0].value)
-    console.log(cartItems[0]);
     try {
       axios.post(`/order/place-order`, {
         "MAKH": makh,
@@ -194,9 +192,10 @@ const Checkout = (props) => {
   };
 
   return (
-    <div>
+    <div className="w-11/12">
       <h6 className="mb-4">Shipping Information</h6>
-      <form onSubmit={handleCheckout}>
+      <form className="flex flex-col"
+        onSubmit={handleCheckout}>
         <FormControl >
           <TextField id="outlined-basic" label="Name" variant="outlined" margin="normal" />
           <TextField id="outlined-basic" label="Phone Number" variant="outlined" margin="normal" />
