@@ -76,12 +76,11 @@ EXEC sp_ThemThongTinHopDong '3',3,6,'01/01/2020','01/01/2022','1',NULL
 
 UPDATE KHACHHANG SET SODUVI=1000000
 GO
-declare @listmonan list_MONAN
-insert @listmonan values(1, '2', 2)
-insert @listmonan values(1, '7', 3)
-EXEC sp_Tao_DH 'VI',NULL,'1','1',20000,@listmonan
-EXEC sp_Tao_DH 'VI',NULL,'1','1',20000,@listmonan
-EXEC sp_Tao_DH 'VI',NULL,'1','1',20000,@listmonan
+--declare @listmonan list_MONAN
+--insert @listmonan values(1, '2', 2)
+--EXEC sp_Tao_DH 'VI',NULL,'1','1',20000,@listmonan
+--insert @listmonan values(1, '7', 3)
+--EXEC sp_Tao_DH 'VI',NULL,'1','1',20000,@listmonan
 
 
 --EXEC sp_ThemDonDH '1','DELIVERED','12/1/2022','VPBank', 0, 15000,NULL,NULL,NULL, '1',NULL,NULL,NULL,NULL, NULL,NULL,NULL,NULL,NULL,NULL,NULL
