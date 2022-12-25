@@ -35,12 +35,12 @@ exports.getOrdersShipper = async (req, res) => {
     try {
         var MATX = req.body["MATX"]
         var TGBD = req.body["TGBD"]
-        var TGBD = req.body["TGKT"]
+        var TGKT = req.body["TGKT"]
         let pool = await sql.connect(config)
         let result = await pool.request().
             input("MATX", sql.VarChar(10), MATX).
-            input("TGBD", sql.DateTime, new Date()).
-            input("TGKT", sql.DateTime, new Date()).
+            input("TGBD", sql.DateTime, Date.parse(TGBD)).
+            input("TGKT", sql.DateTime, Date.parse(TGKT)).
             execute("sp_DonHang_TX")
         sql.close()
         var success = true
@@ -121,12 +121,12 @@ exports.getOrderDetails = async (req, res) => {
     res.header("Access-Control-Allow-Methods", " GET");
     res.header("Access-Control-Allow-Headers", "Content-Type")
     try {
-        var MAKH = req.body["MAKH"]
+        var MAND = req.body["MAND"]
         var MADH = req.body["MADH"]
         var USER_TYPE = req.body["USER_TYPE"]
         let pool = await sql.connect(config)
         let result = await pool.request().
-            input("MAKH", sql.VarChar(10), MAKH).
+            input("MAKH", sql.VarChar(10), MAND).
             input("MADH", sql.VarChar(10), MADH).
             input("USER_TYPE", sql.VarChar(10), USER_TYPE).
             execute("sp_DonHang_ChiTiet")
@@ -192,7 +192,7 @@ exports.placeOrder = async (req, res) => {
 
 };
 
-exports.cancelOrder = async (req, res) => {
+exports.updateOrder = async (req, res) => {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Methods", " POST");
     res.header("Access-Control-Allow-Headers", "Content-Type")

@@ -90,9 +90,9 @@ PUT   http://localhost:5000/order/orderdetails
 Content-Type: application/json
 
 {
-    "MAKH":"1",
-    "MADH":"1",
-    "USER_TYPE":"5"
+    "MAND":"1",
+    "MADH":"10",
+    "USER_TYPE":"4"
 }
 ### Lấy Đơn Hàng Khách hàng
 PUT   http://localhost:5000/order/customer
@@ -114,7 +114,7 @@ Content-Type: application/json
 {
     "MATX":"1",
     "TGBD":"",
-    "TGKT":""
+    "TGKT":"2022-12-31"
 }
 ### Lấy Đơn Hàng CHI NHANH
 PUT   http://localhost:5000/order/branch
@@ -156,13 +156,13 @@ Content-Type: application/json
         }]
 }
 ### cập nhật đơn hàng
-POST http://localhost:5000/order/4
+POST http://localhost:5000/order/3
 Content-Type: application/json
 
 {
 "MAND": "1",
-"TRANGTHAIDH":"DELIVERING",
-"MADH": "1"
+"TRANGTHAIDH":"PROCESSING",
+"MADH": "13"
 
 }
 

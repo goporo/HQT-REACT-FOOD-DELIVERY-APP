@@ -15,9 +15,9 @@ const Order = () => {
   const [orders, setOrders] = useState([]);
   const [needRefresh, setNeedRefresh] = useState(false);
 
-  const updateOrder = (status, madh) => {
+  const updateOrder = async (status, madh) => {
     // /order/:userType
-    axios.post(`/order/5`, {
+    await axios.post(`/order/5`, {
       "MAND": makh,
       "TRANGTHAIDH": status,
       "MADH": madh,
@@ -50,7 +50,7 @@ const Order = () => {
   }
 
   useEffect(() => {
-    const getData = async () => {
+    const getData = () => {
       axios.put(`/order/customer`, {
         "MAKH": makh,
       })
@@ -59,13 +59,14 @@ const Order = () => {
           temp = temp.map((item) => {
             return {
               orderID: item.MADH,
-              shipper: item.TEN,
+              shipper: item.TENTX,
               status: item.TRANGTHAIDH,
               total: item.PHISP
             }
           });
           setOrders(temp.sort((a, b) => {
             if (a.status > b.status) return 1
+            else if (a.status === b.status) return b.orderID - a.orderID
             return -1
           }));
         })
@@ -121,7 +122,7 @@ const Tr = (props) => {
   useEffect(() => {
     const getDetails = (makh, madh) => {
       return axios.put(`/order/orderdetails`, {
-        "MAKH": makh,
+        "MAND": makh,
         "MADH": madh,
         "USER_TYPE": "5"
       })

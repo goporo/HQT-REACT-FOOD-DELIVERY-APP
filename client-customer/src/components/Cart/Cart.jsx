@@ -92,7 +92,7 @@ const Cart = () => {
         }}
       >
         <div className="flex justify-center p-5">
-          <Checkout cartItems={cartItems} />
+          <Checkout cartItems={cartItems} setShowModal={setShowModal} />
           <button
             className="fixed top-0 right-0 bg-red-500 text-white text-center py-3 px-4 font-bold rounded-lg"
             onClick={() => setShowModal(false)}>X</button>
@@ -183,7 +183,7 @@ const Checkout = (props) => {
         dispatch(cartActions.deleteItem(item.MAMONAN));
       })
 
-      navigate("/order")
+      props.setShowModal(false);
 
     } catch (error) {
       alert(error);

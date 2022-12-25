@@ -10,7 +10,7 @@ router.put('/orderdetails', controller.getOrderDetails);
 router.put('/:status', controller.getOrdersByStatus);
 
 router.post('/place-order', controller.placeOrder);
-router.post('/:type', controller.cancelOrder);
+router.post('/:type', controller.updateOrder);
 
 
 
