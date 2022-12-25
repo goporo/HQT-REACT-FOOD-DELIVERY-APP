@@ -4,7 +4,6 @@ GO
 
 EXEC sp_DANGKYKH 'khachhang','khachhang'
 EXEC sp_DANGKYKH 'khachhang2','khachhang2'
-EXEC sp_DANGKYKH 'khachhang3', 'khachhang3'
 
 EXEC sp_DANGKYTX 'taixe','taixe','taigavn113@gmail.com','Pham Minh Tai','012345678','61D1.42558','0123'
 EXEC sp_DANGKYTX 'taixe2','taixe2','taigavn114@gmail.com','Grabber','01234678','1D1.42558','123'
@@ -22,9 +21,9 @@ EXEC sp_DANGKYQTV 'admin2','admin2','adm@mail','Hèng Đẹp Gái', '23321412'
 EXEC sp_DANGKYNV 'nhanvien','nhanvien','HELLO',N'Phạm Minh Tài','0123456'
 EXEC sp_DANGKYNV 'nhanvien2','nhanvien2','Hi@gmail.com',N'Phan Nguyễn Phước Nguyên','01243256'
 
-EXEC sp_DANGKYNGANHANG '1',1,N'DĨ AN',N'TPBANK','01234456'
-EXEC sp_DANGKYNGANHANG '1',2,N'DĨ AN',N'TPBANK','01234456'
-EXEC sp_DANGKYNGANHANG '2',2,N'Phú Yên',N'MPBANK','01245456'
+EXEC sp_DANGKYNGANHANG '1',5,N'DĨ AN',N'TPBANK','01234456', '12/12/2022'
+EXEC sp_DANGKYNGANHANG '2',5,N'HCM',N'TPBANK','01234456', '12/12/2022'
+EXEC sp_DANGKYNGANHANG '3',4,N'Phú Yên',N'MPBANK','01245456', '12/12/2022'
 
 EXEC sp_ThemGiaCuoc 'MC1', 15000, 2, '12/12/2022', 'VND', '1'
 EXEC sp_ThemKhuVuc 'KV1', 'Khu vực 1', 'MC1'
