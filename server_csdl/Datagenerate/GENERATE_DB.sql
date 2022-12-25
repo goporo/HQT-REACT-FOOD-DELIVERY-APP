@@ -219,10 +219,6 @@ CREATE TABLE NHANVIEN
 	TEN NVARCHAR(50),
 	HINHANHND BIT,
 	DIACHIHINHANHND VARCHAR(300),
-	MATK VARCHAR(10),
-
-	PRIMARY KEY (MANHANVIEN)
-	DIACHIHINHANHND VARCHAR(100),
 	MATK VARCHAR(10)
 )
 CREATE TABLE NHANVIEN_CHITIET
@@ -264,8 +260,7 @@ CREATE TABLE DOITAC
 	NGAYTG DATETIME,
 	HINHANHND  BIT,
 	DIACHIHINHANHND VARCHAR(300),
-	MATK VARCHAR(10),
-	PRIMARY KEY (MADOITAC)
+	MATK VARCHAR(10)
 )
 CREATE TABLE DOITAC_CHITIET
 (
@@ -843,7 +838,7 @@ ALTER DATABASE [QL_BANHANG]
     ADD FILE 
     (
     NAME = [Part0_3],
-    FILENAME = 'D:\LOAITK0_3.ndf',
+    FILENAME = 'C:\Users\nguye\Desktop\temp\LOAITK0_3.ndf',
         SIZE = 3072 KB, 
         MAXSIZE = UNLIMITED, 
         FILEGROWTH = 1024 KB
@@ -853,7 +848,7 @@ ALTER DATABASE [QL_BANHANG]
     ADD FILE 
     (
     NAME = [Part4],
-    FILENAME = 'D:\LOAITK4.ndf',
+    FILENAME = 'C:\Users\nguye\Desktop\temp\LOAITK4.ndf',
         SIZE = 3072 KB, 
         MAXSIZE = UNLIMITED, 
         FILEGROWTH = 1024 KB
@@ -863,7 +858,7 @@ ALTER DATABASE [QL_BANHANG]
     ADD FILE 
     (
     NAME = [Part5],
-    FILENAME = 'D:\LOAITK5.ndf',
+    FILENAME = 'C:\Users\nguye\Desktop\temp\LOAITK5.ndf',
         SIZE = 3072 KB, 
         MAXSIZE = UNLIMITED, 
         FILEGROWTH = 1024 KB
@@ -891,7 +886,7 @@ ALTER DATABASE [QL_BANHANG]
     ADD FILE 
     (
     NAME = [Part2021],
-    FILENAME = 'D:\NGAYTG_2021.ndf',
+    FILENAME = 'C:\Users\nguye\Desktop\temp\NGAYTG_2021.ndf',
         SIZE = 3072 KB, 
         MAXSIZE = UNLIMITED, 
         FILEGROWTH = 1024 KB
@@ -901,7 +896,7 @@ ALTER DATABASE [QL_BANHANG]
     ADD FILE 
     (
     NAME = [Part2022],
-    FILENAME = 'D:\NGAYTG_2022.ndf',
+    FILENAME = 'C:\Users\nguye\Desktop\temp\NGAYTG_2022.ndf',
         SIZE = 3072 KB, 
         MAXSIZE = UNLIMITED, 
         FILEGROWTH = 1024 KB
@@ -911,7 +906,7 @@ ALTER DATABASE [QL_BANHANG]
     ADD FILE 
     (
     NAME = [Part2023],
-    FILENAME = 'D:\NGAYTG_2023.ndf',
+    FILENAME = 'C:\Users\nguye\Desktop\temp\NGAYTG_2023.ndf',
         SIZE = 3072 KB, 
         MAXSIZE = UNLIMITED, 
         FILEGROWTH = 1024 KB
@@ -935,7 +930,7 @@ ALTER DATABASE [QL_BANHANG]
     ADD FILE 
     (
     NAME = [PartNGAYTXTG2021],
-    FILENAME = 'D:\NGAYTXTG_2021.ndf',
+    FILENAME = 'C:\Users\nguye\Desktop\temp\NGAYTXTG_2021.ndf',
         SIZE = 3072 KB, 
         MAXSIZE = UNLIMITED, 
         FILEGROWTH = 1024 KB
@@ -945,7 +940,7 @@ ALTER DATABASE [QL_BANHANG]
     ADD FILE 
     (
     NAME = [PartNGAYTXTG2022],
-    FILENAME = 'D:\NGAYTXTG_2022.ndf',
+    FILENAME = 'C:\Users\nguye\Desktop\temp\NGAYTXTG_2022.ndf',
         SIZE = 3072 KB, 
         MAXSIZE = UNLIMITED, 
         FILEGROWTH = 1024 KB
@@ -955,7 +950,7 @@ ALTER DATABASE [QL_BANHANG]
     ADD FILE 
     (
     NAME = [PartNGAYTXTG2023],
-    FILENAME = 'D:\NGAYTXTG_2023.ndf',
+    FILENAME = 'C:\Users\nguye\Desktop\temp\NGAYTXTG_2023.ndf',
         SIZE = 3072 KB, 
         MAXSIZE = UNLIMITED, 
         FILEGROWTH = 1024 KB
@@ -979,7 +974,7 @@ ALTER DATABASE [QL_BANHANG]
     ADD FILE 
     (
     NAME = [PartTGHH2021],
-    FILENAME = 'D:\TGHH_2021.ndf',
+    FILENAME = 'C:\Users\nguye\Desktop\temp\TGHH_2021.ndf',
         SIZE = 3072 KB, 
         MAXSIZE = UNLIMITED, 
         FILEGROWTH = 1024 KB
@@ -989,7 +984,7 @@ ALTER DATABASE [QL_BANHANG]
     ADD FILE 
     (
     NAME = [PartTGHH2022],
-    FILENAME = 'D:\TGHH_2022.ndf',
+    FILENAME = 'C:\Users\nguye\Desktop\temp\TGHH_2022.ndf',
         SIZE = 3072 KB, 
         MAXSIZE = UNLIMITED, 
         FILEGROWTH = 1024 KB
@@ -999,7 +994,7 @@ ALTER DATABASE [QL_BANHANG]
     ADD FILE 
     (
     NAME = [PartTGHH2023],
-    FILENAME = 'D:\TGHH_2023.ndf',
+    FILENAME = 'C:\Users\nguye\Desktop\temp\TGHH_2023.ndf',
         SIZE = 3072 KB, 
         MAXSIZE = UNLIMITED, 
         FILEGROWTH = 1024 KB
@@ -1022,7 +1017,7 @@ ALTER DATABASE [QL_BANHANG]
     ADD FILE 
     (
     NAME = [PartNLD2021],
-    FILENAME = 'D:\NGAYLAPDON_2021.ndf',
+    FILENAME = 'C:\Users\nguye\Desktop\temp\NGAYLAPDON_2021.ndf',
         SIZE = 3072 KB, 
         MAXSIZE = UNLIMITED, 
         FILEGROWTH = 1024 KB
@@ -1032,7 +1027,7 @@ ALTER DATABASE [QL_BANHANG]
     ADD FILE 
     (
     NAME = [PartNLD2022],
-    FILENAME = 'D:\NGAYLAPDON_2022.ndf',
+    FILENAME = 'C:\Users\nguye\Desktop\temp\NGAYLAPDON_2022.ndf',
         SIZE = 3072 KB, 
         MAXSIZE = UNLIMITED, 
         FILEGROWTH = 1024 KB
@@ -1042,7 +1037,7 @@ ALTER DATABASE [QL_BANHANG]
     ADD FILE 
     (
     NAME = [PartNLD2023],
-    FILENAME = 'D:\NGAYLAPDON_2023.ndf',
+    FILENAME = 'C:\Users\nguye\Desktop\temp\NGAYLAPDON_2023.ndf',
         SIZE = 3072 KB, 
         MAXSIZE = UNLIMITED, 
         FILEGROWTH = 1024 KB
@@ -1065,7 +1060,7 @@ ALTER DATABASE [QL_BANHANG]
     ADD FILE 
     (
     NAME = [PartNLTD2021],
-    FILENAME = 'D:\NGAYLAPTHUCDON_2021.ndf',
+    FILENAME = 'C:\Users\nguye\Desktop\temp\NGAYLAPTHUCDON_2021.ndf',
         SIZE = 3072 KB, 
         MAXSIZE = UNLIMITED, 
         FILEGROWTH = 1024 KB
@@ -1075,7 +1070,7 @@ ALTER DATABASE [QL_BANHANG]
     ADD FILE 
     (
     NAME = [PartNLTD2022],
-    FILENAME = 'D:\NGAYLAPTHUCDON_2022.ndf',
+    FILENAME = 'C:\Users\nguye\Desktop\temp\NGAYLAPTHUCDON_2022.ndf',
         SIZE = 3072 KB, 
         MAXSIZE = UNLIMITED, 
         FILEGROWTH = 1024 KB
@@ -1085,7 +1080,7 @@ ALTER DATABASE [QL_BANHANG]
     ADD FILE 
     (
     NAME = [PartNLTD2023],
-    FILENAME = 'D:\NGAYLAPTHUCDON_2023.ndf',
+    FILENAME = 'C:\Users\nguye\Desktop\temp\NGAYLAPTHUCDON_2023.ndf',
         SIZE = 3072 KB, 
         MAXSIZE = UNLIMITED, 
         FILEGROWTH = 1024 KB
@@ -1108,7 +1103,7 @@ ALTER DATABASE [QL_BANHANG]
     ADD FILE 
     (
     NAME = [PartNLDGCN2021],
-    FILENAME = 'D:\NLDGCN_2021.ndf',
+    FILENAME = 'C:\Users\nguye\Desktop\temp\NLDGCN_2021.ndf',
         SIZE = 3072 KB, 
         MAXSIZE = UNLIMITED, 
         FILEGROWTH = 1024 KB
@@ -1118,7 +1113,7 @@ ALTER DATABASE [QL_BANHANG]
     ADD FILE 
     (
     NAME = [PartNLDGCN2022],
-    FILENAME = 'D:\NLDGCN_2022.ndf',
+    FILENAME = 'C:\Users\nguye\Desktop\temp\NLDGCN_2022.ndf',
         SIZE = 3072 KB, 
         MAXSIZE = UNLIMITED, 
         FILEGROWTH = 1024 KB
@@ -1128,7 +1123,7 @@ ALTER DATABASE [QL_BANHANG]
     ADD FILE 
     (
     NAME = [PartNLDGCN2023],
-    FILENAME = 'D:\NLDGCN_2023.ndf',
+    FILENAME = 'C:\Users\nguye\Desktop\temp\NLDGCN_2023.ndf',
         SIZE = 3072 KB, 
         MAXSIZE = UNLIMITED, 
         FILEGROWTH = 1024 KB
@@ -1151,7 +1146,7 @@ ALTER DATABASE [QL_BANHANG]
     ADD FILE 
     (
     NAME = [PartNLDGMA2021],
-    FILENAME = 'D:\NLDGMA_2021.ndf',
+    FILENAME = 'C:\Users\nguye\Desktop\temp\NLDGMA_2021.ndf',
         SIZE = 3072 KB, 
         MAXSIZE = UNLIMITED, 
         FILEGROWTH = 1024 KB
@@ -1161,7 +1156,7 @@ ALTER DATABASE [QL_BANHANG]
     ADD FILE 
     (
     NAME = [PartNLDGMA2022],
-    FILENAME = 'D:\NLDGMA_2022.ndf',
+    FILENAME = 'C:\Users\nguye\Desktop\temp\NLDGMA_2022.ndf',
         SIZE = 3072 KB, 
         MAXSIZE = UNLIMITED, 
         FILEGROWTH = 1024 KB
@@ -1171,7 +1166,7 @@ ALTER DATABASE [QL_BANHANG]
     ADD FILE 
     (
     NAME = [PartNLDGMA2023],
-    FILENAME = 'D:\NLDGMA_2023.ndf',
+    FILENAME = 'C:\Users\nguye\Desktop\temp\NLDGMA_2023.ndf',
         SIZE = 3072 KB, 
         MAXSIZE = UNLIMITED, 
         FILEGROWTH = 1024 KB
@@ -1194,7 +1189,7 @@ ALTER DATABASE [QL_BANHANG]
     ADD FILE 
     (
     NAME = [PartNLDGTX2021],
-    FILENAME = 'D:\NLDGTX_2021.ndf',
+    FILENAME = 'C:\Users\nguye\Desktop\temp\NLDGTX_2021.ndf',
         SIZE = 3072 KB, 
         MAXSIZE = UNLIMITED, 
         FILEGROWTH = 1024 KB
@@ -1204,7 +1199,7 @@ ALTER DATABASE [QL_BANHANG]
     ADD FILE 
     (
     NAME = [PartNLDGTX2022],
-    FILENAME = 'D:\NLDGTX_2022.ndf',
+    FILENAME = 'C:\Users\nguye\Desktop\temp\NLDGTX_2022.ndf',
         SIZE = 3072 KB, 
         MAXSIZE = UNLIMITED, 
         FILEGROWTH = 1024 KB
@@ -1214,7 +1209,7 @@ ALTER DATABASE [QL_BANHANG]
     ADD FILE 
     (
     NAME = [PartNLDGTX2023],
-    FILENAME = 'D:\NLDGTX_2023.ndf',
+    FILENAME = 'C:\Users\nguye\Desktop\temp\NLDGTX_2023.ndf',
         SIZE = 3072 KB, 
         MAXSIZE = UNLIMITED, 
         FILEGROWTH = 1024 KB
@@ -1241,7 +1236,7 @@ CREATE INDEX idx_MATKNGANHANG ON CHINHANH (MATKNGANHANG)
 CREATE INDEX idx_MADT ON CHINHANH (MADT)
 --INDEX CUA HANG--
 CREATE INDEX idx_TENCH ON CUAHANG (TENCH)
-CREATE INDEX idx_MADT ON CUAHANG (MADT)
+--CREATE INDEX idx_MADT ON CUAHANG (MADT)
 CREATE INDEX idx_SLDH ON CUAHANG (SLDH)
 --INDEX THUC DON--
 CREATE INDEX idx_TENMONAN ON THUCDON (TENMONAN)
@@ -1259,8 +1254,8 @@ CREATE INDEX idx_MADIACHI ON QUANTRIVIEN (MADIACHI)
 --INDEX HOP DONG--
 CREATE INDEX idx_MADT ON HOPDONG (MADOITAC)
 --INDEX THONG TIN HOP DONG--
-CREATE INDEX idx_MADT ON THONGTIN_HOPDONG (MADT)
-CREATE INDEX idx_MANV ON THONGTIN_HOPDONG (MANV)
+--CREATE INDEX idx_MADT ON THONGTIN_HOPDONG (MADT)
+CREATE INDEX idx_MANV ON THONGTIN_HOPDONG (MANHANVIEN)
 --INDEX HOPDONG CHI NHANH
 
 CREATE INDEX idx_HD_HD ON HOPDONGCHINHANH (MAHD)
