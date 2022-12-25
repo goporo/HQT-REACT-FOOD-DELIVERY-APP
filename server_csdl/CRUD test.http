@@ -193,7 +193,7 @@ Content-Type: application/json
 
 }
 ### lấy hợp đồng cho nhân viên nếu lấy hợp đồng hết hạn thì phải có mốc thời gian hết hạn đi theo
-PUT http://localhost:5000/contract/employee/expiring
+PUT http://localhost:5000/contract/employee/all
 Content-Type: application/json
 
 {
@@ -218,7 +218,7 @@ Content-Type: application/json
 
 {
     "MAHD":"1",
-    "THOIHAN":4,
+    "THOIHAN":6,
     "MADT":"1"
 }
 ### Lấy hợp đồng của đối tác
