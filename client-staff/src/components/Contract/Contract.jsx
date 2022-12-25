@@ -12,6 +12,7 @@ export default function Contract({ }) {
     useEffect(() => {
         const getData = async () => {
             axios.put(`/contract/employee/all`, {
+                "MONTH": 36
             })
                 .then(function (res) {
                     let temp = res.data.data;
