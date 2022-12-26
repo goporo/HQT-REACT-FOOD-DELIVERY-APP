@@ -253,7 +253,7 @@ exports.getOrdersByStatus = async (req, res) => {
     try {
         var status = req.params.status
         let pool = await sql.connect(config)
-        let result = await pool.request().query("SELECT * FROM DON_DH WHERE TRANGTHAIDH = " + '\'' + status + '\'')
+        let result = await pool.request().exec('sp_DONHANG_CANGIAO')
 
         sql.close()
         var success = true
