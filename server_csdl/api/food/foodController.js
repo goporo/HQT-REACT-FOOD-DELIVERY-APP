@@ -98,7 +98,7 @@ exports.price = async (req, res) => {
             sql.close()
             var success = true
             var message = "Success Get"
-            var foods = result.recordset
+            var foods = result.recordsets[0]
             res.json({ success, message, foods })
         }
         catch (error) {
