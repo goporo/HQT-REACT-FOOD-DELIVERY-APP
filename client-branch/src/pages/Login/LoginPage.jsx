@@ -3,8 +3,8 @@ import { useState } from 'react';
 
 const LoginPage = () => {
   const [data, setData] = useState({
-    email: '',
-    password: '',
+    TENTK: '',
+    MATKHAUTK: '',
   });
 
   const handleChange = (e) => {
@@ -14,7 +14,9 @@ const LoginPage = () => {
     });
   };
 
-  const login = () => {
+  const login = (e) => {
+    e.preventDefault();
+
     fetch('http://localhost:5000/api/auth/login', {
       method: 'POST',
       headers: {
@@ -36,19 +38,19 @@ const LoginPage = () => {
     <div className={styles.right}>
       <h1 className={styles.title}>Log in</h1>
 
-      <div className={styles.form}>
+      <form className={styles.form} onSubmit={login}>
         <div className={styles.inputGroup}>
-          <label htmlFor='email'>Email</label>
-          <input type='email' id='email' value={data.email} onChange={handleChange} />
+          <label htmlFor='TENTK'>Username</label>
+          <input type='text' id='TENTK' value={data.TENTK} onChange={handleChange} />
         </div>
 
         <div className={styles.inputGroup}>
-          <label htmlFor='password'>Password</label>
-          <input type='password' id='password' value={data.password} onChange={handleChange} />
+          <label htmlFor='MATKHAUTK'>Password</label>
+          <input type='password' id='MATKHAUTK' value={data.MATKHAUTK} onChange={handleChange} />
         </div>
 
-        <button className={styles.button}>Log in</button>
-      </div>
+        <button className={styles.button} type='submit'>Log in</button>
+      </form>
 
       <div className={styles.register}>
         <p>

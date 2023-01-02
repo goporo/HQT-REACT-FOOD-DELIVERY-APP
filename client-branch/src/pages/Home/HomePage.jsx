@@ -5,6 +5,9 @@ import ReviewTable from './ReviewTable/ReviewTable';
 import OrderChart from './CustomChart/OrderChart';
 import RevenueChart from './CustomChart/RevenueChart';
 import { formatVND } from '../../utils/currencyFormatter';
+import { useEffect } from 'react';
+import moment from 'moment';
+import axios from 'axios';
 
 const data = {
   foodTrends: {
@@ -89,6 +92,23 @@ const data = {
 };
 
 function HomePage() {
+  useEffect(() => {
+    fetch('http://localhost:5000/order/branch', {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        MACN: '1',
+        TGBD: moment().subtract(2, 'year').format('YYYY-MM-DD'),
+        TGKT: moment().format('YYYY-MM-DD'),
+        TRANGTHAIDH: 'DELIVERED'
+      })
+    }).then(res => res.json()).then(data => {
+      console.log(data);
+    });
+  }, []);
+
   return (
     <main className={styles.homePage}>
       <section className={styles.overview}>
