@@ -252,56 +252,36 @@ exports.getProfileUser=async (req, res) => {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Methods", " POST");
     res.header("Access-Control-Allow-Headers", "Content-Type")
-    if (req.body &&  req.body["LOAITK"])
-    {
-        
-        var LOAITK=req.body["LOAITK"]
-        var TENTK=req.body["TENTK"]
-        var MATKHAUTK=req.body["MATKHAUTK"]
-        var EMAIL=req.body["EMAIL"]
-        var TEN=req.body["TEN"]
-        var SDT=req.body["SDT"]
-        var MSTHUE= req.body["MSTHUE"]
-        var MAIL_NDD=req.body["MAIL_NDD"] 
-        var SLDUKIENMIN=req.body["SLDUKIENMIN"] 
-        var SLDUKIENMAX=req.body["SLDUKIENMAX"] 
-        if(LOAITK&&LOAITK==2)
-        {
-             try {
-                let pool = await sql.connect(config)
-                let result = await pool.request().
-                input("TENTK",sql.VarChar(50),TENTK).
-                input("MATKHAUTK",sql.VarChar(50),MATKHAUTK).
-                input("EMAILDT",sql.VarChar(50),EMAIL).
-                input("TENDT",sql.VarChar(50),TEN).
-                input("SDTDT",sql.VarChar(10),SDT).
-                input("MSTHUE",sql.VarChar(10),MSTHUE).
-                input("MAIL_NDD",sql.VarChar(50),MAIL_NDD).
-                input("SLDUKIENMIN",sql.Int,SLDUKIENMIN).
-                input("SLDUKIENMAX",sql.Int,SLDUKIENMAX).
-                execute("sp_DANGKYDT")
-                sql.close()
-                var success=true
-                var message="Success Registered"
-                res.json({success,message})
-                }
-            catch(error){
-                var success=false
-                var message="Failed Registered"
-                res.json({success,message})
-                }
+    try{
+        var LOAITK=req.params.type
+        var ID=req.body.MAND
+        let pool = await sql.connect(config)
+        let result
+        if (LOAITK==0)
+            result = await pool.request().query("SELECT * FROM QUANTRIVIEN WHERE MAQTV="+String(ID))
+        else if (LOAITK==1)
+            result = await pool.request().query("SELECT * FROM NHANVIEN WHERE MANHANVIEN="+String(ID))
+        else if (LOAITK==2)
+            result = await pool.request().query("SELECT * FROM DOITAC WHERE MADOITAC="+String(ID))
+        else if (LOAITK==3)
+            result = await pool.request().query("SELECT * FROM CHINHANH CN JOIN CUAHANG CH ON CN.MACN=CH.MACN WHERE MACN="+String(ID))
+        else if (LOAITK==4)
+            result = await pool.request().query("SELECT * FROM TAIXE WHERE MATX="+String(ID))
+        else if (LOAITK==5)
+            result = await pool.request().query("SELECT * FROM KHACHHANG WHERE MAKH="+String(ID))
+            sql.close()
+        var success=true
+        var message="Succes"
+        var data=result.recordsets[0]
+        res.json({success,message,data})
     }
-    else{
+    catch(error)
+    {
         var success=false
         var message="Incorrect user's type "
         res.json({success,message})
-        }
-}
-else{
-    var success=false
-    var message="null message "
-    res.json({success,message})
     }
+
 };
 exports.updateProfileUser=async (req, res) => {
     res.header("Access-Control-Allow-Origin", "*");

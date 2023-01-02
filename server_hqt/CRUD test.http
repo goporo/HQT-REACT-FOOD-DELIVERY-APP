@@ -3,7 +3,7 @@ POST   http://localhost:5000/user/register/customer
 Content-Type: application/json
 
 {
-    "TENTK":"TAIGAVN",
+    "TENTK":"KHACHHANG",
     "MATKHAUTK":"123",
     "LOAITK":5
 }
@@ -12,14 +12,14 @@ POST   http://localhost:5000/user/register/shipper
 Content-Type: application/json
 
 {
-    "TENTK":"TAIXE1",
+    "TENTK":"TAIXE13",
     "MATKHAUTK":"123",
     "LOAITK":4,
-    "EMAIL":"ABC@GMAIL",
+    "EMAIL":"ABC@GMAIL1",
     "TEN":"TAI",
     "SDT":"01234567",
-    "BIENSOXE":"60D1.12345",
-    "CMND":"29123333"
+    "BIENSOXE":"60D1.12335",
+    "CMND":"29123343"
 }
 ### DANGKY QUANTRIVIEN
 POST   http://localhost:5000/user/register/admin
@@ -66,7 +66,7 @@ PUT   http://localhost:5000/food/price
 Content-Type: application/json
 
 {
-    "SL":10,
+    "SL":100,
     "THUTU":"INCREASE"
 }
 ### Lấy Món theo chi nhánh
@@ -74,16 +74,16 @@ PUT   http://localhost:5000/food/supplier
 Content-Type: application/json
 
 {
-    "SL":10,
-    "MACN":"1"
+    "SL":100,
+    "MACN":"101"
 }
 ### Lấy Món theo loại
 PUT   http://localhost:5000/food/foodType
 Content-Type: application/json
 
 {
-    "SL":10,
-    "MALAT":"1"
+    "SL":100,
+    "MALAT":"2"
 }
 ### Lấy Đơn Hàng chi tiết
 PUT   http://localhost:5000/order/orderdetails
@@ -99,7 +99,7 @@ PUT   http://localhost:5000/order/customer
 Content-Type: application/json
 
 {
-    "MAKH":"1",
+    "MAKH":"5",
     "TGBD":"",
     "TGKT":""
 }
@@ -112,7 +112,7 @@ PUT   http://localhost:5000/order/shipper
 Content-Type: application/json
 
 {
-    "MATX":"1",
+    "MATX":"2",
     "TGBD":"",
     "TGKT":""
 }
@@ -121,7 +121,7 @@ PUT   http://localhost:5000/order/branch
 Content-Type: application/json
 
 {
-    "MACN":"1",
+    "MACN":"3",
     "TRANGTHAIDH":"ALL",
     "TGBD":"2020-01-01",
     "TGKT":"2030-01-01"
@@ -143,36 +143,33 @@ Content-Type: application/json
 
 {
 "MAKH": "1",
-"MACN": "3",
+"MACN": "50000",
 "HINHTHUCTT":"VI",
 "MADCGH":null,
 "foods":[{
-            "MAMONAN": "1",
+            "MAMONAN": "50000",
             "SOLUONG":3
-        },
-        {
-            "MAMONAN": "4",
-            "SOLUONG":3
-        }]
+        }
+     ]
 }
 ### nhận đơn chi nhánh
 POST http://localhost:5000/order/3
 Content-Type: application/json
 
 {
-"MAND": "1",
+"MAND": "6",
 "TRANGTHAIDH":"PROCESSING",
-"MADH": "1"
+"MADH": "6"
 
 }
 ### cập nhật đơn hàng
-POST http://localhost:5000/order/4
+POST http://localhost:5000/order/3
 Content-Type: application/json
 
 {
 "MAND": "1",
-"TRANGTHAIDH":"DELIVERING",
-"MADH": "1"
+"TRANGTHAIDH":"PROCESSING",
+"MADH": "99999"
 
 }
 
@@ -218,7 +215,7 @@ POST http://localhost:5000/contract/accept
 Content-Type: application/json
 
 {
-    "MAHD":"96000",
+    "MAHD":"96001",
     "STT":1,
     "MANHANVIEN":"1"
 }
@@ -248,11 +245,13 @@ POST http://localhost:5000/user/login/5
 Content-Type: application/json
 
 {
-<<<<<<< Updated upstream
-    "TENTK":"khachhang",
-    "MATKHAUTK":"khachhang"
-=======
-    "TENTK":"taixe",
-    "MATKHAUTK":"taixe"
->>>>>>> Stashed changes
+    "TENTK":"KHACHHANG",
+    "MATKHAUTK":"123"
 }
+
+###
+
+post https://maker.ifttt.com/trigger/test/with/key/nz8yjsU7OfBIfPEhUtHaQPKQ9mdblPtRUvqcuWUsTxv
+Content-Type: application/json
+
+{ "value1" : "123", "value2" : "", "value3" : "" }
