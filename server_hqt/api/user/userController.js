@@ -278,7 +278,7 @@ exports.getProfileUser=async (req, res) => {
     catch(error)
     {
         var success=false
-        var message="Incorrect user's type "
+        var message=error.message
         res.json({success,message})
     }
 
