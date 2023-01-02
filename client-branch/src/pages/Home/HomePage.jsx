@@ -5,8 +5,11 @@ import ReviewTable from './ReviewTable/ReviewTable';
 import OrderChart from './CustomChart/OrderChart';
 import RevenueChart from './CustomChart/RevenueChart';
 import { formatVND } from '../../utils/currencyFormatter';
+import { useEffect } from 'react';
+import moment from 'moment';
+import { useState } from 'react';
 
-const data = {
+const mock = {
   foodTrends: {
     bestSeller: {
       name: 'Thập cẩm',
@@ -89,6 +92,27 @@ const data = {
 };
 
 function HomePage() {
+  const [data, setData] = useState();
+  const [orderChartData, setOrderChartData] = useState();
+  const [revenueChartData, setRevenueChartData] = useState();
+
+  useEffect(() => {
+    fetch('http://localhost:5000/order/branch', {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        MACN: '1',
+        TGBD: moment().subtract(2, 'year').format('YYYY-MM-DD'),
+        TGKT: moment().format('YYYY-MM-DD'),
+        TRANGTHAIDH: 'DELIVERED'
+      })
+    }).then(res => res.json()).then(data => {
+      setData(data.data);
+    });
+  }, []);
+
   return (
     <main className={styles.homePage}>
       <section className={styles.overview}>
@@ -97,21 +121,21 @@ function HomePage() {
             <li className={styles.foodTrendItem}>
               <div className={styles.foodTrendInfo}>
                 <h4 className={styles.foodTrendName}>
-                  {data.foodTrends.bestSeller.name}
+                  {mock.foodTrends.bestSeller.name}
                   <FcLike className={styles.foodTrendIcon} />
                 </h4>
                 <p className={styles.foodTrendQuantity}>
-                  {data.foodTrends.bestSeller.quantity} orders
+                  {mock.foodTrends.bestSeller.quantity} orders
                 </p>
                 <p className={styles.foodTrendSatisfaction}>
-                  {data.foodTrends.bestSeller.satisfactionPercent}% satisfaction
+                  {mock.foodTrends.bestSeller.satisfactionPercent}% satisfaction
                 </p>
               </div>
 
               <div className={styles.foodTrendImgWrapper}>
                 <img
-                  src={data.foodTrends.bestSeller.img}
-                  alt={data.foodTrends.bestSeller.name}
+                  src={mock.foodTrends.bestSeller.img}
+                  alt={mock.foodTrends.bestSeller.name}
                   className={styles.foodTrendImg}
                 />
               </div>
@@ -120,22 +144,22 @@ function HomePage() {
             <li className={styles.foodTrendItem}>
               <div className={styles.foodTrendInfo}>
                 <h4 className={styles.foodTrendName}>
-                  {data.foodTrends.worstSeller.name}
+                  {mock.foodTrends.worstSeller.name}
                   <FcDislike className={styles.foodTrendIcon} />
                 </h4>
                 <p className={styles.foodTrendQuantity}>
-                  {data.foodTrends.worstSeller.quantity} orders
+                  {mock.foodTrends.worstSeller.quantity} orders
                 </p>
                 <p className={styles.foodTrendSatisfaction}>
-                  {data.foodTrends.worstSeller.satisfactionPercent}%
+                  {mock.foodTrends.worstSeller.satisfactionPercent}%
                   satisfaction
                 </p>
               </div>
 
               <div className={styles.foodTrendImgWrapper}>
                 <img
-                  src={data.foodTrends.worstSeller.img}
-                  alt={data.foodTrends.worstSeller.name}
+                  src={mock.foodTrends.worstSeller.img}
+                  alt={mock.foodTrends.worstSeller.name}
                   className={styles.foodTrendImg}
                 />
               </div>
@@ -145,7 +169,7 @@ function HomePage() {
 
         <Card title='Total orders' className={styles.totalOrderCard}>
           <div className={styles.wrapper}>
-            <p className={styles.totalOrders}>{data.totalOrders}</p>
+            <p className={styles.totalOrders}>{data?.Statics[0].SOLUONG}</p>
 
             <img
               src='assets/imgs/total-orders.png'
@@ -158,7 +182,7 @@ function HomePage() {
         <Card title='Total revenue' className={styles.totalRevenueCard}>
           <div className={styles.wrapper}>
             <p className={styles.totalRevenue}>
-              {formatVND(data.totalRevenue)}
+              {formatVND(data?.Statics[0].DOANHTHU)}
             </p>
 
             <img
@@ -170,15 +194,15 @@ function HomePage() {
         </Card>
 
         <Card title='Orders chart' className={styles.chart}>
-          <OrderChart data={data.statistics} />
+          <OrderChart data={mock.statistics} />
         </Card>
 
         <Card title='Revenues chart' className={styles.chart}>
-          <RevenueChart data={data.statistics} />
+          <RevenueChart data={mock.statistics} />
         </Card>
 
         <Card title='Reviews' className={styles.reviewsCard}>
-          <ReviewTable data={data.reviews} />
+          <ReviewTable data={mock.reviews} />
         </Card>
       </section>
     </main>

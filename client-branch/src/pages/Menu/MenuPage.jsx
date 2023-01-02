@@ -15,8 +15,6 @@ const MenuPage = () => {
   async function getFoods() {
     const response = await fetch("http://localhost:5000/supplier/1");
     const data = await response.json();
-
-    console.log(data);
     setFoods(data.data.foods);
   }
 
@@ -36,7 +34,7 @@ const MenuPage = () => {
     <div className="flex w-12/12 space-x-5">
       <div className="bg-white w-full rounded-xl shadow-sm my-10 pb-10">
         <div className="flex justify-between items-center w-11/12 mt-10 mb-8 mx-auto">
-          <h2 className="text-3xl font-semibold">Today Menu</h2>
+          <h2 className="text-3xl font-semibold">Today Menu<br /><span className="text-sm font-normal">{foods.length} foods</span></h2>
 
           <button className="bg-yellow-500 text-white px-10 py-3 rounded-xl font-semibold" onClick={() => setIsModalOpen(true)}>
             Add
@@ -45,7 +43,7 @@ const MenuPage = () => {
 
         <div className="w-11/12 mx-auto">
           <div className="grid xl:grid-cols-4 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-x-5 gap-y-16">
-            {foods.map((food) => (
+            {foods?.map((food) => (
               <FoodItem key={food.MAMONAN} f={food} />
             ))}
           </div>
