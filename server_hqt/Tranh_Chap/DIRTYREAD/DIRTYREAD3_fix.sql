@@ -15,7 +15,8 @@ END
 GO
 
 --thêm món ăn
-CREATE PROC sp_ThemThucDon_Tranhchap
+--CREATE
+ALTER PROC sp_ThemThucDon
 	@TENMONAN NVARCHAR(100),
 	@MOTA NVARCHAR (80),
 	@GIA INT,
@@ -67,7 +68,8 @@ RETURN 1
 GO
 
 --T2: Khách hàng xem danh sách món ăn của cửa hàng
-CREATE PROC sp_MonAn_ChiNhanh_Tranhchap @MACN CHAR(10)
+--CREATE
+ALTER PROC sp_MonAn_ChiNhanh @MACN CHAR(10)
 AS
 
 BEGIN TRAN
