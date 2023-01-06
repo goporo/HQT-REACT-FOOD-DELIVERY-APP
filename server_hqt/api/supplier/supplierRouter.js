@@ -6,6 +6,6 @@ router.get('/', controller.getSuppliers);
 router.get('/:id', controller.getSuppliersDetails);
 router.post('/food/:id', controller.addFood)
 router.patch('/food', controller.updateFood)
-
+router.patch('/shop', controller.updateShop)
 
 module.exports = router;
