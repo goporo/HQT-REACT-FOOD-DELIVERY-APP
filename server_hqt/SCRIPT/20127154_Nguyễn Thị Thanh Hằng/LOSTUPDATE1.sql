@@ -1,6 +1,6 @@
 ﻿use QL_BANHANG_TRANHCHAP
 --T1: tài xế A cập nhật tình trạng đơn hàng
-CREATE PROC sp_CapNhat_DH_TX
+ALTER PROC sp_CapNhat_DH_TX
 @TRANGTHAIDH CHAR(20),
 @MATX CHAR(10),
 @MADH CHAR(10)
