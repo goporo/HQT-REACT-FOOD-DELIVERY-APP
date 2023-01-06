@@ -8,6 +8,7 @@ const MACN = 1;
 
 function Header() {
   const [selectedStatusOption, setSelectedStatusOption] = useState(null);
+  const [shopInfo, setShopInfo] = useState(null);
 
   const statusOptions = [
     {
@@ -30,6 +31,12 @@ function Header() {
 
       const status = res.data.data[0].TINHTRANGCH.toUpperCase().trim();
 
+      setShopInfo({
+        TENCH: res.data.data[0].TENCH,
+        TG_HD_MO: res.data.data[0].TG_HD_MO,
+        TG_HD_DONG: res.data.data[0].TG_HD_DONG,
+      });
+
       if (status === 'AVAILABLE') {
         setSelectedStatusOption(statusOptions[0]);
       } else if (status === 'LOCKED') {
@@ -39,7 +46,15 @@ function Header() {
   }, [setSelectedStatusOption]);
 
   const handleStatusChange = (selectedOption) => {
-    setSelectedStatusOption(selectedOption);
+    axios.patch('http://localhost:5000/supplier/shop', {
+      ...shopInfo,
+      TINHTRANGCH: selectedOption.value,
+      MACN
+    }).then(res => {
+      if (res.data.success) {
+        setSelectedStatusOption(selectedOption);
+      }
+    })
   }
 
   return (

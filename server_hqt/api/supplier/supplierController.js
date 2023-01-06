@@ -162,8 +162,6 @@ exports.updateFood = async (req, res) => {
             input("TINHTRANGTd", sql.Char(20), TINHTRANG).
             execute("sp_CapNhatThucDon")
 
-        console.log(result);
-
         sql.close()
         var success = true
         var message = "Success Get"

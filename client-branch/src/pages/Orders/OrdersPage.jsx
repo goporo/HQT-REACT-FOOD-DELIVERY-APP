@@ -87,7 +87,7 @@ const Order = () => {
       ) : (
         <div className="">
           {orders.map((item, index) => (
-            <div key={index} className="mb-10 bg-white p-5 shadow-sm rounded-lg">
+            <div key={item.orderID} className="mb-10 bg-white p-5 shadow-sm rounded-lg">
               <div className="flex items-center justify-between mb-2">
                 <div className="font-semibold bg-orange-400 text-white text-sm w-fit rounded-md py-2 px-3">ORDER: {item.orderID}</div>
                 <div className={`flex flex-row justify-center text-white text-sm py-1 px-2 rounded-md ${(item.status.replace(/\s/g, '') === "AVAILABLE" || item.status.replace(/\s/g, '') === "DELIVERED") ? "bg-green-500" : "bg-orange-400"}`}>
@@ -131,7 +131,7 @@ const Tr = (props) => {
         }
       })
         .then(function (res) {
-          console.log(res);
+          // console.log(res);
 
           let temp = res.data.data;
           temp = temp.map(item => {
