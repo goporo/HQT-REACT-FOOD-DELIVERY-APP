@@ -92,7 +92,7 @@ Content-Type: application/json
 {
     "MAKH":"1",
     "MADH":"1",
-    "USER_TYPE":"3"
+    "USER_TYPE":"5"
 }
 ### Lấy Đơn Hàng Khách hàng
 PUT   http://localhost:5000/order/customer
@@ -163,13 +163,13 @@ Content-Type: application/json
 
 }
 ### cập nhật đơn hàng
-POST http://localhost:5000/order/3
+POST http://localhost:5000/order/4
 Content-Type: application/json
 
 {
 "MAND": "1",
-"TRANGTHAIDH":"PROCESSING",
-"MADH": "99999"
+"TRANGTHAIDH":"DELIVERING",
+"MADH": "1"
 
 }
 
