@@ -1,4 +1,7 @@
-﻿USE QL_BANHANG_TRANHCHAP
+﻿-- Chi nhánh cập nhật lại tình trạng cửa hàng đóng cửa thành công 
+-- nhưng vẫn có đơn hàng được đặt tới chi nhánh 
+
+USE QL_BANHANG_TRANHCHAP
 GO
 ALTER PROC sp_Tao_DH
 @HINHTHUCTT CHAR(20),

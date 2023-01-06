@@ -1,4 +1,9 @@
-﻿
+﻿--  Chi nhánh thêm món ăn vào cửa hàng nhưng trong lúc điền thông tin 
+--  không hợp lệ khiến hệ thống báo lỗi 
+--  và cho rollback thao tác, cùng lúc đó khách hàng xem danh sách món ăn 
+--  của chi nhánh  thì  xem được món ăn vừa thêm 
+
+
 --T1: Chi nhánh thêm món ăn vào cửa hàng
 --cài trigger
 CREATE TRIGGER i_THUCDON
@@ -7,9 +12,9 @@ for INSERT
 AS
 
 BEGIN
-	IF EXISTS(SELECT I.TENMONAN FROM inserted I WHERE LEN(I.TENMONAN)>80)
+	IF EXISTS(SELECT I.TENMONAN FROM inserted I WHERE LEN(I.TENMONAN)>80 or I.TENMONAN LIKE '%[^a-zA-Z0-9]%')
 	BEGIN
-		RAISERROR (N'TÊN DÀI QUÁ 80 KÝ TỰ',16,1)
+		RAISERROR (N'TEN KHONG HOP LE',16,1)
 	END
 END
 GO
@@ -69,15 +74,19 @@ GO
 
 --T2: Khách hàng xem danh sách món ăn của cửa hàng
 --CREATE
-ALTER PROC sp_MonAn_ChiNhanh @MACN CHAR(10)
+ALTER PROC sp_MonAn_ChiNhanh 
+	@MACN VARCHAR(10)
 AS
 SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
 BEGIN TRAN
-
 	IF EXISTS(SELECT MACN FROM CHINHANH WHERE MACN=@MACN)
-		SELECT * FROM THUCDON WHERE MACN=@MACN
+	BEGIN
+	SELECT TOP 100 *FROM CHINHANH CN JOIN CUAHANG CH ON CH.MACN=CN.MACN
+	WHERE CN.MACN=@MACN
+	SELECT * FROM THUCDON WHERE MACN=@MACN
+	END
 	ELSE
-		RAISERROR ('KHONG TON TAI CHI NHANH',16,1)
+	RAISERROR ('KHONG TON TAI CHI NHANH',16,1)
 COMMIT TRAN
 RETURN
 

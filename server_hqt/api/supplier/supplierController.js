@@ -35,7 +35,7 @@ exports.getSuppliersDetails = async (req, res) => {
         var MACN = req.params.id
 
         let pool = await sql.connect(config)
-        let result = await pool.request().input("MACN", sql.VarChar(10), MACN).execute("sp_Lay_CN")
+        let result = await pool.request().input("MACN", sql.VarChar(10), MACN).execute("sp_MonAn_ChiNhanh")
 
         sql.close()
         var success = true
@@ -102,10 +102,10 @@ exports.updateShop = async (req, res) => {
     try {
         var MACN = req.body.MACN
         var TENCH = req.body.TENCH
-        var TG_HD_MO=req.body.TG_HD_MO
-        var TG_HD_DONG=req.body.TG_HD_DONG
-        var TINHTRANGCH=req.body.TINHTRANGCH
-       
+        var TG_HD_MO = req.body.TG_HD_MO
+        var TG_HD_DONG = req.body.TG_HD_DONG
+        var TINHTRANGCH = req.body.TINHTRANGCH
+
         let pool = await sql.connect(config)
         let result = await pool.request().
             input("TENCH", sql.NVarChar(100), TENCH).
