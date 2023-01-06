@@ -121,7 +121,7 @@ exports.getOrderDetails = async (req, res) => {
     res.header("Access-Control-Allow-Methods", " GET");
     res.header("Access-Control-Allow-Headers", "Content-Type")
     try {
-        var MAKH = req.body["MAKH"]
+        var MAKH = req.body["MAND"]
         var MADH = req.body["MADH"]
         var USER_TYPE = req.body["USER_TYPE"]
         let pool = await sql.connect(config)

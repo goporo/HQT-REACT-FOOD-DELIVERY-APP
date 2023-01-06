@@ -125,8 +125,14 @@ const Tr = (props) => {
         "MAND": macn,
         "MADH": madh,
         "USER_TYPE": "3"
+      }, {
+        headers: {
+          'Content-Type': 'application/json'
+        }
       })
         .then(function (res) {
+          console.log(res);
+
           let temp = res.data.data;
           temp = temp.map(item => {
             return {
