@@ -32,8 +32,6 @@ const AddFoodModal = ({ isOpen, setIsOpen }) => {
     };
 
     const handleOnAdd = async () => {
-        console.log(food);
-        
         const response = await fetch('http://localhost:5000/supplier/food/1', {
             method: 'POST',
             headers: {
@@ -43,8 +41,6 @@ const AddFoodModal = ({ isOpen, setIsOpen }) => {
         })
 
         const data = await response.json();
-
-        console.log(data);
 
         if (data.success) {
             setIsOpen(false, true);
@@ -57,6 +53,8 @@ const AddFoodModal = ({ isOpen, setIsOpen }) => {
                 DIACHIHINHANHTD: '',
                 MALAT: null,
             });
+        } else {
+            alert(data.message);
         }
     };
 
