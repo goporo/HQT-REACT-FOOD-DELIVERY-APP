@@ -26,10 +26,11 @@ export default function HomePage() {
                         title: item.TENMONAN,
                         supplier: item.MACN,
                         price: item.GIA,
-                        image: item.DIACHIHINHANHTD,
+                        image: item.DIACHIHINHANHTD ? item.DIACHIHINHANHTD : "http://yummyverse.net/images/default.png",
+                        TINHTRANG: item.TINHTRANG.trim()
                     }
                 });
-                setFoods(items);
+                setFoods(items.filter(item => item.TINHTRANG != "DELETED"));
             })
             .catch(function (e) {
                 console.log(e);

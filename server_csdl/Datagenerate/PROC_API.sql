@@ -1,7 +1,6 @@
 ﻿USE QL_BANHANG
 GO
 -- tự động thêm bảng
-select * from PHAMVIBANG
 CREATE PROC sp_ThemPhamVi
 as
 	INSERT PHAMVIBANG values 

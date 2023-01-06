@@ -54,14 +54,16 @@ export default function SupplierPage() {
                             MACN: item.MACN,
                             id: item.MAMONAN,
                             title: item.TENMONAN,
-                            image: item.DIACHIHINHANHTD,
+                            image: item.DIACHIHINHANHTD ? item.DIACHIHINHANHTD : "http://yummyverse.net/images/default.png",
                             price: item.GIA,
+                            TINHTRANG: item.TINHTRANG.trim()
+
                         }
                     });
 
 
                     setSupplier(temp[0]);
-                    setFoods(temp2);
+                    setFoods(temp2.filter(item => item.TINHTRANG != "DELETED"));
 
                 })
                 .catch(function (e) {

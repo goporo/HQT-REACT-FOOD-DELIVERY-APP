@@ -13,11 +13,11 @@ const nav__links = [
         to: "/",
         Icon: FiHome,
     },
-    // {
-    //     display: "Foods",
-    //     to: "/foods",
-    //     Icon: BsGrid,
-    // },
+    {
+        display: "Foods",
+        to: "/foods",
+        Icon: BsGrid,
+    },
     {
         display: "Cart",
         to: "/cart",

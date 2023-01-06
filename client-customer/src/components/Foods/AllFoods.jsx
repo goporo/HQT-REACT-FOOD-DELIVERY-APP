@@ -7,26 +7,28 @@ import ProductCard from "./ProductCard";
 
 const AllFoods = () => {
     const [searchTerm, setSearchTerm] = useState("");
-
+    const [sl, setSl] = useState(0);
     const [pageNumber, setPageNumber] = useState(0);
     const [foods, setFoods] = useState([]);
 
     const getFoods = () => {
-        axios.put('/food/mostSold', {
-            params: {
-                // ID: 12345
-            }
+        axios.put('/food/price', {
+            "SL": 100,
+            "THUTU": "INCREASE"
         })
             .then(function (res) {
-                let items = res.data.map((item) => {
+                let items = res.data.foods.map((item) => {
                     return {
                         title: item.TENMONAN,
                         supplier: item.MACN,
                         price: item.GIA,
-                        image: item.DIACHIHINHANHTD,
+                        image: item.DIACHIHINHANHTD ? item.DIACHIHINHANHTD : "http://yummyverse.net/images/default.png",
+                        TINHTRANG: item.TINHTRANG.trim()
+
                     }
                 });
-                setFoods(items);
+                setFoods(items.filter(item => item.TINHTRANG != "DELETED"));
+                setSl(res.data.SL[0].SOLUONG)
             })
             .catch(function (e) {
                 console.log(e);
@@ -78,11 +80,12 @@ const AllFoods = () => {
                                 <option value="low-price">Low Price</option>
                             </select>
                         </div>
+                        <h2 className="ml-4 text-gray-500">Showing {sl} results</h2>
                     </div>
 
                     <div className="grid grid-cols-2 md:grid-cols-4 md:gap-8">
-                        {displayPage.map((item) => (
-                            <div key={item.id} className="">
+                        {displayPage.map((item, idx) => (
+                            <div key={idx} className="">
                                 <ProductCard item={item} />
                             </div>
                         ))}
