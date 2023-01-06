@@ -264,7 +264,7 @@ exports.getProfileUser=async (req, res) => {
         else if (LOAITK==2)
             result = await pool.request().query("SELECT * FROM DOITAC WHERE MADOITAC="+String(ID))
         else if (LOAITK==3)
-            result = await pool.request().query("SELECT * FROM CHINHANH CN JOIN CUAHANG CH ON CN.MACN=CH.MACN WHERE MACN="+String(ID))
+            result = await pool.request().query("SELECT * FROM CHINHANH CN JOIN CUAHANG CH ON CN.MACN=CH.MACN WHERE CN.MACN="+String(ID))
         else if (LOAITK==4)
             result = await pool.request().query("SELECT * FROM TAIXE WHERE MATX="+String(ID))
         else if (LOAITK==5)
