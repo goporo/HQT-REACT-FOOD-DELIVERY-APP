@@ -1,3 +1,5 @@
+-- Khách hàng lấy danh sách món ăn theo thứ tự tăng dần của giá nhưng lúc đó 
+-- chi nhánh thêm một món vào làm cho số món hiện ra khác với số lượng món trả về 
 USE QL_BANHANG_TRANHCHAP
 GO
 ALTER PROC sp_ThemThucDon

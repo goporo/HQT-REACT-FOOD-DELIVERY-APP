@@ -1,4 +1,7 @@
-﻿use QL_BANHANG_TRANHCHAP
+﻿-- Tài xế A cập nhật tình trạng đơn hàng (tiến hành nhận đơn để giao), 
+-- cùng lúc đó tài xế B cũng cập nhật đúng đơn hàng tài xế A vừa cập nhật. 
+
+use QL_BANHANG_TRANHCHAP
 --T1: tài xế A cập nhật tình trạng đơn hàng
 ALTER PROC sp_CapNhat_DH_TX
 @TRANGTHAIDH CHAR(20),
