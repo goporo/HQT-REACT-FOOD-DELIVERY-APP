@@ -9,6 +9,8 @@ import Modal from 'react-modal';
 import { FormControl, FormControlLabel, FormLabel, Radio, RadioGroup, TextField } from "@mui/material";
 import LazyLoad from "react-lazy-load";
 import axios from "axios";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const makh = localStorage.getItem("MAKH")
 
@@ -177,16 +179,22 @@ const Checkout = (props) => {
         "HINHTHUCTT": "VI",
         "MADCGH": null,
         "foods": foods
+      }).then(res => {
+        if (res.data.success !== true) {
+          alert("Check out failed!");
+          return
+        }
+        //xoa thuc an khoi cart
+        foods.forEach((item) => {
+          dispatch(cartActions.deleteItem(item.MAMONAN));
+        })
       })
-      //xoa thuc an khoi cart
-      foods.forEach((item) => {
-        dispatch(cartActions.deleteItem(item.MAMONAN));
-      })
+
 
       props.setShowModal(false);
 
     } catch (error) {
-      alert(error);
+      console.log(error);
     }
 
   };
