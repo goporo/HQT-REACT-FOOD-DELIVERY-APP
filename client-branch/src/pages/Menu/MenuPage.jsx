@@ -34,7 +34,7 @@ const MenuPage = () => {
     <div className="flex w-12/12 space-x-5">
       <div className="bg-white w-full rounded-xl shadow-sm my-10 pb-10">
         <div className="flex justify-between items-center w-11/12 mt-10 mb-8 mx-auto">
-          <h2 className="text-3xl font-semibold">Today Menu<br /><span className="text-sm font-normal">{foods.length} foods</span></h2>
+          <h2 className="text-3xl font-semibold">Today Menu<br /><span className="text-sm font-normal">{foods?.length} foods</span></h2>
 
           <button className="bg-yellow-500 text-white px-10 py-3 rounded-xl font-semibold" onClick={() => setIsModalOpen(true)}>
             Add

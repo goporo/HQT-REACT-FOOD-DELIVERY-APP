@@ -27,7 +27,7 @@ const AllFoods = () => {
 
                     }
                 });
-                setFoods(items.filter(item => item.TINHTRANG != "DELETED"));
+                setFoods(items.filter(item => item.TINHTRANG !== "DELETED"));
                 setSl(res.data.SL[0].SOLUONG)
             })
             .catch(function (e) {

@@ -1,4 +1,7 @@
-﻿use QL_BANHANG_TRANHCHAP
+﻿-- Khách hàng đặt đơn hàng nhưng số dư ví không đủ nên hệ thống cho rollback thao tác của khách hàng, 
+-- cùng lúc đó chi nhánh vào xem đơn cần xác nhận thì thấy đơn hàng của khách hàng này 
+
+use QL_BANHANG_TRANHCHAP
 
 --T1: khách hàng đặt đơn
 
