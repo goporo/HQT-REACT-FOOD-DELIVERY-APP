@@ -31,7 +31,7 @@ const NearbyResaurant = ({ restaurants }) => {
                                 <div>
                                     <div className="flex space-x-3">
                                         <h4 className="font-semibold text-md mt-2 tracking-wide">
-                                            <Link to={`/supplier/the-alley`}>
+                                            <Link to={`/supplier/${r.id}`}>
 
                                                 {r.name}
                                             </Link>

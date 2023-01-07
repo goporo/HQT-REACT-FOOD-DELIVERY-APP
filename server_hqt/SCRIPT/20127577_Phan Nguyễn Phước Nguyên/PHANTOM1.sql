@@ -1,4 +1,8 @@
-﻿USE QL_BANHANG_TRANHCHAP
+﻿-- 2 nguoi dung cung dang ky mot tai khoan trung ten, luc dau tai khoan 2 kiem tra thi hop le nhung sau do trong 
+-- qua trinh insert thi tai khoan 1 dang ky thanh cong truoc, lm tap tai khoan xuat hien mot tai khoan moi,
+-- gay xung dot cho qua trinh dang ky cua tai khoan 2
+
+USE QL_BANHANG_TRANHCHAP
 GO
 
 CREATE 
