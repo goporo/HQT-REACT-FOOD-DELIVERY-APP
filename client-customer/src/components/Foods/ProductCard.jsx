@@ -9,6 +9,10 @@ import LazyLoad from 'react-lazy-load';
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 
+const formatCurrency = (num) => {
+    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + 'đ'
+}
+
 const ProductCard = (props) => {
     const {
         id,
@@ -46,7 +50,7 @@ const ProductCard = (props) => {
                     <Link to={`/supplier/the-alley`}>{title}</Link>
                 </div>
                 <div className="flex flex-col items-center justify-between">
-                    <span className="text-red-500 text-lg mb-2">{price}đ</span>
+                    <span className="text-red-500 text-lg mb-2">{formatCurrency(price)}</span>
                     <button className="bg-red-500 text-white py-2 px-5 text-sm rounded-lg" onClick={addToCart}>
                         Add to Cart
                     </button>
