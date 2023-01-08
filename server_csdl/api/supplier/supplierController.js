@@ -95,6 +95,46 @@ exports.addFood = async (req, res) => {
 
 
 }
+exports.updateShop = async (req, res) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Methods", " PATCH");
+    res.header("Access-Control-Allow-Headers", "Content-Type")
+    try {
+        var MACN = req.body.MACN
+        var TENCH = req.body.TENCH
+        var TG_HD_MO = req.body.TG_HD_MO
+        var TG_HD_DONG = req.body.TG_HD_DONG
+        var TINHTRANGCH = req.body.TINHTRANGCH
+
+        let pool = await sql.connect(config)
+        let result = await pool.request().
+            input("TENCH", sql.NVarChar(100), TENCH).
+            input("MACN", sql.VarChar(10), MACN).
+            input("TG_HD_MO", sql.Time, TG_HD_MO).
+            input("TG_HD_DONG", sql.Time, TG_HD_DONG).
+            input("TINHTRANGCH", sql.NVarChar(100), TINHTRANGCH).
+            execute("sp_CapNhat_CuaHang")
+
+        console.log(result);
+
+        sql.close()
+        var success = true
+        var message = "Success Get"
+        var data = {}
+        res.json({ success, message, data })
+
+    }
+    catch (error) {
+        var success = false
+        var message = error.message
+        var data = {}
+        res.json({ success, message, data })
+    }
+
+
+
+
+}
 exports.updateFood = async (req, res) => {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Methods", " PATCH");

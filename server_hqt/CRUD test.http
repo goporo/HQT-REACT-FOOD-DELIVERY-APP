@@ -90,9 +90,9 @@ PUT   http://localhost:5000/order/orderdetails
 Content-Type: application/json
 
 {
-    "MAND":"1",
-    "MADH":"4",
-    "USER_TYPE":"4"
+    "MAKH":"1",
+    "MADH":"10",
+    "USER_TYPE":"3"
 }
 ### Lấy Đơn Hàng Khách hàng
 PUT   http://localhost:5000/order/customer
@@ -121,7 +121,7 @@ PUT   http://localhost:5000/order/branch
 Content-Type: application/json
 
 {
-    "MACN":"3",
+    "MACN":"1",
     "TRANGTHAIDH":"ALL",
     "TGBD":"2020-01-01",
     "TGKT":"2030-01-01"
@@ -143,11 +143,11 @@ Content-Type: application/json
 
 {
 "MAKH": "1",
-"MACN": "1",
+"MACN": "50000",
 "HINHTHUCTT":"VI",
 "MADCGH":null,
 "foods":[{
-            "MAMONAN": "1",
+            "MAMONAN": "50000",
             "SOLUONG":3
         }
      ]
@@ -163,13 +163,13 @@ Content-Type: application/json
 
 }
 ### cập nhật đơn hàng
-POST http://localhost:5000/order/4
+POST http://localhost:5000/order/3
 Content-Type: application/json
 
 {
 "MAND": "1",
-"TRANGTHAIDH":"DELIVERING",
-"MADH": "1"
+"TRANGTHAIDH":"PROCESSING",
+"MADH": "99999"
 
 }
 
@@ -248,10 +248,22 @@ Content-Type: application/json
     "TENTK":"KHACHHANG",
     "MATKHAUTK":"123"
 }
-
-###
-
-post https://maker.ifttt.com/trigger/test/with/key/nz8yjsU7OfBIfPEhUtHaQPKQ9mdblPtRUvqcuWUsTxv
+### lấy profile
+PUT http://localhost:5000/user/profile/3
 Content-Type: application/json
 
-{ "value1" : "123", "value2" : "", "value3" : "" }
+{
+    "MAND":"1"
+}
+
+### cập nhật cửa hàng
+patch http://localhost:5000/supplier/shop
+Content-Type: application/json
+
+{
+      "MACN":   "1",
+      "TENCH": "BOBABOP             ",
+      "TG_HD_MO": null,
+      "TG_HD_DONG": null,
+      "TINHTRANGCH": "AVAILABLE           "
+    }

@@ -9,8 +9,7 @@ router.post('/register/employee', controller.registerEmployee);
 router.post('/register/supplier', controller.registerSupplier);
 
 //kh, dt, tx, cn
-router.put('/profile/:usid', controller.getProfileUser);
-router.put('/profile/:usid', controller.getProfileUser);
+router.put('/profile/:type', controller.getProfileUser);
 router.post('/login/:type', controller.login)
 router.post('/profile/:usid', controller.updateProfileUser);
 
