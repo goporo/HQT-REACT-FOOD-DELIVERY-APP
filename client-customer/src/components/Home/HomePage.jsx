@@ -47,9 +47,9 @@ export default function HomePage() {
                 let items = res.data.data.map((item) => {
                     return {
                         id: item.MACN[0],
-                        name: item.TENCH,
-                        title: item.GIA,
-                        logo: item.DIACHIHINHANHND,
+                        name: item.TENCH ? item.TENCH : `Restaurant ${item.MACN[0]}`,
+                        title: "logo",
+                        logo: item.DIACHIHINHANHND ? item.DIACHIHINHANHND : "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Burger_King_logo_%281999%29.svg/2024px-Burger_King_logo_%281999%29.svg.png",
                         rating: 5,
                         distance: '< 1',
                         offer: 'FreeShip'

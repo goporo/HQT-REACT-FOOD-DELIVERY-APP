@@ -8,7 +8,7 @@ exports.getSuppliers = async (req, res) => {
     try {
 
         let pool = await sql.connect(config)
-        let result = await pool.request().query('SELECT * FROM CHINHANH CN JOIN CUAHANG CH ON CH.MACN = CN.MACN')
+        let result = await pool.request().query('SELECT TOP 10 * FROM CHINHANH CN JOIN CUAHANG CH ON CH.MACN = CN.MACN')
 
         sql.close()
         var success = true
