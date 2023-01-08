@@ -114,7 +114,7 @@ Content-Type: application/json
 {
     "MATX":"1",
     "TGBD":"",
-    "TGKT":"2022-12-31"
+    "TGKT":"2025-1-3"
 }
 ### Lấy Đơn Hàng CHI NHANH
 PUT   http://localhost:5000/order/branch
@@ -234,10 +234,10 @@ Content-Type: application/json
     "MANHANVIEN":"1"
 }
 ### đăng nhập
-POST http://localhost:5000/user/login/4
+POST http://localhost:5000/user/login/5
 Content-Type: application/json
 
 {
-    "TENTK":"TAIXE",
+    "TENTK":"Logan_Clarke1861138959@urn0m.store",
     "MATKHAUTK":"123"
 }
