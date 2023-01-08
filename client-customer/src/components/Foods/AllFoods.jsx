@@ -72,10 +72,12 @@ const AllFoods = () => {
 
                     <div className="mb-5">
                         <div className="sorting__widget text-end">
-                            <select className="w-50">
-                                <option>Default</option>
-                                <option value="ascending">Alphabetically, A-Z</option>
-                                <option value="descending">Alphabetically, Z-A</option>
+                            <select className="w-50"
+                                onChange={() => console.log(this.value)}
+                            >
+                                <option value="most-sold">Most Sold</option>
+                                {/* <option value="ascending">Alphabetically, A-Z</option>
+                                <option value="descending">Alphabetically, Z-A</option> */}
                                 <option value="high-price">High Price</option>
                                 <option value="low-price">Low Price</option>
                             </select>

@@ -24,7 +24,7 @@ const Header = () => {
         axios.put("/user/profile/5", {
             "MAND": localStorage.getItem("MAKH"),
         }).then(res => {
-            if (res?.data?.data.length > 0) {
+            if (res?.data?.data?.length > 0) {
                 setBalance(res.data.data[0].SODUVI);
             }
         });
